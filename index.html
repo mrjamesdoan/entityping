@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EntityPing — Fresh Business Leads, The Moment They File</title>
+  <meta name="description" content="Get notified the instant a new business registers in Florida. Fresh leads with owner names, addresses, and industry classification — delivered daily.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F4CD;</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef9ff',
+              100: '#d8f1ff',
+              200: '#bae7ff',
+              300: '#8adaff',
+              400: '#52c3ff',
+              500: '#2aa4ff',
+              600: '#1486f5',
+              700: '#0d6ee1',
+              800: '#1158b6',
+              900: '#144b8f',
+              950: '#112f57',
+            },
+            surface: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              800: '#1e293b',
+              850: '#172033',
+              900: '#0f172a',
+              950: '#080e1d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #2aa4ff 0%, #8adaff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glow-border {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.15), 0 0 40px -10px rgba(42, 164, 255, 0.15);
+    }
+    .hero-glow {
+      background: radial-gradient(ellipse 60% 50% at 50% -10%, rgba(42, 164, 255, 0.12) 0%, transparent 70%);
+    }
+    .ping-dot {
+      animation: ping-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes ping-pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+    .fade-in {
+      animation: fadeIn 0.6s ease-out both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .table-row:hover { background: rgba(42, 164, 255, 0.04); }
+  </style>
+</head>
+<body class="bg-surface-950 text-surface-100 antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-surface-950/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="relative">
+          <div class="w-2.5 h-2.5 bg-brand-500 rounded-full"></div>
+          <div class="absolute inset-0 w-2.5 h-2.5 bg-brand-400 rounded-full ping-dot"></div>
+        </div>
+        <span class="text-lg font-bold tracking-tight">EntityPing</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm text-surface-100/60">
+        <a href="#how-it-works" class="hover:text-surface-100 transition-colors">How It Works</a>
+        <a href="#data" class="hover:text-surface-100 transition-colors">Sample Data</a>
+        <a href="#pricing" class="hover:text-surface-100 transition-colors">Pricing</a>
+      </div>
+      <a href="#pricing" class="bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+        Get Started
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 hero-glow">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 bg-brand-500/10 border border-brand-500/20 rounded-full px-4 py-1.5 mb-6">
+          <div class="relative">
+            <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+            <div class="absolute inset-0 w-1.5 h-1.5 bg-emerald-400 rounded-full ping-dot"></div>
+          </div>
+          <span class="text-xs font-medium text-brand-300">22,800+ Florida leads and counting</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
+          Fresh business leads,<br>
+          <span class="gradient-text">the moment they file.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-surface-100/60 leading-relaxed mb-10 max-w-2xl">
+          Every day, hundreds of new businesses register in Florida. EntityPing captures them within hours &mdash; with owner names, addresses, and industry classification &mdash; so you can reach them before anyone else.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#pricing" class="inline-flex items-center justify-center bg-brand-600 hover:bg-brand-500 text-white font-semibold px-7 py-3.5 rounded-xl text-base transition-colors">
+            Start Getting Leads
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+          <a href="#data" class="inline-flex items-center justify-center border border-white/10 hover:border-white/20 text-surface-100/80 hover:text-surface-100 font-medium px-7 py-3.5 rounded-xl text-base transition-colors">
+            See Sample Data
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof bar -->
+  <section class="border-y border-white/5 bg-surface-900/50">
+    <div class="max-w-6xl mx-auto px-6 py-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-3xl font-bold text-surface-100">22,815</div>
+          <div class="text-sm text-surface-100/50 mt-1">Leads Captured</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-surface-100">85%</div>
+          <div class="text-sm text-surface-100/50 mt-1">Grade-A Quality</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-surface-100">16</div>
+          <div class="text-sm text-surface-100/50 mt-1">Industry Categories</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-surface-100">&lt;24h</div>
+          <div class="text-sm text-surface-100/50 mt-1">From Filing to Inbox</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Be the first call they get.</h2>
+        <p class="text-surface-100/50 text-lg max-w-2xl mx-auto">
+          New businesses need services from day one. EntityPing puts you in front of them while they're still setting up.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glow-border bg-surface-900/60 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Insurance Agents</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">
+            New LLCs and corps need business insurance immediately. Reach owners within hours of filing &mdash; before your competition even knows they exist.
+          </p>
+        </div>
+        <div class="glow-border bg-surface-900/60 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25v-.008zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007v-.008zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008v-.008zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Accountants & CPAs</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">
+            New businesses need bookkeeping, tax setup, and financial guidance. Get them during the formation phase when they're actively choosing providers.
+          </p>
+        </div>
+        <div class="glow-border bg-surface-900/60 rounded-2xl p-8">
+          <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016A3.001 3.001 0 0021 9.349m-18 0V4.125C3 3.504 3.504 3 4.125 3h15.75C20.496 3 21 3.504 21 4.125V9.35"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Commercial Services</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">
+            Payment processors, POS systems, commercial cleaning, IT support &mdash; every new business is a potential customer. Get there first.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works" class="py-20 md:py-28 bg-surface-900/30 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">How it works</h2>
+        <p class="text-surface-100/50 text-lg max-w-xl mx-auto">Three steps. No technical setup required.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-12 md:gap-8">
+        <div class="text-center">
+          <div class="w-14 h-14 bg-brand-600/20 border border-brand-500/30 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <span class="text-brand-400 font-bold text-lg">1</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">We monitor filings</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">
+            Our system pulls new business registrations from the Florida Secretary of State every day &mdash; LLCs, corporations, and DBAs.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-brand-600/20 border border-brand-500/30 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <span class="text-brand-400 font-bold text-lg">2</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">We classify & score</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">
+            Each lead is categorized into 16 industries and assigned a quality grade, so you can focus on the businesses that matter to you.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-brand-600/20 border border-brand-500/30 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <span class="text-brand-400 font-bold text-lg">3</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">You get pinged</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed">
+            Receive a clean CSV of fresh leads every morning, filtered by your preferred industries. Open it in Excel and start calling.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample Data -->
+  <section id="data" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">See what you get</h2>
+        <p class="text-surface-100/50 text-lg max-w-xl mx-auto">Real data from this week's Florida business filings.</p>
+      </div>
+      <div class="glow-border rounded-2xl overflow-hidden bg-surface-900/60">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-white/10 text-left">
+                <th class="px-5 py-4 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">Business Name</th>
+                <th class="px-5 py-4 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">Type</th>
+                <th class="px-5 py-4 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">Owner</th>
+                <th class="px-5 py-4 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">City</th>
+                <th class="px-5 py-4 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">Industry</th>
+                <th class="px-5 py-4 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">Grade</th>
+                <th class="px-5 py-4 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">Filed</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5">
+              <tr class="table-row">
+                <td class="px-5 py-3.5 font-medium text-surface-100">Cruz Renovations</td>
+                <td class="px-5 py-3.5 text-surface-100/60">DBA</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Oliver Cruz</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Jacksonville</td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">Construction</span></td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">A</span></td>
+                <td class="px-5 py-3.5 text-surface-100/40">Feb 22</td>
+              </tr>
+              <tr class="table-row">
+                <td class="px-5 py-3.5 font-medium text-surface-100">Setai 3706 Realty, LLC</td>
+                <td class="px-5 py-3.5 text-surface-100/60">LLC</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Mark Militana</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Richmond</td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">Real Estate</span></td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">A</span></td>
+                <td class="px-5 py-3.5 text-surface-100/40">Feb 24</td>
+              </tr>
+              <tr class="table-row">
+                <td class="px-5 py-3.5 font-medium text-surface-100">DeRosier Legal, LLC</td>
+                <td class="px-5 py-3.5 text-surface-100/60">LLC</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Jeff DeRosier</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Satellite Beach</td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-violet-500/10 text-violet-400 border border-violet-500/20">Professional Svcs</span></td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">A</span></td>
+                <td class="px-5 py-3.5 text-surface-100/40">Feb 26</td>
+              </tr>
+              <tr class="table-row">
+                <td class="px-5 py-3.5 font-medium text-surface-100">Elite Pro Mobile Detailing LLC</td>
+                <td class="px-5 py-3.5 text-surface-100/60">LLC</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Pascual Cardona</td>
+                <td class="px-5 py-3.5 text-surface-100/60">LaBelle</td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20">Automotive</span></td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">A</span></td>
+                <td class="px-5 py-3.5 text-surface-100/40">Feb 23</td>
+              </tr>
+              <tr class="table-row">
+                <td class="px-5 py-3.5 font-medium text-surface-100">New Beginnings Chiropractic</td>
+                <td class="px-5 py-3.5 text-surface-100/60">LLC</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Brian Perez</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Miami</td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-teal-500/10 text-teal-400 border border-teal-500/20">Healthcare</span></td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">A</span></td>
+                <td class="px-5 py-3.5 text-surface-100/40">Feb 24</td>
+              </tr>
+              <tr class="table-row">
+                <td class="px-5 py-3.5 font-medium text-surface-100">Trillium Construction Group</td>
+                <td class="px-5 py-3.5 text-surface-100/60">LLC</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Denis Stephenson</td>
+                <td class="px-5 py-3.5 text-surface-100/60">Redington Beach</td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">Construction</span></td>
+                <td class="px-5 py-3.5"><span class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">A</span></td>
+                <td class="px-5 py-3.5 text-surface-100/40">Mar 1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="border-t border-white/5 px-5 py-3.5 flex items-center justify-between bg-surface-900/40">
+          <span class="text-xs text-surface-100/40">Showing 6 of 22,815 leads</span>
+          <span class="text-xs text-surface-100/40">Updated daily from FL Secretary of State</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's included -->
+  <section class="py-20 md:py-28 bg-surface-900/30 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Every lead includes</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div class="bg-surface-900/60 border border-white/5 rounded-xl p-5 text-center">
+          <div class="text-2xl mb-2">&#x1F3E2;</div>
+          <div class="font-medium text-sm">Business Name</div>
+          <div class="text-xs text-surface-100/40 mt-1">Registered entity name</div>
+        </div>
+        <div class="bg-surface-900/60 border border-white/5 rounded-xl p-5 text-center">
+          <div class="text-2xl mb-2">&#x1F464;</div>
+          <div class="font-medium text-sm">Owner Name</div>
+          <div class="text-xs text-surface-100/40 mt-1">Principal or registered agent</div>
+        </div>
+        <div class="bg-surface-900/60 border border-white/5 rounded-xl p-5 text-center">
+          <div class="text-2xl mb-2">&#x1F4CD;</div>
+          <div class="font-medium text-sm">Full Address</div>
+          <div class="text-xs text-surface-100/40 mt-1">Street, city, state, zip</div>
+        </div>
+        <div class="bg-surface-900/60 border border-white/5 rounded-xl p-5 text-center">
+          <div class="text-2xl mb-2">&#x1F3F7;</div>
+          <div class="font-medium text-sm">Entity Type</div>
+          <div class="text-xs text-surface-100/40 mt-1">LLC, Corp, or DBA</div>
+        </div>
+        <div class="bg-surface-900/60 border border-white/5 rounded-xl p-5 text-center">
+          <div class="text-2xl mb-2">&#x1F3ED;</div>
+          <div class="font-medium text-sm">Industry</div>
+          <div class="text-xs text-surface-100/40 mt-1">16 classified categories</div>
+        </div>
+        <div class="bg-surface-900/60 border border-white/5 rounded-xl p-5 text-center">
+          <div class="text-2xl mb-2">&#x2B50;</div>
+          <div class="font-medium text-sm">Quality Grade</div>
+          <div class="text-xs text-surface-100/40 mt-1">A, B, or C rating</div>
+        </div>
+        <div class="bg-surface-900/60 border border-white/5 rounded-xl p-5 text-center">
+          <div class="text-2xl mb-2">&#x1F4C5;</div>
+          <div class="font-medium text-sm">Filing Date</div>
+          <div class="text-xs text-surface-100/40 mt-1">When they registered</div>
+        </div>
+        <div class="bg-surface-900/60 border border-white/5 rounded-xl p-5 text-center">
+          <div class="text-2xl mb-2">&#x1F522;</div>
+          <div class="font-medium text-sm">Filing Number</div>
+          <div class="text-xs text-surface-100/40 mt-1">Official state reference</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Simple pricing</h2>
+        <p class="text-surface-100/50 text-lg max-w-xl mx-auto">One new client pays for a year of EntityPing. The math speaks for itself.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <!-- Starter -->
+        <div class="bg-surface-900/60 border border-white/10 rounded-2xl p-8">
+          <div class="text-sm font-medium text-surface-100/50 mb-1">Starter</div>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-bold">$79</span>
+            <span class="text-surface-100/40">/mo</span>
+          </div>
+          <p class="text-sm text-surface-100/50 mb-6">Perfect for testing the waters.</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70">Up to <strong class="text-surface-100">200 leads/month</strong></span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70">Choose <strong class="text-surface-100">3 industries</strong></span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70">Daily CSV delivery</span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70">Grade-A leads only</span>
+            </li>
+          </ul>
+          <a href="mailto:hello@alphacraft.dev?subject=EntityPing%20Starter" class="block w-full text-center border border-white/10 hover:border-white/20 text-surface-100/80 hover:text-surface-100 font-medium py-3 rounded-xl text-sm transition-colors">
+            Get Started
+          </a>
+        </div>
+        <!-- Growth (popular) -->
+        <div class="relative bg-surface-900/60 border-2 border-brand-500/40 rounded-2xl p-8">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+            <span class="bg-brand-600 text-white text-xs font-bold px-3.5 py-1 rounded-full">Most Popular</span>
+          </div>
+          <div class="text-sm font-medium text-brand-400 mb-1">Growth</div>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-bold">$199</span>
+            <span class="text-surface-100/40">/mo</span>
+          </div>
+          <p class="text-sm text-surface-100/50 mb-6">For serious prospectors.</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70">Up to <strong class="text-surface-100">600 leads/month</strong></span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70">Choose <strong class="text-surface-100">8 industries</strong></span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70">Daily CSV delivery</span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70">All quality grades (A, B, C)</span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70"><strong class="text-surface-100">Priority delivery</strong> — leads by 7 AM</span>
+            </li>
+          </ul>
+          <a href="mailto:hello@alphacraft.dev?subject=EntityPing%20Growth" class="block w-full text-center bg-brand-600 hover:bg-brand-500 text-white font-medium py-3 rounded-xl text-sm transition-colors">
+            Get Started
+          </a>
+        </div>
+        <!-- Pro -->
+        <div class="bg-surface-900/60 border border-white/10 rounded-2xl p-8">
+          <div class="text-sm font-medium text-surface-100/50 mb-1">Pro</div>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-4xl font-bold">$499</span>
+            <span class="text-surface-100/40">/mo</span>
+          </div>
+          <p class="text-sm text-surface-100/50 mb-6">Full firehose. No limits.</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70"><strong class="text-surface-100">Unlimited leads</strong></span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70"><strong class="text-surface-100">All 16 industries</strong></span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70">Daily CSV delivery</span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70"><strong class="text-surface-100">Priority delivery</strong> — leads by 7 AM</span>
+            </li>
+            <li class="flex items-start gap-2.5 text-sm">
+              <svg class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span class="text-surface-100/70"><strong class="text-surface-100">Dedicated support</strong></span>
+            </li>
+          </ul>
+          <a href="mailto:hello@alphacraft.dev?subject=EntityPing%20Pro" class="block w-full text-center border border-white/10 hover:border-white/20 text-surface-100/80 hover:text-surface-100 font-medium py-3 rounded-xl text-sm transition-colors">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 md:py-28 bg-surface-900/30 border-y border-white/5">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-center mb-12">Common questions</h2>
+      <div class="space-y-6">
+        <div class="border-b border-white/5 pb-6">
+          <h3 class="font-semibold mb-2">Where does the data come from?</h3>
+          <p class="text-sm text-surface-100/50 leading-relaxed">Directly from the Florida Secretary of State's public filing records. This is the same data that Sunbiz.org displays &mdash; we just get it faster and deliver it in a format you can actually use.</p>
+        </div>
+        <div class="border-b border-white/5 pb-6">
+          <h3 class="font-semibold mb-2">How fresh are the leads?</h3>
+          <p class="text-sm text-surface-100/50 leading-relaxed">We pull new filings every day. Most leads are delivered within 24 hours of the business registering with the state. Growth and Pro plans get priority delivery by 7 AM ET.</p>
+        </div>
+        <div class="border-b border-white/5 pb-6">
+          <h3 class="font-semibold mb-2">Do you include phone numbers and emails?</h3>
+          <p class="text-sm text-surface-100/50 leading-relaxed">The base data includes business name, owner name, full mailing address, entity type, industry, and filing details. Phone and email enrichment is available as an add-on for Growth and Pro plans.</p>
+        </div>
+        <div class="border-b border-white/5 pb-6">
+          <h3 class="font-semibold mb-2">Can I filter by industry or location?</h3>
+          <p class="text-sm text-surface-100/50 leading-relaxed">Absolutely. Choose the industries that match your business, and you'll only receive leads in those categories. All plans include geographic filtering by city or zip code.</p>
+        </div>
+        <div class="border-b border-white/5 pb-6">
+          <h3 class="font-semibold mb-2">What format do the leads come in?</h3>
+          <p class="text-sm text-surface-100/50 leading-relaxed">Clean CSV files that open directly in Excel, Google Sheets, or any CRM that supports CSV import. No special software required.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2">Can I cancel anytime?</h3>
+          <p class="text-sm text-surface-100/50 leading-relaxed">Yes. No contracts, no cancellation fees. You can cancel your subscription at any time and you'll retain access through the end of your billing period.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+        Stop chasing leads.<br>
+        <span class="gradient-text">Let them come to you.</span>
+      </h2>
+      <p class="text-surface-100/50 text-lg mb-8 max-w-xl mx-auto">
+        Every day you wait, hundreds of new businesses register in Florida without hearing from you.
+      </p>
+      <a href="mailto:hello@alphacraft.dev?subject=EntityPing%20—%20I'm%20Interested" class="inline-flex items-center bg-brand-600 hover:bg-brand-500 text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors">
+        Get Your Free Sample
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+      <p class="text-xs text-surface-100/30 mt-4">25 free sample leads &mdash; no credit card required</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+        <span class="text-sm font-semibold">EntityPing</span>
+      </div>
+      <div class="text-xs text-surface-100/30">
+        &copy; 2026 EntityPing. Built by <a href="https://alphacraft.dev" class="text-surface-100/50 hover:text-surface-100 transition-colors">AlphaCraft</a>.
+      </div>
+      <a href="mailto:hello@alphacraft.dev" class="text-sm text-surface-100/50 hover:text-surface-100 transition-colors">
+        hello@alphacraft.dev
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
