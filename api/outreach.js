@@ -108,6 +108,7 @@ async function handleSend(req, res) {
         "clicked", "0",
         "clickedAt", "",
         "resendId", emailData.id || "",
+        "htmlBody", htmlBody,
       ],
       ["ZADD", "outreach:index", ts.toString(), trackingId],
       [
