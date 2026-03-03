@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome — EntityPing</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='14' cy='12' r='11' stroke='%231486f5' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='14' cy='12' r='7.5' stroke='%231486f5' stroke-width='1.5' opacity='0.3'/%3E%3Cpath d='M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z' fill='%231486f5'/%3E%3Ccircle cx='14' cy='11' r='3' fill='white'/%3E%3Ccircle cx='14' cy='11' r='1.5' fill='%231486f5'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef9ff', 100: '#d8f1ff', 200: '#bae7ff', 400: '#52c3ff',
+              500: '#1486f5', 600: '#1272d4', 700: '#0d6ee1',
+            },
+            surface: { 800: '#1e293b', 900: '#0f172a', 950: '#080e1d' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-glow {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(20, 134, 245, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 70% 10%, rgba(82, 195, 255, 0.08) 0%, transparent 50%);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #1486f5 0%, #60a5fa 50%, #52c3ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @keyframes check-pop {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .check-anim { animation: check-pop 0.5s ease-out 0.2s both; }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fade-up 0.6s ease-out 0.4s both; }
+    .fade-up-2 { animation: fade-up 0.6s ease-out 0.6s both; }
+    .fade-up-3 { animation: fade-up 0.6s ease-out 0.8s both; }
+  </style>
+
+  <script defer data-domain="entityping.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="bg-surface-950 text-white antialiased">
+
+  <!-- Nav -->
+  <nav class="w-full z-50 bg-surface-950/90 backdrop-blur-lg border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#1486f5" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#1486f5" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="#1486f5"/>
+          <circle cx="14" cy="11" r="3" fill="white"/>
+          <circle cx="14" cy="11" r="1.5" fill="#1486f5"/>
+        </svg>
+        <span class="text-lg font-bold tracking-tight text-white">Entity<span class="text-brand-500">Ping</span></span>
+      </a>
+      <a href="/dashboard" class="text-sm text-slate-400 hover:text-white font-medium transition-colors">Go to Dashboard</a>
+    </div>
+  </nav>
+
+  <!-- Welcome -->
+  <section class="relative overflow-hidden">
+    <div class="hero-glow absolute inset-0 pointer-events-none"></div>
+    <div class="relative pt-20 pb-16 md:pt-28 md:pb-24">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+
+        <!-- Animated checkmark -->
+        <div class="check-anim w-20 h-20 rounded-full bg-emerald-500/10 border-2 border-emerald-500/30 flex items-center justify-center mx-auto mb-8">
+          <svg class="w-10 h-10 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+          </svg>
+        </div>
+
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-4 fade-up">
+          You're in. <span class="gradient-text">Welcome aboard.</span>
+        </h1>
+        <p class="text-lg text-slate-400 max-w-lg mx-auto mb-4 fade-up">
+          Your subscription is active. Here's what happens next:
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Steps -->
+  <section class="pb-20 md:pb-28">
+    <div class="max-w-2xl mx-auto px-6">
+
+      <div class="space-y-6 fade-up-2">
+        <!-- Step 1 -->
+        <div class="bg-surface-800 border border-white/10 rounded-xl p-6 flex gap-5">
+          <div class="w-10 h-10 rounded-full bg-brand-500/10 border border-brand-500/20 flex items-center justify-center shrink-0">
+            <span class="text-brand-400 text-sm font-bold">1</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white mb-1">Check your email</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">You'll receive a confirmation email from Stripe with your receipt. We'll also send you a welcome email with your dashboard login link within the next few minutes.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-surface-800 border border-white/10 rounded-xl p-6 flex gap-5">
+          <div class="w-10 h-10 rounded-full bg-brand-500/10 border border-brand-500/20 flex items-center justify-center shrink-0">
+            <span class="text-brand-400 text-sm font-bold">2</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white mb-1">Set your filters</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">Log into your <a href="/dashboard" class="text-brand-500 hover:text-brand-400">dashboard</a> and choose the industries, locations, and quality grades that matter to your business. This takes about 30 seconds.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-surface-800 border border-white/10 rounded-xl p-6 flex gap-5">
+          <div class="w-10 h-10 rounded-full bg-brand-500/10 border border-brand-500/20 flex items-center justify-center shrink-0">
+            <span class="text-brand-400 text-sm font-bold">3</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white mb-1">Your first CSV arrives tomorrow morning</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">By 7 AM ET, you'll have a fresh batch of leads in your inbox. Open it in Excel, Google Sheets, or import it into your CRM and start reaching out.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-10 text-center fade-up-3">
+        <a href="/dashboard" class="inline-block bg-brand-500 hover:bg-brand-600 text-white font-semibold px-8 py-3.5 rounded-lg transition-colors text-sm">
+          Set Up My Filters
+          <svg class="inline w-4 h-4 ml-1.5 -mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <p class="text-sm text-slate-500 mt-4">
+          Questions? Email <a href="mailto:hello@entityping.com" class="text-brand-500 hover:text-brand-400">hello@entityping.com</a> — James reads every message.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-surface-900 border-t border-white/5 py-8">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span class="text-xs text-slate-600">&copy; 2026 EntityPing. All rights reserved.</span>
+      <span class="text-xs text-slate-600">hello@entityping.com</span>
+    </div>
+  </footer>
+
+</body>
+</html>

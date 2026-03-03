@@ -358,6 +358,7 @@ function emailWrapper(bodyHtml, trackingId) {
     <div style="padding: 24px 0; border-top: 1px solid #e2e8f0;">
       <p style="font-size: 13px; color: #94a3b8; margin: 0;">EntityPing &mdash; Targeted business leads, delivered daily.<br>
       <a href="https://entityping.com" style="color: #1486f5; text-decoration: none;">entityping.com</a></p>
+      <p style="font-size: 11px; color: #cbd5e1; margin: 8px 0 0;">Don't want emails from us? <a href="mailto:hello@entityping.com?subject=Unsubscribe&body=Please%20remove%20me%20from%20your%20mailing%20list." style="color: #94a3b8; text-decoration: underline;">Unsubscribe</a></p>
     </div>
   </div>`;
 }

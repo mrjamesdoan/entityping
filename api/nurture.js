@@ -75,6 +75,7 @@ function emailWrapper(firstName, bodyHtml, trackingId) {
     <div style="padding: 24px 0; border-top: 1px solid #e2e8f0;">
       <p style="font-size: 13px; color: #94a3b8; margin: 0;">EntityPing &mdash; Targeted business leads, delivered daily.<br>
       <a href="https://entityping.com" style="color: #1486f5; text-decoration: none;">entityping.com</a></p>
+      <p style="font-size: 11px; color: #cbd5e1; margin: 8px 0 0;">Don't want emails from us? <a href="mailto:hello@entityping.com?subject=Unsubscribe&body=Please%20remove%20me%20from%20your%20mailing%20list." style="color: #94a3b8; text-decoration: underline;">Unsubscribe</a></p>
     </div>
   </div>`;
 }
@@ -91,7 +92,9 @@ function day2Email(firstName) {
 
       <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">When you're ready for a daily feed of leads like these, we've got you covered:</p>
 
-      <a href="https://entityping.com/#pricing" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">See Plans &amp; Pricing</a>`;
+      <a href="https://entityping.com/checkout?plan=growth&billing=monthly" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">See Plans &amp; Pricing</a>
+
+      <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">Or just reply to this email &mdash; I read every one.<br>&mdash; James, EntityPing</p>`;
 }
 
 function day4Email(firstName) {
@@ -100,13 +103,15 @@ function day4Email(firstName) {
 
       <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">While you've been thinking it over, <strong>847 new businesses registered</strong> in Florida alone. That's 847 new potential customers &mdash; and your competitors may already be reaching out to them.</p>
 
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Here's the math: on our Growth plan, you get up to <strong>3,000 leads per month</strong> for $99. That works out to about <strong>$0.033 per lead</strong> &mdash; less than the cost of a single Google click. And these aren't cold prospects; they're brand-new businesses actively setting up operations and looking for vendors.</p>
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Here's the math: on our Growth plan, you get up to <strong>600 leads per month</strong> for $99. That works out to about <strong>$0.17 per lead</strong> &mdash; less than the cost of a single Google click. And these aren't cold prospects; they're brand-new businesses actively setting up operations and looking for vendors.</p>
 
       <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Every day without EntityPing is a day of fresh leads going straight to your competition.</p>
 
       <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">The sooner you start, the sooner you close:</p>
 
-      <a href="https://entityping.com/#pricing" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Start Getting Leads Today</a>`;
+      <a href="https://entityping.com/checkout?plan=growth&billing=monthly" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Start Getting Leads Today</a>
+
+      <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">&mdash; James, EntityPing</p>`;
 }
 
 function day7Email(firstName) {
@@ -121,7 +126,9 @@ function day7Email(firstName) {
 
       <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Either way, the sample we sent is yours to keep. If the timing isn't right now, we'll be here when it is.</p>
 
-      <a href="https://entityping.com/#pricing" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">View Plans &amp; Pricing</a>`;
+      <a href="https://entityping.com/checkout?plan=growth&billing=monthly" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">View Plans &amp; Pricing</a>
+
+      <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">Warmly,<br>&mdash; James, EntityPing</p>`;
 }
 
 function getSubject(dayKey, firstName) {
@@ -190,17 +197,26 @@ module.exports = async function handler(req, res) {
         contact[raw[i]] = raw[i + 1];
       }
 
-      // Only nurture form_submission contacts with "new" status
-      if (contact.source !== "form_submission" || contact.status !== "new") {
+      // Nurture two cohorts:
+      // 1. form_submission contacts with "new" status (organic sign-ups)
+      // 2. scraper contacts with "converted" status (outreach auto-sample recipients)
+      const isFormLead = contact.source === "form_submission" && contact.status === "new";
+      const isOutreachSample = contact.source === "scraper" && contact.status === "converted";
+
+      if (!isFormLead && !isOutreachSample) {
         continue;
       }
 
       totalProcessed++;
 
-      const createdAt = new Date(contact.createdAt).getTime();
-      if (isNaN(createdAt)) continue;
+      // Timing anchor: for form leads use createdAt, for outreach use updatedAt
+      // (updatedAt is set when the auto-sample marks them "converted")
+      const anchorDate = isOutreachSample
+        ? new Date(contact.updatedAt).getTime()
+        : new Date(contact.createdAt).getTime();
+      if (isNaN(anchorDate)) continue;
 
-      const daysSinceSignup = (now - createdAt) / MS_PER_DAY;
+      const daysSinceSignup = (now - anchorDate) / MS_PER_DAY;
       const firstName = contact.name ? contact.name.split(" ")[0] : "there";
 
       // 3. Check each nurture step

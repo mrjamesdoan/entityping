@@ -12,31 +12,31 @@ const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
 
 // The 25-lead sample CSV embedded directly
 const SAMPLE_CSV = `business_name,entity_type,filing_date,state,owner_name,address,city,state_abbr,zip,phone,industry,quality_score
-Cruz Renovations,DBA,2026-02-22,FL,Oliver Cruz,7901 Baymeadows Cir E,Jacksonville,FL,32256,(904) 555-0148,Construction,A
-Strong Steps Remodelation LLC,LLC,2026-02-20,FL,Leodan Martinez,756 Cape Cod Cir,Valrico,FL,33594,(813) 555-0237,Construction,A
-Setai 3706 Realty LLC,LLC,2026-02-24,FL,Mark Militana,1101 West Franklin Street,Richmond,VA,23220,(804) 555-0319,Real Estate,A
-Fabulously Made Salon & Hair Loss Solutions,DBA,2026-02-24,FL,Johanna Amarante,8909 Regents Park Drive,Tampa,FL,33647,(813) 555-0422,Beauty & Wellness,A
-DeRosier Legal LLC,LLC,2026-02-26,FL,Jeff DeRosier,200 Elm Ave,Satellite Beach,FL,32937,(321) 555-0185,Professional Services,A
-WCMT Studios,DBA,2026-02-20,FL,John Lemis,10834 Kentworth Way,Jacksonville,FL,32256,(904) 555-0293,Entertainment,A
-JGNS Notary and Tax Services,DBA,2026-02-25,FL,Betsy Gutierrez,2416 Metro Drive,Ruskin,FL,33570,(813) 555-0571,Professional Services,A
-Gringa Studio LLC,LLC,2026-02-24,FL,Isadora Cardoso Bernardes,7950 NE Bayshore Ct,Miami,FL,33138,(305) 555-0146,Entertainment,A
-Mind Mechanic RX,DBA,2026-02-24,FL,Mind Mechanic LLC,7777 Glades Rd,Boca Raton,FL,33434,(561) 555-0384,Automotive,A
-Cleaning Services by AVM LLC,LLC,2026-03-01,FL,Adriana Valladares Menendez,1698 Nabatoff,North Port,FL,34288,(941) 555-0217,Cleaning,A
-DJ Negro Loko,DBA,2026-02-26,FL,Alta Gama Productions LLC,690 Champions Gate Blvd,Deland,FL,32724,(386) 555-0163,Entertainment,A
-Brassworks Bodyshop Auto Collision & Sales,DBA,2026-02-26,FL,Brassworks LLC,1335 West Washington Street Unit 1A,Orlando,FL,32805,(407) 555-0428,Retail,A
-Dade City Food and Fuel,DBA,2026-02-26,FL,Rainbow Food Mart of Dade City LLC,34550 Blenton Road,Dade City,FL,33523,(352) 555-0192,Food Service,A
-Trillium Construction Group LLC,LLC,2026-03-01,FL,Denis Stephenson,16304 2nd St E,Redington Beach,FL,33708,(727) 555-0347,Construction,A
-NextAxis Consulting LLC,LLC,2026-02-28,FL,Carmen Rojas Gines,51 Pine Trace Loop,Ocala,FL,34472,(352) 555-0256,Professional Services,A
-West Orange Park Properties XXL LLC,LLC,2026-02-20,FL,West Orange Holdings LLC,1253 E. Fullers Cross Road,Winter Garden,FL,34787,(407) 555-0518,Real Estate,A
-Dent-Tech Studio,DBA,2026-02-25,FL,Juan Jose Polanco,12 SW 250th Street,Newberry,FL,32669,(352) 555-0174,Technology,A
-Effata Contracting Inc,Corp,2026-02-23,FL,Pedro Juan Rodriguez,2927 Lincoln Blvd,Fort Myers,FL,33916,(239) 555-0289,Construction,A
-Key Raton Realty LLC,LLC,2026-03-01,FL,Brad Senatore,1121 Crandon Blvd,Key Biscayne,FL,33149,(305) 555-0463,Real Estate,A
-Certified Jewelers,DBA,2026-02-20,FL,Certification Marketing Consultants Inc,2314 Immokalee Road,Naples,FL,34110,(239) 555-0137,Retail,A
-Portable Networks,DBA,2026-02-23,FL,Alan Bowley,1711 SW 99 Avenue,Miami,FL,33165,(305) 555-0352,Technology,A
-Elite Pro Mobile Detailing LLC,LLC,2026-02-23,FL,Pascual Cardona,1259 March Lane,LaBelle,FL,33935,(863) 555-0214,Automotive,A
-New Beginnings Chiropractic & Wellness LLC,LLC,2026-02-24,FL,Brian Perez,7422 SW 42nd Ter,Miami,FL,33155,(305) 555-0491,Healthcare,A
-Yuri Handyman and Remodeling LLC,LLC,2026-02-24,FL,Yunior Ramon Diaz Souliz,1152 NW 37th St,Miami,FL,33127,(786) 555-0168,Construction,A
-Ojeda Transport Services Corp,Corp,2026-02-20,FL,Jose Ramon Garcia Ojeda,111 NW 183 St Ste 318-C,Miami Gardens,FL,33169,(305) 555-0276,Logistics,A`;
+Cruz Renovations,DBA,2026-02-22,FL,Oliver Cruz,7901 Baymeadows Cir E,Jacksonville,FL,32256,(904) 381-4728,Construction,A
+Strong Steps Remodelation LLC,LLC,2026-02-20,FL,Leodan Martinez,756 Cape Cod Cir,Valrico,FL,33594,(813) 247-9031,Construction,A
+Setai 3706 Realty LLC,LLC,2026-02-24,FL,Mark Militana,1101 West Franklin Street,Richmond,VA,23220,(804) 619-3472,Real Estate,A
+Fabulously Made Salon & Hair Loss Solutions,DBA,2026-02-24,FL,Johanna Amarante,8909 Regents Park Drive,Tampa,FL,33647,(813) 472-8163,Beauty & Wellness,A
+DeRosier Legal LLC,LLC,2026-02-26,FL,Jeff DeRosier,200 Elm Ave,Satellite Beach,FL,32937,(321) 718-4295,Professional Services,A
+WCMT Studios,DBA,2026-02-20,FL,John Lemis,10834 Kentworth Way,Jacksonville,FL,32256,(904) 263-8741,Entertainment,A
+JGNS Notary and Tax Services,DBA,2026-02-25,FL,Betsy Gutierrez,2416 Metro Drive,Ruskin,FL,33570,(813) 594-7218,Professional Services,A
+Gringa Studio LLC,LLC,2026-02-24,FL,Isadora Cardoso Bernardes,7950 NE Bayshore Ct,Miami,FL,33138,(305) 841-3267,Entertainment,A
+Mind Mechanic RX,DBA,2026-02-24,FL,Mind Mechanic LLC,7777 Glades Rd,Boca Raton,FL,33434,(561) 329-4781,Automotive,A
+Cleaning Services by AVM LLC,LLC,2026-03-01,FL,Adriana Valladares Menendez,1698 Nabatoff,North Port,FL,34288,(941) 217-8364,Cleaning,A
+DJ Negro Loko,DBA,2026-02-26,FL,Alta Gama Productions LLC,690 Champions Gate Blvd,Deland,FL,32724,(386) 741-2958,Entertainment,A
+Brassworks Bodyshop Auto Collision & Sales,DBA,2026-02-26,FL,Brassworks LLC,1335 West Washington Street Unit 1A,Orlando,FL,32805,(407) 328-6714,Retail,A
+Dade City Food and Fuel,DBA,2026-02-26,FL,Rainbow Food Mart of Dade City LLC,34550 Blenton Road,Dade City,FL,33523,(352) 481-7293,Food Service,A
+Trillium Construction Group LLC,LLC,2026-03-01,FL,Denis Stephenson,16304 2nd St E,Redington Beach,FL,33708,(727) 394-8162,Construction,A
+NextAxis Consulting LLC,LLC,2026-02-28,FL,Carmen Rojas Gines,51 Pine Trace Loop,Ocala,FL,34472,(352) 617-2849,Professional Services,A
+West Orange Park Properties XXL LLC,LLC,2026-02-20,FL,West Orange Holdings LLC,1253 E. Fullers Cross Road,Winter Garden,FL,34787,(407) 582-3197,Real Estate,A
+Dent-Tech Studio,DBA,2026-02-25,FL,Juan Jose Polanco,12 SW 250th Street,Newberry,FL,32669,(352) 748-1936,Technology,A
+Effata Contracting Inc,Corp,2026-02-23,FL,Pedro Juan Rodriguez,2927 Lincoln Blvd,Fort Myers,FL,33916,(239) 481-7263,Construction,A
+Key Raton Realty LLC,LLC,2026-03-01,FL,Brad Senatore,1121 Crandon Blvd,Key Biscayne,FL,33149,(305) 917-4382,Real Estate,A
+Certified Jewelers,DBA,2026-02-20,FL,Certification Marketing Consultants Inc,2314 Immokalee Road,Naples,FL,34110,(239) 362-8147,Retail,A
+Portable Networks,DBA,2026-02-23,FL,Alan Bowley,1711 SW 99 Avenue,Miami,FL,33165,(305) 274-9183,Technology,A
+Elite Pro Mobile Detailing LLC,LLC,2026-02-23,FL,Pascual Cardona,1259 March Lane,LaBelle,FL,33935,(863) 412-7893,Automotive,A
+New Beginnings Chiropractic & Wellness LLC,LLC,2026-02-24,FL,Brian Perez,7422 SW 42nd Ter,Miami,FL,33155,(305) 693-2748,Healthcare,A
+Yuri Handyman and Remodeling LLC,LLC,2026-02-24,FL,Yunior Ramon Diaz Souliz,1152 NW 37th St,Miami,FL,33127,(786) 341-8927,Construction,A
+Ojeda Transport Services Corp,Corp,2026-02-20,FL,Jose Ramon Garcia Ojeda,111 NW 183 St Ste 318-C,Miami Gardens,FL,33169,(305) 829-4176,Logistics,A`;
 
 async function sendEmail(to, subject, html, attachments = []) {
   const body = {
@@ -125,7 +125,7 @@ function sampleEmailHtml(firstName) {
 
       <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Want a daily feed filtered to your industries and locations? Pick a plan below:</p>
 
-      <a href="https://entityping.com/#pricing" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">View Plans &amp; Pricing</a>
+      <a href="https://entityping.com/checkout?plan=growth&billing=monthly" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">View Plans &amp; Pricing</a>
 
       <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">Or just reply to this email &mdash; I read every one.<br>&mdash; James, EntityPing</p>
     </div>
@@ -133,6 +133,7 @@ function sampleEmailHtml(firstName) {
     <div style="padding: 24px 0; border-top: 1px solid #e2e8f0;">
       <p style="font-size: 13px; color: #94a3b8; margin: 0;">EntityPing &mdash; Targeted business leads, delivered daily.<br>
       <a href="https://entityping.com" style="color: #1486f5; text-decoration: none;">entityping.com</a></p>
+      <p style="font-size: 11px; color: #cbd5e1; margin: 8px 0 0;">Don't want emails from us? <a href="mailto:hello@entityping.com?subject=Unsubscribe&body=Please%20remove%20me%20from%20your%20mailing%20list." style="color: #94a3b8; text-decoration: underline;">Unsubscribe</a></p>
     </div>
   </div>`;
 }
