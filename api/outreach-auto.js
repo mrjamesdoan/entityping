@@ -10,6 +10,17 @@ const FROM_EMAIL = "EntityPing <hello@entityping.com>";
 const BASE_URL = "https://entityping.com";
 const DAILY_CAP = 40; // Max emails per cron run for deliverability
 
+// Skip obviously bad emails
+const EMAIL_BLACKLIST = [
+  "noreply", "no-reply", "donotreply", "mailer-daemon", "postmaster",
+  "phishing", "abuse", "spam", "sentry", "wixpress", "example.com",
+];
+
+function isJunkEmail(email) {
+  const lower = (email || "").toLowerCase();
+  return EMAIL_BLACKLIST.some((term) => lower.includes(term));
+}
+
 // ---------------------------------------------------------------------------
 // Email helpers (same pattern as nurture.js)
 // ---------------------------------------------------------------------------
@@ -212,16 +223,20 @@ module.exports = async function handler(req, res) {
       })
       .filter(Boolean);
 
-    // 3. Filter to scraper-sourced contacts only
+    // 3. Filter to scraper-sourced contacts only, skip junk emails
     const scraperContacts = contacts.filter(
-      (c) => c.source === "scraper" && c.status === "new" && c.email
+      (c) => c.source === "scraper" && c.status === "new" && c.email && !isJunkEmail(c.email)
     );
 
     let totalSent = 0;
     const results = [];
 
-    for (const contact of scraperContacts) {
+    for (let i = 0; i < scraperContacts.length; i++) {
+      const contact = scraperContacts[i];
       if (totalSent >= DAILY_CAP) break;
+
+      // Throttle: 1 email per second to respect Resend's 2 req/s limit
+      if (i > 0) await new Promise((r) => setTimeout(r, 1000));
 
       // 4. Idempotency check
       const sentFlag = `outreach-auto:sent:${contact.id}`;
