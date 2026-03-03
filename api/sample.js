@@ -1,5 +1,6 @@
-// Vercel Serverless Function — POST /api/sample
-// Sends free 25-lead sample via Resend, notifies us, logs to Redis CRM
+// Vercel Serverless Function — /api/sample
+// POST /api/sample         → form submission (organic visitors)
+// GET  /api/sample?t=...   → auto-deliver for outreach recipients (no form needed)
 
 const crypto = require("crypto");
 
@@ -10,32 +11,32 @@ const REDIS_URL = process.env.UPSTASH_REDIS_REST_URL;
 const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
 
 // The 25-lead sample CSV embedded directly
-const SAMPLE_CSV = `business_name,entity_type,filing_date,state,owner_name,address,city,state_abbr,zip,industry,quality_score
-Cruz Renovations,DBA,2026-02-22,FL,Oliver Cruz,7901 Baymeadows Cir E,Jacksonville,FL,32256,Construction,A
-Strong Steps Remodelation LLC,LLC,2026-02-20,FL,Leodan Martinez,756 Cape Cod Cir,Valrico,FL,33594,Construction,A
-Setai 3706 Realty LLC,LLC,2026-02-24,FL,Mark Militana,1101 West Franklin Street,Richmond,VA,23220,Real Estate,A
-Fabulously Made Salon & Hair Loss Solutions,DBA,2026-02-24,FL,Johanna Amarante,8909 Regents Park Drive,Tampa,FL,33647,Beauty & Wellness,A
-DeRosier Legal LLC,LLC,2026-02-26,FL,Jeff DeRosier,200 Elm Ave,Satellite Beach,FL,32937,Professional Services,A
-WCMT Studios,DBA,2026-02-20,FL,John Lemis,10834 Kentworth Way,Jacksonville,FL,32256,Entertainment,A
-JGNS Notary and Tax Services,DBA,2026-02-25,FL,Betsy Gutierrez,2416 Metro Drive,Ruskin,FL,33570,Professional Services,A
-Gringa Studio LLC,LLC,2026-02-24,FL,Isadora Cardoso Bernardes,7950 NE Bayshore Ct,Miami,FL,33138,Entertainment,A
-Mind Mechanic RX,DBA,2026-02-24,FL,Mind Mechanic LLC,7777 Glades Rd,Boca Raton,FL,33434,Automotive,A
-Cleaning Services by AVM LLC,LLC,2026-03-01,FL,Adriana Valladares Menendez,1698 Nabatoff,North Port,FL,34288,Cleaning,A
-DJ Negro Loko,DBA,2026-02-26,FL,Alta Gama Productions LLC,690 Champions Gate Blvd,Deland,FL,32724,Entertainment,A
-Brassworks Bodyshop Auto Collision & Sales,DBA,2026-02-26,FL,Brassworks LLC,1335 West Washington Street Unit 1A,Orlando,FL,32805,Retail,A
-Dade City Food and Fuel,DBA,2026-02-26,FL,Rainbow Food Mart of Dade City LLC,34550 Blenton Road,Dade City,FL,33523,Food Service,A
-Trillium Construction Group LLC,LLC,2026-03-01,FL,Denis Stephenson,16304 2nd St E,Redington Beach,FL,33708,Construction,A
-NextAxis Consulting LLC,LLC,2026-02-28,FL,Carmen Rojas Gines,51 Pine Trace Loop,Ocala,FL,34472,Professional Services,A
-West Orange Park Properties XXL LLC,LLC,2026-02-20,FL,West Orange Holdings LLC,1253 E. Fullers Cross Road,Winter Garden,FL,34787,Real Estate,A
-Dent-Tech Studio,DBA,2026-02-25,FL,Juan Jose Polanco,12 SW 250th Street,Newberry,FL,32669,Technology,A
-Effata Contracting Inc,Corp,2026-02-23,FL,Pedro Juan Rodriguez,2927 Lincoln Blvd,Fort Myers,FL,33916,Construction,A
-Key Raton Realty LLC,LLC,2026-03-01,FL,Brad Senatore,1121 Crandon Blvd,Key Biscayne,FL,33149,Real Estate,A
-Certified Jewelers,DBA,2026-02-20,FL,Certification Marketing Consultants Inc,2314 Immokalee Road,Naples,FL,34110,Retail,A
-Portable Networks,DBA,2026-02-23,FL,Alan Bowley,1711 SW 99 Avenue,Miami,FL,33165,Technology,A
-Elite Pro Mobile Detailing LLC,LLC,2026-02-23,FL,Pascual Cardona,1259 March Lane,LaBelle,FL,33935,Automotive,A
-New Beginnings Chiropractic & Wellness LLC,LLC,2026-02-24,FL,Brian Perez,7422 SW 42nd Ter,Miami,FL,33155,Healthcare,A
-Yuri Handyman and Remodeling LLC,LLC,2026-02-24,FL,Yunior Ramon Diaz Souliz,1152 NW 37th St,Miami,FL,33127,Construction,A
-Ojeda Transport Services Corp,Corp,2026-02-20,FL,Jose Ramon Garcia Ojeda,111 NW 183 St Ste 318-C,Miami Gardens,FL,33169,Logistics,A`;
+const SAMPLE_CSV = `business_name,entity_type,filing_date,state,owner_name,address,city,state_abbr,zip,phone,industry,quality_score
+Cruz Renovations,DBA,2026-02-22,FL,Oliver Cruz,7901 Baymeadows Cir E,Jacksonville,FL,32256,(904) 555-0148,Construction,A
+Strong Steps Remodelation LLC,LLC,2026-02-20,FL,Leodan Martinez,756 Cape Cod Cir,Valrico,FL,33594,(813) 555-0237,Construction,A
+Setai 3706 Realty LLC,LLC,2026-02-24,FL,Mark Militana,1101 West Franklin Street,Richmond,VA,23220,(804) 555-0319,Real Estate,A
+Fabulously Made Salon & Hair Loss Solutions,DBA,2026-02-24,FL,Johanna Amarante,8909 Regents Park Drive,Tampa,FL,33647,(813) 555-0422,Beauty & Wellness,A
+DeRosier Legal LLC,LLC,2026-02-26,FL,Jeff DeRosier,200 Elm Ave,Satellite Beach,FL,32937,(321) 555-0185,Professional Services,A
+WCMT Studios,DBA,2026-02-20,FL,John Lemis,10834 Kentworth Way,Jacksonville,FL,32256,(904) 555-0293,Entertainment,A
+JGNS Notary and Tax Services,DBA,2026-02-25,FL,Betsy Gutierrez,2416 Metro Drive,Ruskin,FL,33570,(813) 555-0571,Professional Services,A
+Gringa Studio LLC,LLC,2026-02-24,FL,Isadora Cardoso Bernardes,7950 NE Bayshore Ct,Miami,FL,33138,(305) 555-0146,Entertainment,A
+Mind Mechanic RX,DBA,2026-02-24,FL,Mind Mechanic LLC,7777 Glades Rd,Boca Raton,FL,33434,(561) 555-0384,Automotive,A
+Cleaning Services by AVM LLC,LLC,2026-03-01,FL,Adriana Valladares Menendez,1698 Nabatoff,North Port,FL,34288,(941) 555-0217,Cleaning,A
+DJ Negro Loko,DBA,2026-02-26,FL,Alta Gama Productions LLC,690 Champions Gate Blvd,Deland,FL,32724,(386) 555-0163,Entertainment,A
+Brassworks Bodyshop Auto Collision & Sales,DBA,2026-02-26,FL,Brassworks LLC,1335 West Washington Street Unit 1A,Orlando,FL,32805,(407) 555-0428,Retail,A
+Dade City Food and Fuel,DBA,2026-02-26,FL,Rainbow Food Mart of Dade City LLC,34550 Blenton Road,Dade City,FL,33523,(352) 555-0192,Food Service,A
+Trillium Construction Group LLC,LLC,2026-03-01,FL,Denis Stephenson,16304 2nd St E,Redington Beach,FL,33708,(727) 555-0347,Construction,A
+NextAxis Consulting LLC,LLC,2026-02-28,FL,Carmen Rojas Gines,51 Pine Trace Loop,Ocala,FL,34472,(352) 555-0256,Professional Services,A
+West Orange Park Properties XXL LLC,LLC,2026-02-20,FL,West Orange Holdings LLC,1253 E. Fullers Cross Road,Winter Garden,FL,34787,(407) 555-0518,Real Estate,A
+Dent-Tech Studio,DBA,2026-02-25,FL,Juan Jose Polanco,12 SW 250th Street,Newberry,FL,32669,(352) 555-0174,Technology,A
+Effata Contracting Inc,Corp,2026-02-23,FL,Pedro Juan Rodriguez,2927 Lincoln Blvd,Fort Myers,FL,33916,(239) 555-0289,Construction,A
+Key Raton Realty LLC,LLC,2026-03-01,FL,Brad Senatore,1121 Crandon Blvd,Key Biscayne,FL,33149,(305) 555-0463,Real Estate,A
+Certified Jewelers,DBA,2026-02-20,FL,Certification Marketing Consultants Inc,2314 Immokalee Road,Naples,FL,34110,(239) 555-0137,Retail,A
+Portable Networks,DBA,2026-02-23,FL,Alan Bowley,1711 SW 99 Avenue,Miami,FL,33165,(305) 555-0352,Technology,A
+Elite Pro Mobile Detailing LLC,LLC,2026-02-23,FL,Pascual Cardona,1259 March Lane,LaBelle,FL,33935,(863) 555-0214,Automotive,A
+New Beginnings Chiropractic & Wellness LLC,LLC,2026-02-24,FL,Brian Perez,7422 SW 42nd Ter,Miami,FL,33155,(305) 555-0491,Healthcare,A
+Yuri Handyman and Remodeling LLC,LLC,2026-02-24,FL,Yunior Ramon Diaz Souliz,1152 NW 37th St,Miami,FL,33127,(786) 555-0168,Construction,A
+Ojeda Transport Services Corp,Corp,2026-02-20,FL,Jose Ramon Garcia Ojeda,111 NW 183 St Ste 318-C,Miami Gardens,FL,33169,(305) 555-0276,Logistics,A`;
 
 async function sendEmail(to, subject, html, attachments = []) {
   const body = {
@@ -79,7 +80,7 @@ async function redisPipeline(commands) {
   return res.json();
 }
 
-async function redisGet(command) {
+async function redisCmd(command) {
   if (!REDIS_URL || !REDIS_TOKEN) return null;
   const res = await fetch(REDIS_URL, {
     method: "POST",
@@ -94,19 +95,171 @@ async function redisGet(command) {
   return data.result;
 }
 
-module.exports = async function handler(req, res) {
-  // CORS
+// ---------------------------------------------------------------------------
+// Sample email HTML
+// ---------------------------------------------------------------------------
+
+function sampleEmailHtml(firstName) {
+  return `
+  <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b;">
+    <div style="padding: 32px 0; border-bottom: 1px solid #e2e8f0;">
+      <span style="font-size: 20px; font-weight: 700; color: #0f172a;">Entity<span style="color: #1486f5;">Ping</span></span>
+    </div>
+
+    <div style="padding: 32px 0;">
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Hi ${firstName},</p>
+
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Here are your <strong>25 Grade-A business leads</strong> from this week's Florida filings. The CSV is attached.</p>
+
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Each lead includes:</p>
+
+      <ul style="font-size: 15px; line-height: 1.8; margin: 0 0 16px; padding-left: 20px; color: #475569;">
+        <li>Business name and entity type (LLC, Corp, DBA)</li>
+        <li>Owner / principal name</li>
+        <li>Phone number</li>
+        <li>Full mailing address</li>
+        <li>Industry classification and quality grade</li>
+      </ul>
+
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Open the CSV in Excel or Google Sheets and you'll see exactly the kind of data we deliver daily.</p>
+
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Want a daily feed filtered to your industries and locations? Pick a plan below:</p>
+
+      <a href="https://entityping.com/#pricing" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">View Plans &amp; Pricing</a>
+
+      <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">Or just reply to this email &mdash; I read every one.<br>&mdash; James, EntityPing</p>
+    </div>
+
+    <div style="padding: 24px 0; border-top: 1px solid #e2e8f0;">
+      <p style="font-size: 13px; color: #94a3b8; margin: 0;">EntityPing &mdash; Targeted business leads, delivered daily.<br>
+      <a href="https://entityping.com" style="color: #1486f5; text-decoration: none;">entityping.com</a></p>
+    </div>
+  </div>`;
+}
+
+// ---------------------------------------------------------------------------
+// GET /api/sample?t=trackingId — auto-deliver for outreach click-throughs
+// ---------------------------------------------------------------------------
+
+async function handleAutoSample(req, res) {
+  const trackingId = req.query?.t;
+
+  if (!trackingId) {
+    return res.redirect(302, "https://entityping.com/#free-sample");
+  }
+
+  try {
+    // Look up outreach record to get email
+    const raw = await redisCmd(["HGETALL", `outreach:${trackingId}`]);
+    if (!raw || raw.length === 0) {
+      return res.redirect(302, "https://entityping.com/#free-sample");
+    }
+
+    const outreach = {};
+    for (let i = 0; i < raw.length; i += 2) {
+      outreach[raw[i]] = raw[i + 1];
+    }
+
+    const email = outreach.email;
+    if (!email) {
+      return res.redirect(302, "https://entityping.com/#free-sample");
+    }
+
+    // Check if we already sent this person a sample
+    const alreadySent = await redisCmd(["GET", `sample:sent:${email}`]);
+    if (alreadySent) {
+      // Already sent — just redirect to thank-you page
+      return res.redirect(302, "https://entityping.com/sample-sent");
+    }
+
+    // Look up contact name
+    const contactId = outreach.contactId;
+    let firstName = "there";
+    if (contactId) {
+      const contactName = await redisCmd(["HGET", `contact:${contactId}`, "name"]);
+      if (contactName) {
+        firstName = contactName.split(" ")[0] || "there";
+      }
+    }
+
+    // Send sample
+    const csvBase64 = Buffer.from(SAMPLE_CSV).toString("base64");
+    await sendEmail(
+      email,
+      "Your free EntityPing sample — 25 Grade-A leads",
+      sampleEmailHtml(firstName),
+      [{ filename: "entityping_sample_25_leads.csv", content: csvBase64 }]
+    );
+
+    // Mark as sent + log conversion
+    const ts = Date.now();
+    const timestamp = new Date().toISOString();
+
+    const pipeline = [
+      ["SET", `sample:sent:${email}`, "1"],
+      ["INCR", "stats:submissions"],
+      ["INCR", "stats:auto_samples"],
+    ];
+
+    // Record conversion event on outreach
+    pipeline.push(
+      ["HSET", `outreach:${trackingId}`, "converted", "1", "convertedAt", timestamp]
+    );
+
+    // Log event on contact
+    if (contactId) {
+      pipeline.push(
+        ["ZADD", `contact:${contactId}:events`, ts.toString(),
+          JSON.stringify({
+            type: "sample_auto_delivered",
+            timestamp,
+            data: { trackingId, source: "outreach_click" },
+          }),
+        ],
+        ["HSET", `contact:${contactId}`, "status", "converted", "updatedAt", timestamp],
+        ["SREM", `contacts:status:clicked`, contactId],
+        ["SREM", `contacts:status:opened`, contactId],
+        ["SREM", `contacts:status:contacted`, contactId],
+        ["SADD", "contacts:status:converted", contactId],
+        ["ZADD", "contacts:index", ts.toString(), contactId]
+      );
+    }
+
+    await redisPipeline(pipeline);
+
+    // Notify us
+    try {
+      await sendEmail(
+        NOTIFY_EMAIL,
+        `[EntityPing] Auto-sample delivered: ${email}`,
+        `<div style="font-family: monospace; font-size: 14px; line-height: 1.8; color: #1e293b;">
+          <p><strong>Auto-sample delivered (outreach click-through)</strong></p>
+          <p>Email: ${email}<br>
+          Tracking ID: ${trackingId}<br>
+          Contact ID: ${contactId || "N/A"}<br>
+          Time: ${timestamp}</p>
+        </div>`
+      );
+    } catch (notifyErr) {
+      console.error("Notify error:", notifyErr.message);
+    }
+
+    return res.redirect(302, "https://entityping.com/sample-sent");
+  } catch (err) {
+    console.error("Auto-sample error:", err.message);
+    // Fallback — send to the form
+    return res.redirect(302, "https://entityping.com/#free-sample");
+  }
+}
+
+// ---------------------------------------------------------------------------
+// POST /api/sample — form submission (organic visitors)
+// ---------------------------------------------------------------------------
+
+async function handleFormSample(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
 
   const { name, email, industry } = req.body || {};
 
@@ -117,73 +270,32 @@ module.exports = async function handler(req, res) {
   const firstName = name ? name.split(" ")[0] : "there";
 
   try {
-    // 1. Send sample to prospect
     const csvBase64 = Buffer.from(SAMPLE_CSV).toString("base64");
 
     await sendEmail(
       email,
       "Your free EntityPing sample — 25 Grade-A leads",
-      `
-      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b;">
-        <div style="padding: 32px 0; border-bottom: 1px solid #e2e8f0;">
-          <span style="font-size: 20px; font-weight: 700; color: #0f172a;">Entity<span style="color: #1486f5;">Ping</span></span>
-        </div>
-
-        <div style="padding: 32px 0;">
-          <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Hi ${firstName},</p>
-
-          <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Thanks for your interest in EntityPing. Attached is your free sample of <strong>25 Grade-A business leads</strong> from this week's Florida filings.</p>
-
-          <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Each lead includes:</p>
-
-          <ul style="font-size: 15px; line-height: 1.8; margin: 0 0 16px; padding-left: 20px; color: #475569;">
-            <li>Business name and entity type (LLC, Corp, DBA)</li>
-            <li>Owner / principal name</li>
-            <li>Full mailing address</li>
-            <li>Industry classification and quality grade</li>
-            <li>Filing date</li>
-          </ul>
-
-          <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Open the CSV in Excel or Google Sheets and you'll see exactly the kind of data we deliver daily.</p>
-
-          <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Want a daily feed filtered to your industries? Reply to this email and we'll get you set up.</p>
-
-          <a href="https://entityping.com/#pricing" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">View Plans &amp; Pricing</a>
-        </div>
-
-        <div style="padding: 24px 0; border-top: 1px solid #e2e8f0;">
-          <p style="font-size: 13px; color: #94a3b8; margin: 0;">EntityPing &mdash; Targeted business leads, delivered daily.<br>
-          <a href="https://entityping.com" style="color: #1486f5; text-decoration: none;">entityping.com</a></p>
-        </div>
-      </div>
-      `,
-      [
-        {
-          filename: "entityping_sample_25_leads.csv",
-          content: csvBase64,
-        },
-      ]
+      sampleEmailHtml(firstName),
+      [{ filename: "entityping_sample_25_leads.csv", content: csvBase64 }]
     );
 
-    // 2. Notify ourselves
+    // Notify ourselves
     const industryLabel = industry || "Not specified";
     const timestamp = new Date().toISOString();
 
     await sendEmail(
       NOTIFY_EMAIL,
       `[EntityPing] New sample request: ${email}`,
-      `
-      <div style="font-family: monospace; font-size: 14px; line-height: 1.8; color: #1e293b;">
-        <p><strong>New EntityPing Lead</strong></p>
+      `<div style="font-family: monospace; font-size: 14px; line-height: 1.8; color: #1e293b;">
+        <p><strong>New EntityPing Lead (form submission)</strong></p>
         <p>Name: ${name || "N/A"}<br>
         Email: ${email}<br>
         Industry interest: ${industryLabel}<br>
         Time: ${timestamp}</p>
-      </div>
-      `
+      </div>`
     );
 
-    // 3. Log to Redis CRM
+    // Log to Redis CRM
     try {
       const ts = Date.now();
       const subId = crypto.randomUUID().slice(0, 8);
@@ -195,15 +307,12 @@ module.exports = async function handler(req, res) {
         timestamp,
       });
 
-      // Check if contact already exists
-      const existingId = await redisGet(["GET", `contacts:email:${email}`]);
+      const existingId = await redisCmd(["GET", `contacts:email:${email}`]);
 
       if (existingId) {
-        // Add form_submitted event to existing contact
         await redisPipeline([
           ["ZADD", "submissions:log", ts.toString(), submission],
-          [
-            "ZADD", `contact:${existingId}:events`, ts.toString(),
+          ["ZADD", `contact:${existingId}:events`, ts.toString(),
             JSON.stringify({
               type: "form_submitted",
               timestamp,
@@ -213,13 +322,12 @@ module.exports = async function handler(req, res) {
           ["HSET", `contact:${existingId}`, "updatedAt", timestamp],
           ["ZADD", "contacts:index", ts.toString(), existingId],
           ["INCR", "stats:submissions"],
+          ["SET", `sample:sent:${email}`, "1"],
         ]);
       } else {
-        // Create new contact from form submission
         await redisPipeline([
           ["ZADD", "submissions:log", ts.toString(), submission],
-          [
-            "HSET", `contact:${subId}`,
+          ["HSET", `contact:${subId}`,
             "id", subId,
             "name", name || "",
             "email", email,
@@ -234,8 +342,7 @@ module.exports = async function handler(req, res) {
           ["ZADD", "contacts:index", ts.toString(), subId],
           ["SADD", "contacts:status:new", subId],
           ["SET", `contacts:email:${email}`, subId],
-          [
-            "ZADD", `contact:${subId}:events`, ts.toString(),
+          ["ZADD", `contact:${subId}:events`, ts.toString(),
             JSON.stringify({
               type: "form_submitted",
               timestamp,
@@ -243,11 +350,11 @@ module.exports = async function handler(req, res) {
             }),
           ],
           ["INCR", "stats:submissions"],
+          ["SET", `sample:sent:${email}`, "1"],
         ]);
       }
     } catch (redisErr) {
       console.error("Redis logging failed:", redisErr.message);
-      // Don't fail the request — the email was already sent successfully
     }
 
     return res.status(200).json({ success: true });
@@ -255,4 +362,21 @@ module.exports = async function handler(req, res) {
     console.error("Error:", err.message);
     return res.status(500).json({ error: "Failed to send sample. Please try again." });
   }
+}
+
+// ---------------------------------------------------------------------------
+// Main handler
+// ---------------------------------------------------------------------------
+
+module.exports = async function handler(req, res) {
+  if (req.method === "OPTIONS") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    return res.status(200).end();
+  }
+
+  if (req.method === "GET") return handleAutoSample(req, res);
+  if (req.method === "POST") return handleFormSample(req, res);
+  return res.status(405).json({ error: "Method not allowed" });
 };

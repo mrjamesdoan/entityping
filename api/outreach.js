@@ -339,7 +339,10 @@ async function sendEmail(to, subject, html) {
 }
 
 function emailWrapper(bodyHtml, trackingId) {
-  const tracked = wrapLinks(bodyHtml, trackingId);
+  // Replace __TID__ placeholder with actual tracking ID BEFORE wrapping links,
+  // so the destination URL carries the tracking ID through the click-tracker redirect
+  const withTid = bodyHtml.replace(/__TID__/g, trackingId);
+  const tracked = wrapLinks(withTid, trackingId);
   const withPixel = addTrackingPixel(tracked, trackingId);
 
   return `
@@ -383,12 +386,17 @@ function getTemplate(industry, vertical, businessName, location) {
   const city = location.split(",")[0].trim() || "your area";
   const ind = (industry || "").toLowerCase();
 
+  // CTA links to auto-sample endpoint — sample is delivered instantly on click
+  // __TID__ placeholder is replaced with actual tracking ID in emailWrapper()
+  // before wrapLinks() processes it, so ?t= survives the click-tracker redirect
+  const ctaUrl = "https://entityping.com/api/sample?t=__TID__";
+  const signoff = `<p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">&mdash; James, EntityPing</p>`;
+
   if (ind.includes("insurance")) {
     const subjects = [
-      `New businesses opening in ${city} need insurance`,
-      `New LLCs filing in ${city} — they need coverage now`,
-      `${city} businesses registered this week (free lead list)`,
-      `Your next policyholder just filed their LLC in ${city}`,
+      `New LLCs in ${city} need insurance — free lead list`,
+      `Your next policyholder just filed in ${city}`,
+      `${city} businesses registered this week`,
     ];
     const { subject, subjectVariant } = pickVariant(subjects);
     return {
@@ -397,28 +405,23 @@ function getTemplate(industry, vertical, businessName, location) {
       body: `
         <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Hi there,</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Every week, dozens of new LLCs and corporations register in ${city} &mdash; and every one of them needs general liability, business owner's policies, and workers' comp from day one.</p>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Dozens of new LLCs registered in ${city} this week. Every one of them needs GL, BOP, and workers' comp &mdash; and most haven't been contacted yet.</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">We built <strong>EntityPing</strong> to give insurance agents like you a head start. We monitor state filings and industry directories daily and deliver fresh business leads &mdash; with owner names, addresses, phone numbers, and industry classification &mdash; straight to your inbox every morning as a clean CSV.</p>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">We pull these leads from state filings daily and deliver them as a clean CSV with owner names, phone numbers, and addresses. You call them before your competition knows they exist.</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">The best part? You reach them <strong>before your competition even knows they exist</strong>.</p>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Click below and we'll send you 25 real leads instantly &mdash; no form, no commitment:</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Plans start at <strong>$0.20 per lead</strong>. One closed policy pays for an entire year.</p>
+        <a href="${ctaUrl}" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Send Me 25 Free Leads</a>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Want to see real data? We'll send you a free sample of 25 Grade-A leads &mdash; no credit card, no commitment.</p>
-
-        <a href="https://entityping.com/#free-sample" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Get Your Free Sample</a>
-
-        <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">Or reply to this email &mdash; I read every response.</p>`,
+        ${signoff}`,
     };
   }
 
   if (ind.includes("supplier") || ind.includes("distributor")) {
     const subjects = [
-      `New businesses opening near ${city} need suppliers`,
-      `${city} startups are signing vendor contracts this week`,
-      `New storefronts in ${city} — they're choosing suppliers now`,
-      `First-week businesses in ${city} need a supplier like you`,
+      `New businesses in ${city} need suppliers`,
+      `${city} startups signing vendor contracts this week`,
+      `First-week businesses in ${city} need you`,
     ];
     const { subject, subjectVariant } = pickVariant(subjects);
     return {
@@ -427,26 +430,23 @@ function getTemplate(industry, vertical, businessName, location) {
       body: `
         <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Hi there,</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">New businesses in ${city} are opening every week &mdash; tile shops, auto body shops, restaurants, retail stores &mdash; and every one of them needs vendors and suppliers before they lock in long-term contracts.</p>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">New businesses in ${city} are choosing suppliers right now &mdash; before they lock in long-term contracts. The earlier you reach them, the better your odds.</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;"><strong>EntityPing</strong> monitors industry directories and state business filings daily, then delivers fresh leads to your inbox every morning. Each lead includes the business name, owner, address, phone number, and industry &mdash; so you know exactly who to call and what they need.</p>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">We deliver fresh business leads daily from state filings and industry directories. Each CSV includes the business name, owner, phone number, address, and industry.</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Reach them in their first week of operation, before your competitors get on the phone.</p>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">See real data &mdash; we'll send you 25 leads instantly:</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">See it for yourself &mdash; we'll send you 25 real leads for free:</p>
+        <a href="${ctaUrl}" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Send Me 25 Free Leads</a>
 
-        <a href="https://entityping.com/#free-sample" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Get Your Free Sample</a>
-
-        <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">Or reply to this email &mdash; I read every response.</p>`,
+        ${signoff}`,
     };
   }
 
   if (ind.includes("marketing")) {
     const subjects = [
-      `New businesses in ${city} are spending on marketing`,
-      `${city} LLC filings are up — these leads need marketing help`,
-      `Fresh ${city} business registrations (ready-to-close marketing leads)`,
-      `Brand-new businesses in ${city} are looking for a marketing partner`,
+      `New businesses in ${city} need marketing help`,
+      `${city} LLC filings are up — ready-to-close leads`,
+      `Fresh ${city} business registrations`,
     ];
     const { subject, subjectVariant } = pickVariant(subjects);
     return {
@@ -455,26 +455,23 @@ function getTemplate(industry, vertical, businessName, location) {
       body: `
         <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Hi there,</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Every new business that registers needs one thing fast: customers. That means marketing budgets get allocated in the first weeks of operation &mdash; and if you're not in front of them, someone else is.</p>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Every new business that registers needs customers &mdash; and marketing budgets get allocated in the first weeks. If you're not in front of them, someone else is.</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;"><strong>EntityPing</strong> delivers fresh business leads daily &mdash; sourced from state filings and industry directories across ${city} and beyond. Owner names, addresses, phone numbers, and industry classification, all in a clean CSV you can import into any CRM or outreach tool.</p>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">We deliver fresh business leads daily from state filings across ${city} and beyond. Owner names, phone numbers, addresses, and industry tags &mdash; all in a clean CSV ready for your CRM.</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Build hyper-targeted prospect lists for your clients at a fraction of the cost of traditional data providers. Plans start at <strong>$0.20 per lead</strong>.</p>
+        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Click below and we'll send you 25 real leads instantly:</p>
 
-        <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">See real data &mdash; we'll send you a free sample of 25 Grade-A leads:</p>
+        <a href="${ctaUrl}" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Send Me 25 Free Leads</a>
 
-        <a href="https://entityping.com/#free-sample" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Get Your Free Sample</a>
-
-        <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">Or reply to this email &mdash; I read every response.</p>`,
+        ${signoff}`,
     };
   }
 
   // Default: B2B Sales
   const subjects = [
     `Fresh business leads in ${city}`,
-    `${city} businesses registered this week — exclusive lead list`,
-    `New companies in ${city} are looking for vendors like you`,
-    `${city} new business filings (free sample inside)`,
+    `New companies in ${city} need vendors like you`,
+    `${city} new business filings — free sample`,
   ];
   const { subject, subjectVariant } = pickVariant(subjects);
   return {
@@ -483,16 +480,14 @@ function getTemplate(industry, vertical, businessName, location) {
     body: `
       <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Hi there,</p>
 
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">New businesses register every day in ${city} &mdash; and in their first weeks of operation, they're actively looking for service providers. Payment processing, IT support, bookkeeping, commercial cleaning &mdash; the buying window is wide open.</p>
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">New businesses register every day in ${city}, and in their first weeks they're actively choosing service providers. The window to reach them is short.</p>
 
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;"><strong>EntityPing</strong> monitors state filings and industry directories, then delivers fresh leads to your inbox every morning as a clean CSV. Each lead includes the business name, owner name, address, phone number, and industry &mdash; ready to load into your CRM and start calling.</p>
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">We deliver fresh leads daily from state filings and industry directories &mdash; business name, owner, phone number, address, and industry &mdash; as a clean CSV you can load into any CRM.</p>
 
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">At <strong>$0.17 per lead</strong> on our Growth plan, one closed deal pays for an entire year of EntityPing.</p>
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Click below and we'll send you 25 real leads instantly &mdash; no form, no commitment:</p>
 
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Want to see the data quality? We'll send you 25 leads for free:</p>
+      <a href="${ctaUrl}" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Send Me 25 Free Leads</a>
 
-      <a href="https://entityping.com/#free-sample" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Get Your Free Sample</a>
-
-      <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">Or reply to this email &mdash; I read every response.</p>`,
+      ${signoff}`,
   };
 }
