@@ -15,8 +15,7 @@
     { "source": "/api/outreach-auto", "destination": "/api/outreach-auto" },
     { "source": "/api/track/open", "destination": "/api/track/open" },
     { "source": "/api/track/click", "destination": "/api/track/click" },
-    { "source": "/api/submissions", "destination": "/api/submissions" },
-    { "source": "/api/seed", "destination": "/api/seed" }
+    { "source": "/api/submissions", "destination": "/api/submissions" }
   ],
   "headers": [
     {
