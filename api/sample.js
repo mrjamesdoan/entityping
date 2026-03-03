@@ -3,7 +3,7 @@
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const NOTIFY_EMAIL = "hello@alphacraft.dev";
-const FROM_EMAIL = "EntityPing <hello@alphacraft.dev>";
+const FROM_EMAIL = "EntityPing <hello@entityping.com>";
 
 // The 25-lead sample CSV embedded directly
 const SAMPLE_CSV = `business_name,entity_type,filing_date,state,owner_name,address,city,state_abbr,zip,industry,quality_score
