@@ -1,7 +1,8 @@
 {
-  "buildCommand": "",
-  "outputDirectory": ".",
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/api/sample", "destination": "/api/sample" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

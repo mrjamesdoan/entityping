@@ -199,8 +199,8 @@
               Start Getting Leads
               <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
             </a>
-            <a href="#data" class="inline-flex items-center justify-center border border-white/10 hover:border-white/20 hover:bg-white/[0.02] text-surface-100/70 hover:text-surface-100 font-medium px-7 py-3.5 rounded-xl text-base transition-all">
-              See Sample Data
+            <a href="#free-sample" class="inline-flex items-center justify-center border border-white/10 hover:border-white/20 hover:bg-white/[0.02] text-surface-100/70 hover:text-surface-100 font-medium px-7 py-3.5 rounded-xl text-base transition-all">
+              Get Free Sample
             </a>
           </div>
         </div>
@@ -809,8 +809,8 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-24 md:py-32 bg-surface-900/20 border-t border-white/5">
+  <!-- CTA with Form -->
+  <section id="free-sample" class="py-24 md:py-32 bg-surface-900/20 border-t border-white/5">
     <div class="max-w-3xl mx-auto px-6 text-center">
       <div class="relative inline-block mb-8">
         <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
@@ -832,15 +832,94 @@
         <span class="gradient-text">Let them come to you.</span>
       </h2>
       <p class="text-surface-100/45 text-lg mb-10 max-w-xl mx-auto">
-        Every day you wait, your competitors are reaching businesses you haven't heard of yet. Start with a free sample.
+        Every day you wait, your competitors are reaching businesses you haven't heard of yet. Get a free sample of 25 Grade-A leads.
       </p>
-      <a href="mailto:hello@entityping.com?subject=Free%20Sample%20Request" class="inline-flex items-center bg-brand-600 hover:bg-brand-500 text-white font-semibold px-8 py-4 rounded-xl text-base transition-all hover:shadow-xl hover:shadow-brand-600/20">
-        Get Your Free Sample
-        <svg class="ml-2.5 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-      </a>
-      <p class="text-xs text-surface-100/25 mt-5">25 free leads &mdash; no credit card required</p>
+
+      <!-- Sample Request Form -->
+      <div id="sample-form-container" class="max-w-md mx-auto">
+        <form id="sample-form" class="space-y-4 text-left">
+          <div>
+            <label for="form-name" class="block text-sm font-medium text-surface-100/60 mb-1.5">Name</label>
+            <input type="text" id="form-name" name="name" placeholder="Your name"
+              class="w-full bg-surface-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-surface-100 placeholder-surface-100/25 focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/30 transition-all">
+          </div>
+          <div>
+            <label for="form-email" class="block text-sm font-medium text-surface-100/60 mb-1.5">Work email <span class="text-brand-400">*</span></label>
+            <input type="email" id="form-email" name="email" placeholder="you@company.com" required
+              class="w-full bg-surface-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-surface-100 placeholder-surface-100/25 focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/30 transition-all">
+          </div>
+          <div>
+            <label for="form-industry" class="block text-sm font-medium text-surface-100/60 mb-1.5">What do you sell?</label>
+            <select id="form-industry" name="industry"
+              class="w-full bg-surface-900/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-surface-100 focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/30 transition-all appearance-none"
+              style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%2712%27 fill=%27%2394a3b8%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z%27/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 16px center;">
+              <option value="" class="bg-surface-900">Select your industry</option>
+              <option value="Insurance" class="bg-surface-900">Insurance</option>
+              <option value="Accounting / CPA" class="bg-surface-900">Accounting / CPA</option>
+              <option value="Marketing / Advertising" class="bg-surface-900">Marketing / Advertising</option>
+              <option value="Payroll / HR" class="bg-surface-900">Payroll / HR</option>
+              <option value="Payment Processing / POS" class="bg-surface-900">Payment Processing / POS</option>
+              <option value="IT / Technology Services" class="bg-surface-900">IT / Technology Services</option>
+              <option value="Commercial Cleaning" class="bg-surface-900">Commercial Cleaning</option>
+              <option value="Supplier / Distributor" class="bg-surface-900">Supplier / Distributor</option>
+              <option value="Legal Services" class="bg-surface-900">Legal Services</option>
+              <option value="Real Estate / Commercial" class="bg-surface-900">Real Estate / Commercial</option>
+              <option value="Other" class="bg-surface-900">Other</option>
+            </select>
+          </div>
+          <button type="submit" id="submit-btn"
+            class="w-full bg-brand-600 hover:bg-brand-500 text-white font-semibold py-3.5 rounded-xl text-sm transition-all hover:shadow-lg hover:shadow-brand-600/20 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
+            <span id="btn-text">Send Me the Free Sample</span>
+            <svg id="btn-arrow" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            <svg id="btn-spinner" class="w-4 h-4 animate-spin hidden" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+          </button>
+          <p id="form-error" class="text-xs text-red-400 text-center hidden"></p>
+        </form>
+        <p class="text-xs text-surface-100/25 mt-4 text-center">25 free leads &mdash; delivered instantly, no credit card required</p>
+      </div>
+
+      <!-- Success State -->
+      <div id="sample-success" class="hidden max-w-md mx-auto">
+        <div class="glow-border bg-surface-900/60 rounded-2xl p-8 text-center">
+          <div class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Sample sent.</h3>
+          <p class="text-surface-100/50 text-sm leading-relaxed mb-4">
+            Check your inbox &mdash; 25 Grade-A leads are on their way. Open the CSV in Excel or Google Sheets and see the data for yourself.
+          </p>
+          <p class="text-surface-100/30 text-xs">
+            Didn't get it? Check your spam folder or email <a href="mailto:hello@entityping.com" class="text-brand-400/60 hover:text-brand-400">hello@entityping.com</a>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
+
+  <script>
+    document.getElementById('sample-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const btnText = document.getElementById('btn-text');
+      const btnArrow = document.getElementById('btn-arrow');
+      const btnSpinner = document.getElementById('btn-spinner');
+      const formError = document.getElementById('form-error');
+      const name = document.getElementById('form-name').value.trim();
+      const email = document.getElementById('form-email').value.trim();
+      const industry = document.getElementById('form-industry').value;
+      if (!email) { formError.textContent = 'Please enter your email address.'; formError.classList.remove('hidden'); return; }
+      btn.disabled = true; btnText.textContent = 'Sending...'; btnArrow.classList.add('hidden'); btnSpinner.classList.remove('hidden'); formError.classList.add('hidden');
+      try {
+        const res = await fetch('/api/sample', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, email, industry }) });
+        const data = await res.json();
+        if (res.ok && data.success) { document.getElementById('sample-form-container').classList.add('hidden'); document.getElementById('sample-success').classList.remove('hidden'); }
+        else { throw new Error(data.error || 'Something went wrong'); }
+      } catch (err) {
+        formError.textContent = err.message || 'Failed to send. Please try again.'; formError.classList.remove('hidden');
+        btn.disabled = false; btnText.textContent = 'Send Me the Free Sample'; btnArrow.classList.remove('hidden'); btnSpinner.classList.add('hidden');
+      }
+    });
+  </script>
 
   <!-- Footer -->
   <footer class="border-t border-white/[0.04] py-12">
