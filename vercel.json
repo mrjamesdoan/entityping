@@ -1,7 +1,8 @@
 {
   "cleanUrls": true,
   "crons": [
-    { "path": "/api/nurture", "schedule": "0 10 * * *" }
+    { "path": "/api/nurture", "schedule": "0 10 * * *" },
+    { "path": "/api/outreach-auto", "schedule": "0 15 * * *" }
   ],
   "rewrites": [
     { "source": "/api/sample", "destination": "/api/sample" },
@@ -11,6 +12,7 @@
     { "source": "/api/contacts", "destination": "/api/contacts" },
     { "source": "/api/outreach", "destination": "/api/outreach" },
     { "source": "/api/nurture", "destination": "/api/nurture" },
+    { "source": "/api/outreach-auto", "destination": "/api/outreach-auto" },
     { "source": "/api/track/open", "destination": "/api/track/open" },
     { "source": "/api/track/click", "destination": "/api/track/click" },
     { "source": "/api/submissions", "destination": "/api/submissions" },

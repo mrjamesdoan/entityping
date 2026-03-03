@@ -61,7 +61,7 @@ async function handleList(req, res) {
 
 async function handleCreate(req, res) {
   try {
-    const { name, email, company, status, industry, source, notes } =
+    const { name, email, company, status, industry, vertical, source, notes } =
       req.body || {};
 
     if (!email) {
@@ -94,6 +94,7 @@ async function handleCreate(req, res) {
         "status", contactStatus,
         "source", source || "manual",
         "industry", industry || "",
+        "vertical", vertical || "",
         "createdAt", now,
         "updatedAt", now,
         "notes", notes || "",
@@ -107,8 +108,8 @@ async function handleCreate(req, res) {
       contact: {
         id, name: name || "", email, company: company || "",
         status: contactStatus, source: source || "manual",
-        industry: industry || "", createdAt: now, updatedAt: now,
-        notes: notes || "",
+        industry: industry || "", vertical: vertical || "",
+        createdAt: now, updatedAt: now, notes: notes || "",
       },
       existing: false,
     });
