@@ -1,9 +1,13 @@
 // Vercel Serverless Function — POST /api/sample
-// Sends free 25-lead sample via Resend and notifies us
+// Sends free 25-lead sample via Resend, notifies us, logs to Redis CRM
+
+const crypto = require("crypto");
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const NOTIFY_EMAIL = "hello@alphacraft.dev";
 const FROM_EMAIL = "EntityPing <hello@entityping.com>";
+const REDIS_URL = process.env.UPSTASH_REDIS_REST_URL;
+const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
 
 // The 25-lead sample CSV embedded directly
 const SAMPLE_CSV = `business_name,entity_type,filing_date,state,owner_name,address,city,state_abbr,zip,industry,quality_score
@@ -61,7 +65,36 @@ async function sendEmail(to, subject, html, attachments = []) {
   return res.json();
 }
 
-export default async function handler(req, res) {
+async function redisPipeline(commands) {
+  if (!REDIS_URL || !REDIS_TOKEN) return null;
+  const res = await fetch(`${REDIS_URL}/pipeline`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${REDIS_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(commands),
+  });
+  if (!res.ok) throw new Error(`Redis pipeline error: ${res.status}`);
+  return res.json();
+}
+
+async function redisGet(command) {
+  if (!REDIS_URL || !REDIS_TOKEN) return null;
+  const res = await fetch(REDIS_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${REDIS_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(command),
+  });
+  if (!res.ok) throw new Error(`Redis error: ${res.status}`);
+  const data = await res.json();
+  return data.result;
+}
+
+module.exports = async function handler(req, res) {
   // CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -150,9 +183,76 @@ export default async function handler(req, res) {
       `
     );
 
+    // 3. Log to Redis CRM
+    try {
+      const ts = Date.now();
+      const subId = crypto.randomUUID().slice(0, 8);
+      const submission = JSON.stringify({
+        id: subId,
+        name: name || "",
+        email,
+        industry: industryLabel,
+        timestamp,
+      });
+
+      // Check if contact already exists
+      const existingId = await redisGet(["GET", `contacts:email:${email}`]);
+
+      if (existingId) {
+        // Add form_submitted event to existing contact
+        await redisPipeline([
+          ["ZADD", "submissions:log", ts.toString(), submission],
+          [
+            "ZADD", `contact:${existingId}:events`, ts.toString(),
+            JSON.stringify({
+              type: "form_submitted",
+              timestamp,
+              data: { name: name || "", industry: industryLabel },
+            }),
+          ],
+          ["HSET", `contact:${existingId}`, "updatedAt", timestamp],
+          ["ZADD", "contacts:index", ts.toString(), existingId],
+          ["INCR", "stats:submissions"],
+        ]);
+      } else {
+        // Create new contact from form submission
+        await redisPipeline([
+          ["ZADD", "submissions:log", ts.toString(), submission],
+          [
+            "HSET", `contact:${subId}`,
+            "id", subId,
+            "name", name || "",
+            "email", email,
+            "company", "",
+            "status", "new",
+            "source", "form_submission",
+            "industry", industryLabel,
+            "createdAt", timestamp,
+            "updatedAt", timestamp,
+            "notes", "",
+          ],
+          ["ZADD", "contacts:index", ts.toString(), subId],
+          ["SADD", "contacts:status:new", subId],
+          ["SET", `contacts:email:${email}`, subId],
+          [
+            "ZADD", `contact:${subId}:events`, ts.toString(),
+            JSON.stringify({
+              type: "form_submitted",
+              timestamp,
+              data: { name: name || "", industry: industryLabel },
+            }),
+          ],
+          ["INCR", "stats:submissions"],
+        ]);
+      }
+    } catch (redisErr) {
+      console.error("Redis logging failed:", redisErr.message);
+      // Don't fail the request — the email was already sent successfully
+    }
+
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error("Error:", err.message);
     return res.status(500).json({ error: "Failed to send sample. Please try again." });
   }
-}
+};

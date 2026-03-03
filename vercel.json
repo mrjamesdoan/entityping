@@ -1,7 +1,16 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/api/sample", "destination": "/api/sample" }
+    { "source": "/api/sample", "destination": "/api/sample" },
+    { "source": "/api/auth", "destination": "/api/auth" },
+    { "source": "/api/stats", "destination": "/api/stats" },
+    { "source": "/api/contacts/:id", "destination": "/api/contacts/[id]" },
+    { "source": "/api/contacts", "destination": "/api/contacts" },
+    { "source": "/api/outreach", "destination": "/api/outreach" },
+    { "source": "/api/track/open", "destination": "/api/track/open" },
+    { "source": "/api/track/click", "destination": "/api/track/click" },
+    { "source": "/api/submissions", "destination": "/api/submissions" },
+    { "source": "/api/seed", "destination": "/api/seed" }
   ],
   "headers": [
     {
@@ -9,6 +18,12 @@
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" }
+      ]
+    },
+    {
+      "source": "/api/track/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
       ]
     }
   ]

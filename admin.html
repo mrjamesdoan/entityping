@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EntityPing — Admin Dashboard</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='4' fill='%232aa4ff'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%232aa4ff' stroke-width='2' opacity='0.4'/%3E%3Ccircle cx='16' cy='16' r='15' fill='none' stroke='%232aa4ff' stroke-width='1.5' opacity='0.2'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef9ff', 100: '#d8f1ff', 200: '#bae7ff', 300: '#8adaff',
+              400: '#52c3ff', 500: '#2aa4ff', 600: '#1486f5', 700: '#0d6ee1',
+              800: '#1158b6', 900: '#144b8f', 950: '#112f57',
+            },
+            surface: {
+              50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+              800: '#1e293b', 850: '#172033', 900: '#0f172a', 950: '#080e1d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .status-new { background: #1e40af; color: #93c5fd; }
+    .status-contacted { background: #854d0e; color: #fde68a; }
+    .status-opened { background: #065f46; color: #6ee7b7; }
+    .status-clicked { background: #5b21b6; color: #c4b5fd; }
+    .status-replied { background: #0e4f8b; color: #7dd3fc; }
+    .status-converted { background: #064e3b; color: #34d399; }
+    .tab-active { border-color: #2aa4ff; color: #2aa4ff; }
+    .tab-inactive { border-color: transparent; color: #94a3b8; }
+    .tab-inactive:hover { color: #e2e8f0; }
+  </style>
+</head>
+<body class="bg-surface-950 text-surface-200 min-h-screen">
+
+  <!-- Login Screen -->
+  <div id="loginScreen" class="min-h-screen flex items-center justify-center">
+    <div class="bg-surface-900 border border-surface-800 rounded-2xl p-8 w-full max-w-sm shadow-2xl">
+      <div class="text-center mb-6">
+        <span class="text-2xl font-bold text-white">Entity<span class="text-brand-500">Ping</span></span>
+        <p class="text-sm text-surface-200 mt-2">Admin Dashboard</p>
+      </div>
+      <form id="loginForm" class="space-y-4">
+        <input type="password" id="passwordInput" placeholder="Enter admin password"
+          class="w-full px-4 py-3 bg-surface-850 border border-surface-800 rounded-lg text-white placeholder-surface-200/50 focus:outline-none focus:border-brand-500 transition">
+        <button type="submit"
+          class="w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-lg transition">
+          Log In
+        </button>
+        <p id="loginError" class="text-red-400 text-sm text-center hidden">Invalid password</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard (hidden until auth) -->
+  <div id="dashboard" class="hidden">
+    <!-- Top Nav -->
+    <header class="border-b border-surface-800 bg-surface-900/80 backdrop-blur-sm sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="text-xl font-bold text-white">Entity<span class="text-brand-500">Ping</span></span>
+          <span class="text-xs text-surface-200/50 bg-surface-800 px-2 py-0.5 rounded-full">Admin</span>
+        </div>
+        <a href="/" class="text-sm text-surface-200/60 hover:text-white transition">View Site</a>
+      </div>
+      <!-- Tabs -->
+      <div class="max-w-7xl mx-auto px-6 flex gap-6">
+        <button data-tab-btn="overview" onclick="showTab('overview')"
+          class="tab-active pb-3 border-b-2 text-sm font-medium transition">Overview</button>
+        <button data-tab-btn="contacts" onclick="showTab('contacts')"
+          class="tab-inactive pb-3 border-b-2 text-sm font-medium transition">Contacts</button>
+        <button data-tab-btn="submissions" onclick="showTab('submissions')"
+          class="tab-inactive pb-3 border-b-2 text-sm font-medium transition">Submissions</button>
+        <button data-tab-btn="outreach" onclick="showTab('outreach')"
+          class="tab-inactive pb-3 border-b-2 text-sm font-medium transition">Outreach</button>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+
+      <!-- Overview Tab -->
+      <div data-tab="overview">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div class="bg-surface-900 border border-surface-800 rounded-xl p-5">
+            <p class="text-sm text-surface-200/60 mb-1">Outreach Sent</p>
+            <p id="statSent" class="text-3xl font-bold text-white">-</p>
+          </div>
+          <div class="bg-surface-900 border border-surface-800 rounded-xl p-5">
+            <p class="text-sm text-surface-200/60 mb-1">Opens</p>
+            <p id="statOpens" class="text-3xl font-bold text-emerald-400">-</p>
+          </div>
+          <div class="bg-surface-900 border border-surface-800 rounded-xl p-5">
+            <p class="text-sm text-surface-200/60 mb-1">Clicks</p>
+            <p id="statClicks" class="text-3xl font-bold text-violet-400">-</p>
+          </div>
+          <div class="bg-surface-900 border border-surface-800 rounded-xl p-5">
+            <p class="text-sm text-surface-200/60 mb-1">Form Submissions</p>
+            <p id="statSubs" class="text-3xl font-bold text-brand-400">-</p>
+          </div>
+        </div>
+
+        <!-- Status Breakdown -->
+        <div class="bg-surface-900 border border-surface-800 rounded-xl p-6 mb-8">
+          <h3 class="text-sm font-semibold text-white mb-4">Contact Pipeline</h3>
+          <div id="statusBreakdown" class="flex flex-wrap gap-3">
+            <!-- Filled dynamically -->
+          </div>
+        </div>
+
+        <!-- Seed Button (one-time) -->
+        <div id="seedSection" class="bg-surface-900 border border-surface-800 rounded-xl p-6">
+          <h3 class="text-sm font-semibold text-white mb-2">Seed Historical Data</h3>
+          <p class="text-sm text-surface-200/60 mb-4">Import the 12 outreach contacts sent before tracking was enabled.</p>
+          <button onclick="runSeed()" id="seedBtn"
+            class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium rounded-lg transition">
+            Run Seed
+          </button>
+          <span id="seedStatus" class="ml-3 text-sm text-surface-200/50"></span>
+        </div>
+      </div>
+
+      <!-- Contacts Tab -->
+      <div data-tab="contacts" class="hidden">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-3">
+            <input type="text" id="contactSearch" placeholder="Search contacts..."
+              oninput="filterContacts()"
+              class="px-4 py-2 bg-surface-900 border border-surface-800 rounded-lg text-sm text-white placeholder-surface-200/40 focus:outline-none focus:border-brand-500 w-64">
+            <select id="statusFilter" onchange="filterContacts()"
+              class="px-3 py-2 bg-surface-900 border border-surface-800 rounded-lg text-sm text-white focus:outline-none focus:border-brand-500">
+              <option value="">All statuses</option>
+              <option value="new">New</option>
+              <option value="contacted">Contacted</option>
+              <option value="opened">Opened</option>
+              <option value="clicked">Clicked</option>
+              <option value="replied">Replied</option>
+              <option value="converted">Converted</option>
+            </select>
+          </div>
+          <button onclick="showAddContact()"
+            class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium rounded-lg transition">
+            + Add Contact
+          </button>
+        </div>
+
+        <div class="bg-surface-900 border border-surface-800 rounded-xl overflow-hidden">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-surface-800 text-left text-surface-200/50 text-xs uppercase tracking-wider">
+                <th class="px-4 py-3 font-medium">Name</th>
+                <th class="px-4 py-3 font-medium">Email</th>
+                <th class="px-4 py-3 font-medium">Company</th>
+                <th class="px-4 py-3 font-medium">Status</th>
+                <th class="px-4 py-3 font-medium">Source</th>
+                <th class="px-4 py-3 font-medium">Updated</th>
+              </tr>
+            </thead>
+            <tbody id="contactsTable">
+              <!-- Filled dynamically -->
+            </tbody>
+          </table>
+          <div id="contactsEmpty" class="hidden text-center py-12 text-surface-200/40">
+            No contacts found
+          </div>
+        </div>
+
+        <!-- Contact Detail Drawer -->
+        <div id="contactDetail" class="hidden fixed inset-0 z-50">
+          <div class="absolute inset-0 bg-black/60" onclick="closeContactDetail()"></div>
+          <div class="absolute right-0 top-0 bottom-0 w-full max-w-lg bg-surface-900 border-l border-surface-800 overflow-y-auto">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-6">
+                <h2 id="detailName" class="text-lg font-bold text-white"></h2>
+                <button onclick="closeContactDetail()" class="text-surface-200/50 hover:text-white text-xl">&times;</button>
+              </div>
+              <div id="detailContent">
+                <!-- Filled dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Contact Modal -->
+        <div id="addContactModal" class="hidden fixed inset-0 z-50">
+          <div class="absolute inset-0 bg-black/60" onclick="hideAddContact()"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-surface-900 border border-surface-800 rounded-2xl p-6 w-full max-w-md">
+              <h3 class="text-lg font-bold text-white mb-4">Add Contact</h3>
+              <form id="addContactForm" class="space-y-3">
+                <input type="text" name="name" placeholder="Name" class="w-full px-3 py-2 bg-surface-850 border border-surface-800 rounded-lg text-white text-sm placeholder-surface-200/40 focus:outline-none focus:border-brand-500">
+                <input type="email" name="email" placeholder="Email *" required class="w-full px-3 py-2 bg-surface-850 border border-surface-800 rounded-lg text-white text-sm placeholder-surface-200/40 focus:outline-none focus:border-brand-500">
+                <input type="text" name="company" placeholder="Company" class="w-full px-3 py-2 bg-surface-850 border border-surface-800 rounded-lg text-white text-sm placeholder-surface-200/40 focus:outline-none focus:border-brand-500">
+                <input type="text" name="industry" placeholder="Industry" class="w-full px-3 py-2 bg-surface-850 border border-surface-800 rounded-lg text-white text-sm placeholder-surface-200/40 focus:outline-none focus:border-brand-500">
+                <div class="flex gap-3 pt-2">
+                  <button type="button" onclick="hideAddContact()" class="flex-1 py-2 border border-surface-800 text-surface-200 rounded-lg text-sm hover:bg-surface-800 transition">Cancel</button>
+                  <button type="submit" class="flex-1 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-500 transition">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submissions Tab -->
+      <div data-tab="submissions" class="hidden">
+        <div class="bg-surface-900 border border-surface-800 rounded-xl overflow-hidden">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-surface-800 text-left text-surface-200/50 text-xs uppercase tracking-wider">
+                <th class="px-4 py-3 font-medium">Time</th>
+                <th class="px-4 py-3 font-medium">Name</th>
+                <th class="px-4 py-3 font-medium">Email</th>
+                <th class="px-4 py-3 font-medium">Industry</th>
+              </tr>
+            </thead>
+            <tbody id="submissionsTable">
+              <!-- Filled dynamically -->
+            </tbody>
+          </table>
+          <div id="submissionsEmpty" class="hidden text-center py-12 text-surface-200/40">
+            No form submissions yet
+          </div>
+        </div>
+      </div>
+
+      <!-- Outreach Tab -->
+      <div data-tab="outreach" class="hidden">
+        <!-- Compose Form -->
+        <div class="bg-surface-900 border border-surface-800 rounded-xl p-6 mb-6">
+          <h3 class="text-sm font-semibold text-white mb-4">Compose Outreach</h3>
+          <form id="outreachForm" class="space-y-3">
+            <select id="outreachContact" required
+              class="w-full px-3 py-2 bg-surface-850 border border-surface-800 rounded-lg text-white text-sm focus:outline-none focus:border-brand-500">
+              <option value="">Select contact...</option>
+            </select>
+            <input type="text" id="outreachSubject" placeholder="Subject line" required
+              class="w-full px-3 py-2 bg-surface-850 border border-surface-800 rounded-lg text-white text-sm placeholder-surface-200/40 focus:outline-none focus:border-brand-500">
+            <textarea id="outreachBody" rows="8" placeholder="Email body (HTML supported)"
+              class="w-full px-3 py-2 bg-surface-850 border border-surface-800 rounded-lg text-white text-sm placeholder-surface-200/40 focus:outline-none focus:border-brand-500 font-mono text-xs"></textarea>
+            <div class="flex items-center justify-between pt-2">
+              <p class="text-xs text-surface-200/40">Tracking pixel and click wrapping will be added automatically</p>
+              <button type="submit" id="sendOutreachBtn"
+                class="px-6 py-2 bg-brand-600 hover:bg-brand-500 text-white text-sm font-medium rounded-lg transition">
+                Send Email
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Sent Log -->
+        <div class="bg-surface-900 border border-surface-800 rounded-xl overflow-hidden">
+          <div class="px-4 py-3 border-b border-surface-800">
+            <h3 class="text-sm font-semibold text-white">Sent Outreach</h3>
+          </div>
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-surface-800 text-left text-surface-200/50 text-xs uppercase tracking-wider">
+                <th class="px-4 py-3 font-medium">Sent</th>
+                <th class="px-4 py-3 font-medium">To</th>
+                <th class="px-4 py-3 font-medium">Subject</th>
+                <th class="px-4 py-3 font-medium">Opened</th>
+                <th class="px-4 py-3 font-medium">Clicked</th>
+              </tr>
+            </thead>
+            <tbody id="outreachTable">
+              <!-- Filled dynamically -->
+            </tbody>
+          </table>
+          <div id="outreachEmpty" class="hidden text-center py-12 text-surface-200/40">
+            No outreach sent yet
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // ─── State ───
+    let contacts = [];
+    let allContacts = [];
+    let stats = {};
+
+    // ─── API Helper ───
+    async function api(path, options = {}) {
+      const res = await fetch(`/api/${path}`, {
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        ...options,
+      });
+      if (res.status === 401) {
+        showLogin();
+        throw new Error('Unauthorized');
+      }
+      return res.json();
+    }
+
+    // ─── Auth ───
+    function showLogin() {
+      document.getElementById('loginScreen').classList.remove('hidden');
+      document.getElementById('dashboard').classList.add('hidden');
+    }
+
+    function showDashboard() {
+      document.getElementById('loginScreen').classList.add('hidden');
+      document.getElementById('dashboard').classList.remove('hidden');
+      loadOverview();
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const pw = document.getElementById('passwordInput').value;
+      try {
+        const res = await fetch('/api/auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({ password: pw }),
+        });
+        if (res.ok) {
+          showDashboard();
+        } else {
+          document.getElementById('loginError').classList.remove('hidden');
+        }
+      } catch (err) {
+        document.getElementById('loginError').classList.remove('hidden');
+      }
+    });
+
+    // Check auth on load
+    (async function checkAuth() {
+      try {
+        await api('stats');
+        showDashboard();
+      } catch (e) {
+        // Not authed, show login
+      }
+    })();
+
+    // ─── Tab Navigation ───
+    function showTab(tab) {
+      document.querySelectorAll('[data-tab]').forEach(el => {
+        el.classList.toggle('hidden', el.dataset.tab !== tab);
+      });
+      document.querySelectorAll('[data-tab-btn]').forEach(el => {
+        const isActive = el.dataset.tabBtn === tab;
+        el.classList.toggle('tab-active', isActive);
+        el.classList.toggle('tab-inactive', !isActive);
+      });
+      if (tab === 'overview') loadOverview();
+      if (tab === 'contacts') loadContacts();
+      if (tab === 'submissions') loadSubmissions();
+      if (tab === 'outreach') { loadContacts(); loadOutreach(); }
+    }
+
+    // ─── Overview ───
+    async function loadOverview() {
+      try {
+        stats = await api('stats');
+        document.getElementById('statSent').textContent = stats.outreachSent || 0;
+        document.getElementById('statOpens').textContent = stats.opens || 0;
+        document.getElementById('statClicks').textContent = stats.clicks || 0;
+        document.getElementById('statSubs').textContent = stats.submissions || 0;
+
+        const breakdown = document.getElementById('statusBreakdown');
+        const statuses = ['new', 'contacted', 'opened', 'clicked', 'replied', 'converted'];
+        breakdown.innerHTML = statuses.map(s => {
+          const count = stats.byStatus?.[s] || 0;
+          return `<span class="status-${s} px-3 py-1 rounded-full text-xs font-medium">${s}: ${count}</span>`;
+        }).join('');
+
+        // Hide seed section if already seeded
+        if (stats.outreachSent > 0) {
+          document.getElementById('seedSection').style.display = 'none';
+        }
+      } catch (err) {
+        console.error('Failed to load overview:', err);
+      }
+    }
+
+    // ─── Seed ───
+    async function runSeed() {
+      const btn = document.getElementById('seedBtn');
+      const status = document.getElementById('seedStatus');
+      btn.disabled = true;
+      btn.textContent = 'Seeding...';
+      try {
+        const result = await api('seed', { method: 'POST' });
+        status.textContent = result.message || 'Done';
+        status.className = 'ml-3 text-sm text-emerald-400';
+        btn.textContent = 'Done';
+        setTimeout(loadOverview, 500);
+      } catch (err) {
+        status.textContent = 'Failed: ' + err.message;
+        status.className = 'ml-3 text-sm text-red-400';
+        btn.disabled = false;
+        btn.textContent = 'Retry';
+      }
+    }
+
+    // ─── Contacts ───
+    async function loadContacts() {
+      try {
+        allContacts = await api('contacts');
+        contacts = [...allContacts];
+        renderContacts();
+        populateOutreachDropdown();
+      } catch (err) {
+        console.error('Failed to load contacts:', err);
+      }
+    }
+
+    function filterContacts() {
+      const search = document.getElementById('contactSearch').value.toLowerCase();
+      const status = document.getElementById('statusFilter').value;
+      contacts = allContacts.filter(c => {
+        const matchSearch = !search ||
+          (c.name || '').toLowerCase().includes(search) ||
+          (c.email || '').toLowerCase().includes(search) ||
+          (c.company || '').toLowerCase().includes(search);
+        const matchStatus = !status || c.status === status;
+        return matchSearch && matchStatus;
+      });
+      renderContacts();
+    }
+
+    function renderContacts() {
+      const tbody = document.getElementById('contactsTable');
+      const empty = document.getElementById('contactsEmpty');
+      if (contacts.length === 0) {
+        tbody.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+      empty.classList.add('hidden');
+      tbody.innerHTML = contacts.map(c => `
+        <tr class="border-b border-surface-800/50 hover:bg-surface-850 cursor-pointer transition" onclick="openContactDetail('${c.id}')">
+          <td class="px-4 py-3 font-medium text-white">${esc(c.name || '-')}</td>
+          <td class="px-4 py-3 text-surface-200/70">${esc(c.email)}</td>
+          <td class="px-4 py-3 text-surface-200/70">${esc(c.company || '-')}</td>
+          <td class="px-4 py-3"><span class="status-${c.status} px-2 py-0.5 rounded-full text-xs font-medium">${c.status}</span></td>
+          <td class="px-4 py-3 text-surface-200/50 text-xs">${c.source || '-'}</td>
+          <td class="px-4 py-3 text-surface-200/50 text-xs">${formatDate(c.updatedAt)}</td>
+        </tr>
+      `).join('');
+    }
+
+    // ─── Contact Detail ───
+    async function openContactDetail(id) {
+      document.getElementById('contactDetail').classList.remove('hidden');
+      document.getElementById('detailContent').innerHTML = '<p class="text-surface-200/50">Loading...</p>';
+
+      try {
+        const data = await api(`contacts/${id}`);
+        const c = data.contact;
+        const events = data.events || [];
+
+        document.getElementById('detailName').textContent = c.name || c.email;
+        document.getElementById('detailContent').innerHTML = `
+          <div class="space-y-4 mb-6">
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div><span class="text-surface-200/50">Email</span><br><span class="text-white">${esc(c.email)}</span></div>
+              <div><span class="text-surface-200/50">Company</span><br><span class="text-white">${esc(c.company || '-')}</span></div>
+              <div><span class="text-surface-200/50">Industry</span><br><span class="text-white">${esc(c.industry || '-')}</span></div>
+              <div><span class="text-surface-200/50">Source</span><br><span class="text-white">${c.source || '-'}</span></div>
+            </div>
+
+            <div>
+              <label class="text-surface-200/50 text-sm">Status</label>
+              <select id="detailStatus" onchange="updateContactStatus('${c.id}', this.value)"
+                class="w-full mt-1 px-3 py-2 bg-surface-850 border border-surface-800 rounded-lg text-white text-sm focus:outline-none focus:border-brand-500">
+                ${['new','contacted','opened','clicked','replied','converted'].map(s =>
+                  `<option value="${s}" ${s === c.status ? 'selected' : ''}>${s}</option>`
+                ).join('')}
+              </select>
+            </div>
+
+            <div>
+              <label class="text-surface-200/50 text-sm">Notes</label>
+              <textarea id="detailNotes" rows="3"
+                class="w-full mt-1 px-3 py-2 bg-surface-850 border border-surface-800 rounded-lg text-white text-sm focus:outline-none focus:border-brand-500">${esc(c.notes || '')}</textarea>
+              <button onclick="saveNotes('${c.id}')"
+                class="mt-2 px-3 py-1 bg-brand-600 hover:bg-brand-500 text-white text-xs rounded-md transition">
+                Save Notes
+              </button>
+            </div>
+          </div>
+
+          <h3 class="text-sm font-semibold text-white mb-3 border-t border-surface-800 pt-4">Event Timeline</h3>
+          <div class="space-y-3">
+            ${events.length === 0 ? '<p class="text-sm text-surface-200/40">No events yet</p>' :
+              events.map(e => `
+                <div class="flex gap-3 text-sm">
+                  <div class="w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${eventColor(e.type)}"></div>
+                  <div>
+                    <p class="text-white">${eventLabel(e.type)}</p>
+                    <p class="text-surface-200/50 text-xs">${formatDate(e.timestamp)}</p>
+                    ${e.data?.subject ? `<p class="text-surface-200/40 text-xs">${esc(e.data.subject)}</p>` : ''}
+                    ${e.data?.note ? `<p class="text-surface-200/40 text-xs">${esc(e.data.note)}</p>` : ''}
+                    ${e.data?.url ? `<p class="text-surface-200/40 text-xs">${esc(e.data.url)}</p>` : ''}
+                    ${e.data?.industry ? `<p class="text-surface-200/40 text-xs">Industry: ${esc(e.data.industry)}</p>` : ''}
+                  </div>
+                </div>
+              `).join('')}
+          </div>
+        `;
+      } catch (err) {
+        document.getElementById('detailContent').innerHTML = `<p class="text-red-400">Failed to load contact</p>`;
+      }
+    }
+
+    function closeContactDetail() {
+      document.getElementById('contactDetail').classList.add('hidden');
+    }
+
+    async function updateContactStatus(id, status) {
+      try {
+        await api(`contacts/${id}`, {
+          method: 'PUT',
+          body: JSON.stringify({ status }),
+        });
+        loadContacts();
+      } catch (err) {
+        console.error('Failed to update status:', err);
+      }
+    }
+
+    async function saveNotes(id) {
+      const notes = document.getElementById('detailNotes').value;
+      try {
+        await api(`contacts/${id}`, {
+          method: 'PUT',
+          body: JSON.stringify({ notes }),
+        });
+      } catch (err) {
+        console.error('Failed to save notes:', err);
+      }
+    }
+
+    // ─── Add Contact ───
+    function showAddContact() {
+      document.getElementById('addContactModal').classList.remove('hidden');
+    }
+    function hideAddContact() {
+      document.getElementById('addContactModal').classList.add('hidden');
+      document.getElementById('addContactForm').reset();
+    }
+
+    document.getElementById('addContactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        company: form.company.value,
+        industry: form.industry.value,
+      };
+      try {
+        await api('contacts', { method: 'POST', body: JSON.stringify(data) });
+        hideAddContact();
+        loadContacts();
+      } catch (err) {
+        console.error('Failed to add contact:', err);
+      }
+    });
+
+    // ─── Submissions ───
+    async function loadSubmissions() {
+      try {
+        const subs = await api('submissions');
+        const tbody = document.getElementById('submissionsTable');
+        const empty = document.getElementById('submissionsEmpty');
+        if (subs.length === 0) {
+          tbody.innerHTML = '';
+          empty.classList.remove('hidden');
+          return;
+        }
+        empty.classList.add('hidden');
+        tbody.innerHTML = subs.map(s => `
+          <tr class="border-b border-surface-800/50">
+            <td class="px-4 py-3 text-surface-200/50 text-xs">${formatDate(s.timestamp)}</td>
+            <td class="px-4 py-3 text-white">${esc(s.name || '-')}</td>
+            <td class="px-4 py-3 text-surface-200/70">${esc(s.email)}</td>
+            <td class="px-4 py-3 text-surface-200/50">${esc(s.industry || '-')}</td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        console.error('Failed to load submissions:', err);
+      }
+    }
+
+    // ─── Outreach ───
+    function populateOutreachDropdown() {
+      const sel = document.getElementById('outreachContact');
+      const current = sel.value;
+      sel.innerHTML = '<option value="">Select contact...</option>' +
+        allContacts.map(c => `<option value="${c.id}">${esc(c.name || c.email)} — ${esc(c.email)}</option>`).join('');
+      if (current) sel.value = current;
+    }
+
+    async function loadOutreach() {
+      try {
+        const outreaches = await api('outreach');
+        const tbody = document.getElementById('outreachTable');
+        const empty = document.getElementById('outreachEmpty');
+        if (outreaches.length === 0) {
+          tbody.innerHTML = '';
+          empty.classList.remove('hidden');
+          return;
+        }
+        empty.classList.add('hidden');
+        tbody.innerHTML = outreaches.map(o => `
+          <tr class="border-b border-surface-800/50">
+            <td class="px-4 py-3 text-surface-200/50 text-xs">${formatDate(o.sentAt)}</td>
+            <td class="px-4 py-3 text-white">${esc(o.email)}</td>
+            <td class="px-4 py-3 text-surface-200/70">${esc(o.subject)}</td>
+            <td class="px-4 py-3">${o.opened === '1'
+              ? '<span class="text-emerald-400 text-xs">Yes</span>'
+              : '<span class="text-surface-200/30 text-xs">No</span>'}</td>
+            <td class="px-4 py-3">${o.clicked === '1'
+              ? '<span class="text-violet-400 text-xs">Yes</span>'
+              : '<span class="text-surface-200/30 text-xs">No</span>'}</td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        console.error('Failed to load outreach:', err);
+      }
+    }
+
+    document.getElementById('outreachForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('sendOutreachBtn');
+      const contactId = document.getElementById('outreachContact').value;
+      const subject = document.getElementById('outreachSubject').value;
+      const htmlBody = document.getElementById('outreachBody').value;
+      if (!contactId) { alert('Please select a contact'); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      try {
+        await api('outreach', {
+          method: 'POST',
+          body: JSON.stringify({ contactId, subject, htmlBody }),
+        });
+        btn.textContent = 'Sent!';
+        document.getElementById('outreachSubject').value = '';
+        document.getElementById('outreachBody').value = '';
+        setTimeout(() => { btn.textContent = 'Send Email'; btn.disabled = false; }, 2000);
+        loadOutreach();
+      } catch (err) {
+        btn.textContent = 'Failed';
+        setTimeout(() => { btn.textContent = 'Send Email'; btn.disabled = false; }, 2000);
+      }
+    });
+
+    // ─── Helpers ───
+    function esc(str) {
+      const d = document.createElement('div');
+      d.textContent = str || '';
+      return d.innerHTML;
+    }
+
+    function formatDate(iso) {
+      if (!iso) return '-';
+      try {
+        const d = new Date(iso);
+        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' ' +
+          d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      } catch {
+        return iso;
+      }
+    }
+
+    function eventColor(type) {
+      const map = {
+        email_sent: 'bg-yellow-400',
+        email_opened: 'bg-emerald-400',
+        link_clicked: 'bg-violet-400',
+        form_submitted: 'bg-brand-400',
+        note_added: 'bg-surface-200/50',
+        status_changed: 'bg-orange-400',
+      };
+      return map[type] || 'bg-surface-200/30';
+    }
+
+    function eventLabel(type) {
+      const map = {
+        email_sent: 'Email sent',
+        email_opened: 'Email opened',
+        link_clicked: 'Link clicked',
+        form_submitted: 'Form submitted',
+        note_added: 'Note added',
+        status_changed: 'Status changed',
+      };
+      return map[type] || type;
+    }
+  </script>
+</body>
+</html>
