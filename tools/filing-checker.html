@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Business Filing Checker — New Business Registrations by State | EntityPing</title>
+  <meta name="description" content="Check recent business filings in Florida, Texas, Georgia, Colorado, New York, and California. See who just registered an LLC, corporation, or DBA in your state.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://entityping.com/tools/filing-checker">
+  <meta property="og:title" content="Free Business Filing Checker — See New Business Filings by State">
+  <meta property="og:description" content="Look up recent business registrations in your state. See entity names, types, filing dates, cities, and industries — updated daily.">
+  <meta property="og:image" content="https://entityping.com/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Business Filing Checker — New Business Filings by State">
+  <meta name="twitter:description" content="Look up recent business registrations in your state. Entity names, types, filing dates, cities, and industries.">
+  <meta name="twitter:image" content="https://entityping.com/og-image.png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://entityping.com/tools/filing-checker">
+
+  <!-- Additional SEO keywords -->
+  <meta name="keywords" content="business filing checker, new business filings, LLC filings, corporation filings, DBA filings, new business registrations Florida, new business filings Texas, new business filings Georgia, new business filings Colorado, new business filings New York, new business filings California, secretary of state filings, business leads">
+
+  <!-- Analytics -->
+  <script defer data-domain="entityping.com" src="https://plausible.io/js/script.js"></script>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a business filing checker?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A business filing checker lets you look up recently registered businesses in a given state. When someone forms an LLC, corporation, or DBA, it gets filed with the Secretary of State. Our tool aggregates these filings so you can see new businesses as they register."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often are business filings updated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EntityPing pulls new filings every business day. Most filings appear in our system within 24 hours of being recorded by the state. The free checker shows a sample of recent filings; paid plans deliver the full daily feed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which states are covered?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The free filing checker covers Florida, Texas, Georgia, Colorado, New York, and California. EntityPing's full service covers all 50 states with daily filing data including owner names, addresses, phone numbers, and industry classification."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get daily business filing data delivered to my inbox?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. EntityPing delivers fresh business leads from state filings as a clean CSV email every morning. You can filter by state, industry, and entity type. Plans start at $39/month for 200 leads per day."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What information is included in business filings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "State filings typically include the business name, entity type (LLC, Corporation, DBA), filing date, registered agent, and principal address. EntityPing enriches this data with owner phone numbers, email addresses, and industry classification."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this data free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The filing checker tool is completely free. It shows a sample of recent filings in each state. For the full daily feed with contact information and enrichment, you can sign up for a free sample of 25 leads or choose a paid plan."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- WebApplication Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Business Filing Checker",
+    "url": "https://entityping.com/tools/filing-checker",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Free tool to check recent business filings by state. See new LLC, corporation, and DBA registrations in Florida, Texas, Georgia, Colorado, New York, and California."
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='14' cy='12' r='11' stroke='%231486f5' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='14' cy='12' r='7.5' stroke='%231486f5' stroke-width='1.5' opacity='0.3'/%3E%3Cpath d='M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z' fill='%231486f5'/%3E%3Ccircle cx='14' cy='11' r='3' fill='white'/%3E%3Ccircle cx='14' cy='11' r='1.5' fill='%231486f5'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef9ff', 100: '#d8f1ff', 200: '#bae7ff', 300: '#8adaff',
+              400: '#52c3ff', 500: '#2aa4ff', 600: '#1486f5', 700: '#0d6ee1',
+              800: '#1158b6', 900: '#144b8f', 950: '#112f57',
+            },
+            surface: {
+              50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+              800: '#1e293b', 850: '#172033', 900: '#0f172a', 950: '#080e1d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #2aa4ff 0%, #8adaff 50%, #52c3ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-glow {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(42, 164, 255, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 70% 10%, rgba(82, 195, 255, 0.06) 0%, transparent 50%);
+    }
+
+    .glow-border {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.1), 0 4px 30px -8px rgba(42, 164, 255, 0.08);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .glow-border:hover {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.2), 0 8px 40px -8px rgba(42, 164, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .ping-dot {
+      animation: ping-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes ping-pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+
+    /* State button styles */
+    .state-btn {
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .state-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(42, 164, 255, 0.15), rgba(20, 134, 245, 0.08));
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .state-btn:hover::before,
+    .state-btn.active::before {
+      opacity: 1;
+    }
+    .state-btn.active {
+      border-color: rgba(42, 164, 255, 0.4);
+      box-shadow: 0 0 20px rgba(42, 164, 255, 0.15);
+    }
+
+    /* Results table animation */
+    .results-container {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    }
+    .results-container.visible {
+      max-height: 2000px;
+      opacity: 1;
+    }
+
+    /* Table row animation */
+    .filing-row {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.15s ease;
+    }
+    .filing-row.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .filing-row:hover {
+      background: rgba(42, 164, 255, 0.04);
+    }
+
+    /* Mobile card layout for results */
+    @media (max-width: 768px) {
+      .filing-table { display: none; }
+      .filing-cards { display: grid !important; }
+    }
+    @media (min-width: 769px) {
+      .filing-cards { display: none !important; }
+    }
+
+    /* Filing card animation */
+    .filing-card {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .filing-card.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* CTA section animation */
+    .cta-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+    }
+    .cta-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Entity type badges */
+    .badge-llc { background: rgba(34, 197, 94, 0.1); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.2); }
+    .badge-corp { background: rgba(168, 85, 247, 0.1); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.2); }
+    .badge-dba { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.2); }
+
+    /* Loader */
+    .loader {
+      width: 24px;
+      height: 24px;
+      border: 2.5px solid rgba(42, 164, 255, 0.2);
+      border-top-color: #2aa4ff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Success checkmark */
+    .success-check {
+      animation: checkPop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes checkPop {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* FAQ smooth animation */
+    details .faq-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    details[open] .faq-content {
+      grid-template-rows: 1fr;
+    }
+    details .faq-content > div {
+      overflow: hidden;
+    }
+    details summary { cursor: pointer; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::marker { display: none; }
+
+    /* Stat counter */
+    .stat-counter {
+      animation: countFade 0.6s ease-out;
+    }
+    @keyframes countFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Shimmer loading effect */
+    .shimmer {
+      background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+  </style>
+
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="bg-surface-950 text-white font-sans antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 border-b border-white/[0.04] bg-surface-950/80 backdrop-blur-2xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="relative w-8 h-8 flex items-center justify-center">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="absolute" aria-hidden="true">
+            <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+            <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+            <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp)"/>
+            <defs><linearGradient id="lp" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+            <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+            <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+          </svg>
+        </div>
+        <span class="text-lg font-bold tracking-tight">Entity<span class="text-brand-400">Ping</span></span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm text-surface-100/50 font-medium">
+        <span class="text-brand-400 font-semibold">Free Tools</span>
+        <a href="/" class="hover:text-surface-100 transition-colors">Home</a>
+      </div>
+
+      <a href="/#pricing" class="bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-brand-600/20">
+        Get Started
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative pt-28 pb-12 md:pt-36 md:pb-16 hero-glow overflow-hidden">
+    <!-- Decorative grid -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M60 0H0v60&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;0.5&quot;/%3E%3C/svg%3E');"></div>
+
+    <div class="max-w-4xl mx-auto px-6 text-center relative">
+      <div class="inline-flex items-center gap-2.5 bg-brand-500/8 border border-brand-500/15 rounded-full px-4 py-1.5 mb-6">
+        <div class="relative">
+          <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+          <div class="absolute inset-0 w-1.5 h-1.5 bg-emerald-400 rounded-full ping-dot"></div>
+        </div>
+        <span class="text-xs font-semibold text-brand-300 tracking-wide uppercase">Free Tool</span>
+      </div>
+
+      <h1 class="text-3xl md:text-5xl lg:text-[3.25rem] font-black tracking-tight leading-[1.1] mb-5">
+        Free Business <span class="gradient-text">Filing Checker</span>
+      </h1>
+      <p class="text-base md:text-lg text-surface-100/50 leading-relaxed max-w-2xl mx-auto mb-10">
+        See who just registered a business in your state. Check recent LLC, corporation, and DBA filings across six major markets &mdash; updated daily from Secretary of State records.
+      </p>
+
+      <!-- State Selector -->
+      <div class="max-w-3xl mx-auto">
+        <p class="text-sm font-medium text-surface-100/40 mb-4 uppercase tracking-wider">Select a state to view recent filings</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3" id="state-grid">
+          <button onclick="selectState('FL')" class="state-btn bg-surface-900/60 border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm font-semibold text-surface-100/70 hover:text-white relative" data-state="FL">
+            <span class="relative z-10">Florida</span>
+          </button>
+          <button onclick="selectState('TX')" class="state-btn bg-surface-900/60 border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm font-semibold text-surface-100/70 hover:text-white relative" data-state="TX">
+            <span class="relative z-10">Texas</span>
+          </button>
+          <button onclick="selectState('GA')" class="state-btn bg-surface-900/60 border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm font-semibold text-surface-100/70 hover:text-white relative" data-state="GA">
+            <span class="relative z-10">Georgia</span>
+          </button>
+          <button onclick="selectState('CO')" class="state-btn bg-surface-900/60 border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm font-semibold text-surface-100/70 hover:text-white relative" data-state="CO">
+            <span class="relative z-10">Colorado</span>
+          </button>
+          <button onclick="selectState('NY')" class="state-btn bg-surface-900/60 border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm font-semibold text-surface-100/70 hover:text-white relative" data-state="NY">
+            <span class="relative z-10">New York</span>
+          </button>
+          <button onclick="selectState('CA')" class="state-btn bg-surface-900/60 border border-white/[0.06] rounded-xl px-4 py-3.5 text-sm font-semibold text-surface-100/70 hover:text-white relative" data-state="CA">
+            <span class="relative z-10">California</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Loading State -->
+  <div id="loading-state" class="hidden py-12">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="inline-flex items-center gap-3 text-surface-100/50">
+        <div class="loader"></div>
+        <span class="text-sm font-medium">Pulling recent filings...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Section -->
+  <section id="results-section" class="results-container pb-4">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <!-- Results Header -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold">
+            Recent Filings in <span id="state-name" class="text-brand-400">Florida</span>
+          </h2>
+          <p class="text-sm text-surface-100/40 mt-1">Showing <span id="result-count">10</span> of <span id="total-filings" class="stat-counter">--</span> filings from the past 7 days</p>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-surface-100/30 bg-surface-900/40 border border-white/[0.04] rounded-lg px-3 py-2">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Updated <span id="update-time">today at 7:00 AM ET</span>
+        </div>
+      </div>
+
+      <!-- Desktop Table -->
+      <div class="filing-table bg-surface-900/40 border border-white/[0.06] rounded-2xl overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/[0.06]">
+              <th class="text-left px-5 py-3.5 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">Business Name</th>
+              <th class="text-left px-5 py-3.5 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">Type</th>
+              <th class="text-left px-5 py-3.5 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">Filed</th>
+              <th class="text-left px-5 py-3.5 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">City</th>
+              <th class="text-left px-5 py-3.5 text-xs font-semibold text-surface-100/40 uppercase tracking-wider">Industry</th>
+            </tr>
+          </thead>
+          <tbody id="results-body">
+            <!-- Rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Cards -->
+      <div class="filing-cards gap-3" id="results-cards" style="display:none">
+        <!-- Cards injected by JS -->
+      </div>
+
+      <!-- Blurred rows teaser -->
+      <div class="relative mt-0 overflow-hidden rounded-b-2xl">
+        <div class="filing-table bg-surface-900/40 border border-white/[0.06] border-t-0 rounded-b-2xl overflow-hidden" style="filter: blur(4px); pointer-events: none; user-select: none;">
+          <table class="w-full text-sm">
+            <tbody>
+              <tr class="border-b border-white/[0.04]">
+                <td class="px-5 py-3.5 text-surface-100/60">Greenfield Ventures LLC</td>
+                <td class="px-5 py-3.5"><span class="badge-llc text-[11px] font-semibold px-2 py-0.5 rounded-full">LLC</span></td>
+                <td class="px-5 py-3.5 text-surface-100/40">02/25/2026</td>
+                <td class="px-5 py-3.5 text-surface-100/40">Tampa</td>
+                <td class="px-5 py-3.5 text-surface-100/40">Consulting</td>
+              </tr>
+              <tr class="border-b border-white/[0.04]">
+                <td class="px-5 py-3.5 text-surface-100/60">Apex Construction Corp</td>
+                <td class="px-5 py-3.5"><span class="badge-corp text-[11px] font-semibold px-2 py-0.5 rounded-full">Corp</span></td>
+                <td class="px-5 py-3.5 text-surface-100/40">02/24/2026</td>
+                <td class="px-5 py-3.5 text-surface-100/40">Austin</td>
+                <td class="px-5 py-3.5 text-surface-100/40">Construction</td>
+              </tr>
+              <tr>
+                <td class="px-5 py-3.5 text-surface-100/60">Peak Digital Marketing</td>
+                <td class="px-5 py-3.5"><span class="badge-dba text-[11px] font-semibold px-2 py-0.5 rounded-full">DBA</span></td>
+                <td class="px-5 py-3.5 text-surface-100/40">02/24/2026</td>
+                <td class="px-5 py-3.5 text-surface-100/40">Denver</td>
+                <td class="px-5 py-3.5 text-surface-100/40">Marketing</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-surface-950 via-surface-950/80 to-transparent">
+          <p class="text-sm text-surface-100/50 font-medium">
+            <a href="#cta-section" class="text-brand-400 hover:text-brand-300 transition-colors underline underline-offset-2">Sign up free</a> to see the full list with contact info
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="cta-section" class="cta-section py-16 md:py-20">
+    <div class="max-w-2xl mx-auto px-6">
+      <div class="bg-surface-900/60 border border-white/[0.06] rounded-2xl p-8 md:p-10 text-center glow-border">
+        <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1 mb-5">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+          <span class="text-xs font-semibold text-emerald-400">No credit card required</span>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-bold mb-3">
+          Want these leads delivered daily?
+        </h2>
+        <p class="text-surface-100/50 mb-8 max-w-md mx-auto">
+          Get <strong class="text-surface-100/80">25 free leads</strong> with owner names, phone numbers, and industry classification. Delivered as a clean CSV to your inbox.
+        </p>
+
+        <!-- Email Form -->
+        <form id="email-form" onsubmit="handleSubmit(event)" class="max-w-md mx-auto">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              id="email-input"
+              placeholder="you@company.com"
+              required
+              class="flex-1 bg-surface-950/80 border border-white/[0.08] rounded-xl px-4 py-3.5 text-sm text-white placeholder-surface-100/30 outline-none focus:border-brand-500/40 transition-colors"
+            >
+            <button
+              type="submit"
+              id="submit-btn"
+              class="bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold px-6 py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-600/20 whitespace-nowrap flex items-center justify-center gap-2"
+            >
+              <span id="btn-text">Get 25 Free Leads</span>
+              <div id="btn-loader" class="loader hidden" style="width:16px;height:16px;border-width:2px"></div>
+            </button>
+          </div>
+          <p class="text-xs text-surface-100/25 mt-3">One sample CSV. No spam. Unsubscribe anytime.</p>
+        </form>
+
+        <!-- Success State -->
+        <div id="success-state" class="hidden">
+          <div class="flex items-center justify-center gap-3 mb-3">
+            <div class="w-10 h-10 bg-emerald-500/15 border border-emerald-500/25 rounded-full flex items-center justify-center success-check">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+          </div>
+          <p class="text-lg font-semibold text-emerald-400 mb-1">Check your inbox</p>
+          <p class="text-sm text-surface-100/50">Your 25 free leads are on the way. Look for an email from EntityPing.</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="hidden mt-3">
+          <p class="text-sm text-red-400">Something went wrong. Please try again or email us at hello@entityping.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is EntityPing -->
+  <section class="py-16 md:py-20 border-t border-white/[0.04]">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">
+            More than a filing checker
+          </h2>
+          <p class="text-surface-100/50 leading-relaxed mb-6">
+            EntityPing monitors state filings across all 50 states and delivers enriched business leads straight to your inbox every morning. Each lead includes the business name, owner name, address, phone number, and industry classification.
+          </p>
+          <p class="text-surface-100/50 leading-relaxed">
+            Whether you sell insurance, accounting, merchant services, or marketing &mdash; these are the freshest leads in the market. Reach new business owners in their first week of operation, before your competitors even know they exist.
+          </p>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4 bg-surface-900/40 border border-white/[0.06] rounded-xl p-5">
+            <div class="w-9 h-9 bg-brand-500/10 border border-brand-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4.5 h-4.5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold mb-1">Daily CSV delivery</h3>
+              <p class="text-xs text-surface-100/40 leading-relaxed">Fresh leads delivered by 7 AM ET every business day. Open directly in Excel, Sheets, or your CRM.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 bg-surface-900/40 border border-white/[0.06] rounded-xl p-5">
+            <div class="w-9 h-9 bg-brand-500/10 border border-brand-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4.5 h-4.5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold mb-1">Industry &amp; location filters</h3>
+              <p class="text-xs text-surface-100/40 leading-relaxed">Target specific industries, cities, or zip codes. Only receive the leads that match your ideal customer profile.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 bg-surface-900/40 border border-white/[0.06] rounded-xl p-5">
+            <div class="w-9 h-9 bg-brand-500/10 border border-brand-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4.5 h-4.5 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold mb-1">Phone &amp; email enrichment</h3>
+              <p class="text-xs text-surface-100/40 leading-relaxed">Every lead includes owner name and address. Growth and Pro plans add verified phone numbers and email addresses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-20 border-t border-white/[0.04]">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">Frequently asked questions</h2>
+
+      <div class="space-y-3">
+        <details class="bg-surface-900/40 border border-white/[0.06] rounded-xl group">
+          <summary class="flex items-center justify-between px-6 py-4">
+            <span class="text-sm font-semibold pr-4">What is a business filing checker?</span>
+            <svg class="w-4 h-4 text-surface-100/30 group-open:rotate-45 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <p class="px-6 pb-4 text-sm text-surface-100/50 leading-relaxed">A business filing checker lets you look up recently registered businesses in a given state. When someone forms an LLC, corporation, or DBA, it gets filed with the Secretary of State. Our tool aggregates these filings so you can see new businesses as they register.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="bg-surface-900/40 border border-white/[0.06] rounded-xl group">
+          <summary class="flex items-center justify-between px-6 py-4">
+            <span class="text-sm font-semibold pr-4">How often are business filings updated?</span>
+            <svg class="w-4 h-4 text-surface-100/30 group-open:rotate-45 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <p class="px-6 pb-4 text-sm text-surface-100/50 leading-relaxed">EntityPing pulls new filings every business day. Most filings appear in our system within 24 hours of being recorded by the state. The free checker shows a sample of recent filings; paid plans deliver the full daily feed by 7 AM ET.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="bg-surface-900/40 border border-white/[0.06] rounded-xl group">
+          <summary class="flex items-center justify-between px-6 py-4">
+            <span class="text-sm font-semibold pr-4">Which states are covered?</span>
+            <svg class="w-4 h-4 text-surface-100/30 group-open:rotate-45 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <p class="px-6 pb-4 text-sm text-surface-100/50 leading-relaxed">The free filing checker covers Florida, Texas, Georgia, Colorado, New York, and California. EntityPing's full service covers all 50 states with daily filing data including owner names, addresses, phone numbers, and industry classification.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="bg-surface-900/40 border border-white/[0.06] rounded-xl group">
+          <summary class="flex items-center justify-between px-6 py-4">
+            <span class="text-sm font-semibold pr-4">Can I get daily business filing data delivered to my inbox?</span>
+            <svg class="w-4 h-4 text-surface-100/30 group-open:rotate-45 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <p class="px-6 pb-4 text-sm text-surface-100/50 leading-relaxed">Yes. EntityPing delivers fresh business leads from state filings as a clean CSV email every morning. You can filter by state, industry, and entity type. Plans start at $39/month for 200 leads per day. You can also get a free sample of 25 leads to try it out.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="bg-surface-900/40 border border-white/[0.06] rounded-xl group">
+          <summary class="flex items-center justify-between px-6 py-4">
+            <span class="text-sm font-semibold pr-4">What information is included in each filing?</span>
+            <svg class="w-4 h-4 text-surface-100/30 group-open:rotate-45 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <p class="px-6 pb-4 text-sm text-surface-100/50 leading-relaxed">State filings typically include the business name, entity type (LLC, Corporation, DBA), filing date, registered agent, and principal address. EntityPing enriches this data with owner phone numbers, email addresses, and industry classification so you can start outreach immediately.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="bg-surface-900/40 border border-white/[0.06] rounded-xl group">
+          <summary class="flex items-center justify-between px-6 py-4">
+            <span class="text-sm font-semibold pr-4">Is this data free to use?</span>
+            <svg class="w-4 h-4 text-surface-100/30 group-open:rotate-45 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <p class="px-6 pb-4 text-sm text-surface-100/50 leading-relaxed">The filing checker tool is completely free. It shows a sample of recent filings in each state. For the full daily feed with contact information and enrichment, you can sign up for a free sample of 25 leads or choose a paid plan starting at $39/month.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="py-16 md:py-20 border-t border-white/[0.04]">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">
+        Stop searching. Start <span class="gradient-text">receiving.</span>
+      </h2>
+      <p class="text-surface-100/50 mb-8 max-w-lg mx-auto">
+        Join hundreds of sales teams, agencies, and service providers who use EntityPing to reach new businesses first.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/#pricing" class="bg-brand-600 hover:bg-brand-500 text-white font-semibold px-7 py-3.5 rounded-xl text-sm transition-all hover:shadow-lg hover:shadow-brand-600/20">
+          View Pricing Plans
+        </a>
+        <a href="#cta-section" class="text-sm text-surface-100/50 hover:text-surface-100 transition-colors font-medium underline underline-offset-2">
+          Or get 25 leads free
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/[0.04] py-12">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="/" class="flex items-center gap-2.5">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp-footer)"/>
+          <defs><linearGradient id="lp-footer" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+          <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+          <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+        </svg>
+        <span class="text-sm font-bold">Entity<span class="text-brand-400">Ping</span></span>
+      </a>
+      <div class="text-xs text-surface-100/25">
+        &copy; 2026 EntityPing. All rights reserved.
+      </div>
+      <a href="mailto:hello@entityping.com" class="text-sm text-surface-100/40 hover:text-surface-100 transition-colors">
+        hello@entityping.com
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // ========================================
+    // FILING DATA — All 6 states
+    // ========================================
+    const filingData = {
+      FL: {
+        name: 'Florida',
+        total: 3847,
+        filings: [
+          { name: 'Coastal Breeze Property Management LLC', type: 'LLC', date: '03/03/2026', city: 'Miami', industry: 'Real Estate' },
+          { name: 'SunPath Digital Solutions Inc', type: 'Corp', date: '03/03/2026', city: 'Tampa', industry: 'Technology' },
+          { name: 'Flamingo Bay Catering', type: 'DBA', date: '03/02/2026', city: 'Orlando', industry: 'Food Service' },
+          { name: 'Atlantic Freight Logistics LLC', type: 'LLC', date: '03/02/2026', city: 'Jacksonville', industry: 'Transportation' },
+          { name: 'Evergreen Wealth Advisors LLC', type: 'LLC', date: '03/01/2026', city: 'Fort Lauderdale', industry: 'Financial Services' },
+          { name: 'Palm Harbor Construction Corp', type: 'Corp', date: '03/01/2026', city: 'St. Petersburg', industry: 'Construction' },
+          { name: 'Sunshine Auto Detailing', type: 'DBA', date: '02/28/2026', city: 'Hialeah', industry: 'Automotive' },
+          { name: 'VistaPoint Healthcare LLC', type: 'LLC', date: '02/28/2026', city: 'Boca Raton', industry: 'Healthcare' },
+          { name: 'Blue Marlin Charters Inc', type: 'Corp', date: '02/27/2026', city: 'Key West', industry: 'Recreation' },
+          { name: 'TrueNorth Insurance Services LLC', type: 'LLC', date: '02/27/2026', city: 'Naples', industry: 'Insurance' },
+        ]
+      },
+      TX: {
+        name: 'Texas',
+        total: 5214,
+        filings: [
+          { name: 'Lone Star Roofing Solutions LLC', type: 'LLC', date: '03/03/2026', city: 'Houston', industry: 'Construction' },
+          { name: 'RanchView Capital Partners Inc', type: 'Corp', date: '03/03/2026', city: 'Dallas', industry: 'Financial Services' },
+          { name: 'Tex-Mex Fusion Kitchen', type: 'DBA', date: '03/02/2026', city: 'San Antonio', industry: 'Food Service' },
+          { name: 'Meridian Oilfield Services LLC', type: 'LLC', date: '03/02/2026', city: 'Midland', industry: 'Energy' },
+          { name: 'Circuit Board Staffing Inc', type: 'Corp', date: '03/01/2026', city: 'Austin', industry: 'Staffing' },
+          { name: 'Brazos Valley Landscaping LLC', type: 'LLC', date: '03/01/2026', city: 'College Station', industry: 'Landscaping' },
+          { name: 'CrossFit Iron Range', type: 'DBA', date: '02/28/2026', city: 'Fort Worth', industry: 'Fitness' },
+          { name: 'Whitewing Logistics LLC', type: 'LLC', date: '02/28/2026', city: 'El Paso', industry: 'Transportation' },
+          { name: 'Pinnacle Dental Group Inc', type: 'Corp', date: '02/27/2026', city: 'Plano', industry: 'Healthcare' },
+          { name: 'RedRock Cybersecurity LLC', type: 'LLC', date: '02/27/2026', city: 'Round Rock', industry: 'Technology' },
+        ]
+      },
+      GA: {
+        name: 'Georgia',
+        total: 2693,
+        filings: [
+          { name: 'Peachtree Home Inspections LLC', type: 'LLC', date: '03/03/2026', city: 'Atlanta', industry: 'Real Estate' },
+          { name: 'Southern Comfort HVAC Inc', type: 'Corp', date: '03/03/2026', city: 'Savannah', industry: 'HVAC' },
+          { name: 'Golden Isles Seafood Market', type: 'DBA', date: '03/02/2026', city: 'Brunswick', industry: 'Food Service' },
+          { name: 'Dogwood Financial Planning LLC', type: 'LLC', date: '03/02/2026', city: 'Marietta', industry: 'Financial Services' },
+          { name: 'Redbird Media Productions Inc', type: 'Corp', date: '03/01/2026', city: 'Decatur', industry: 'Media' },
+          { name: 'Chattahoochee Plumbing LLC', type: 'LLC', date: '03/01/2026', city: 'Roswell', industry: 'Plumbing' },
+          { name: 'Magnolia Wellness Studio', type: 'DBA', date: '02/28/2026', city: 'Athens', industry: 'Wellness' },
+          { name: 'Terminus Freight Brokers LLC', type: 'LLC', date: '02/28/2026', city: 'Alpharetta', industry: 'Transportation' },
+          { name: 'Vidalia Software Corp', type: 'Corp', date: '02/27/2026', city: 'Sandy Springs', industry: 'Technology' },
+          { name: 'Heritage Pest Control LLC', type: 'LLC', date: '02/27/2026', city: 'Augusta', industry: 'Pest Control' },
+        ]
+      },
+      CO: {
+        name: 'Colorado',
+        total: 1876,
+        filings: [
+          { name: 'Summit Trail Adventures LLC', type: 'LLC', date: '03/03/2026', city: 'Denver', industry: 'Recreation' },
+          { name: 'Front Range Solar Inc', type: 'Corp', date: '03/03/2026', city: 'Boulder', industry: 'Energy' },
+          { name: 'Alpine Grind Coffee Roasters', type: 'DBA', date: '03/02/2026', city: 'Colorado Springs', industry: 'Food Service' },
+          { name: 'Rockies Commercial Cleaning LLC', type: 'LLC', date: '03/02/2026', city: 'Fort Collins', industry: 'Cleaning' },
+          { name: 'Pikes Peak IT Solutions Inc', type: 'Corp', date: '03/01/2026', city: 'Aurora', industry: 'Technology' },
+          { name: 'Columbine Veterinary Care LLC', type: 'LLC', date: '03/01/2026', city: 'Lakewood', industry: 'Veterinary' },
+          { name: 'Red Rocks Fitness Co', type: 'DBA', date: '02/28/2026', city: 'Littleton', industry: 'Fitness' },
+          { name: 'Continental Divide Consulting LLC', type: 'LLC', date: '02/28/2026', city: 'Broomfield', industry: 'Consulting' },
+          { name: 'Centennial Mortgage Group Inc', type: 'Corp', date: '02/27/2026', city: 'Arvada', industry: 'Financial Services' },
+          { name: 'High Plains Electric LLC', type: 'LLC', date: '02/27/2026', city: 'Pueblo', industry: 'Electrical' },
+        ]
+      },
+      NY: {
+        name: 'New York',
+        total: 4531,
+        filings: [
+          { name: 'Hudson Valley Property Group LLC', type: 'LLC', date: '03/03/2026', city: 'New York', industry: 'Real Estate' },
+          { name: 'Empire State Accounting Inc', type: 'Corp', date: '03/03/2026', city: 'Brooklyn', industry: 'Accounting' },
+          { name: 'Nolita Artisan Bakery', type: 'DBA', date: '03/02/2026', city: 'Manhattan', industry: 'Food Service' },
+          { name: 'Upstate Medical Billing LLC', type: 'LLC', date: '03/02/2026', city: 'Albany', industry: 'Healthcare' },
+          { name: 'Five Boroughs Contracting Inc', type: 'Corp', date: '03/01/2026', city: 'Queens', industry: 'Construction' },
+          { name: 'Harborside Immigration Law LLC', type: 'LLC', date: '03/01/2026', city: 'Staten Island', industry: 'Legal' },
+          { name: 'Catskill Creek Woodworks', type: 'DBA', date: '02/28/2026', city: 'Kingston', industry: 'Manufacturing' },
+          { name: 'Gotham Digital Marketing LLC', type: 'LLC', date: '02/28/2026', city: 'Bronx', industry: 'Marketing' },
+          { name: 'Niagara Frontier Logistics Inc', type: 'Corp', date: '02/27/2026', city: 'Buffalo', industry: 'Transportation' },
+          { name: 'Adirondack Insurance Brokers LLC', type: 'LLC', date: '02/27/2026', city: 'Syracuse', industry: 'Insurance' },
+        ]
+      },
+      CA: {
+        name: 'California',
+        total: 6782,
+        filings: [
+          { name: 'Pacific Coast Ventures LLC', type: 'LLC', date: '03/03/2026', city: 'Los Angeles', industry: 'Consulting' },
+          { name: 'Silicon Valley AI Labs Inc', type: 'Corp', date: '03/03/2026', city: 'San Jose', industry: 'Technology' },
+          { name: 'Golden Gate Sushi Bar', type: 'DBA', date: '03/02/2026', city: 'San Francisco', industry: 'Food Service' },
+          { name: 'Central Valley Farming Supply LLC', type: 'LLC', date: '03/02/2026', city: 'Fresno', industry: 'Agriculture' },
+          { name: 'Redwood Financial Group Inc', type: 'Corp', date: '03/01/2026', city: 'Sacramento', industry: 'Financial Services' },
+          { name: 'Malibu Aesthetic Dentistry LLC', type: 'LLC', date: '03/01/2026', city: 'Malibu', industry: 'Healthcare' },
+          { name: 'Surf City Auto Glass', type: 'DBA', date: '02/28/2026', city: 'Huntington Beach', industry: 'Automotive' },
+          { name: 'Napa Creek Winery Management LLC', type: 'LLC', date: '02/28/2026', city: 'Napa', industry: 'Hospitality' },
+          { name: 'Bay Area Robotics Corp', type: 'Corp', date: '02/27/2026', city: 'Oakland', industry: 'Technology' },
+          { name: 'Desert Sun Solar Installations LLC', type: 'LLC', date: '02/27/2026', city: 'Palm Springs', industry: 'Energy' },
+        ]
+      }
+    };
+
+    // ========================================
+    // STATE SELECTION
+    // ========================================
+    let currentState = null;
+
+    function selectState(stateCode) {
+      // Update active button
+      document.querySelectorAll('.state-btn').forEach(btn => {
+        btn.classList.remove('active', 'text-white');
+        btn.querySelector('span').classList.add('text-surface-100/70');
+      });
+      const activeBtn = document.querySelector(`[data-state="${stateCode}"]`);
+      activeBtn.classList.add('active', 'text-white');
+      activeBtn.querySelector('span').classList.remove('text-surface-100/70');
+
+      // If same state, scroll to results
+      if (currentState === stateCode) {
+        document.getElementById('results-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+
+      currentState = stateCode;
+      const data = filingData[stateCode];
+
+      // Show loading
+      const resultsSection = document.getElementById('results-section');
+      const loadingState = document.getElementById('loading-state');
+      resultsSection.classList.remove('visible');
+      loadingState.classList.remove('hidden');
+
+      // Simulate network delay
+      setTimeout(() => {
+        loadingState.classList.add('hidden');
+        renderResults(data, stateCode);
+        resultsSection.classList.add('visible');
+
+        // Show CTA
+        document.querySelector('.cta-section').classList.add('visible');
+
+        // Scroll to results
+        setTimeout(() => {
+          resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+
+        // Animate rows in sequence
+        setTimeout(() => {
+          const rows = document.querySelectorAll('.filing-row');
+          rows.forEach((row, i) => {
+            setTimeout(() => row.classList.add('animate-in'), i * 60);
+          });
+          const cards = document.querySelectorAll('.filing-card');
+          cards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('animate-in'), i * 80);
+          });
+        }, 100);
+
+        // Track state selection in analytics
+        if (window.plausible) {
+          window.plausible('Filing Checker', { props: { state: stateCode } });
+        }
+      }, 800 + Math.random() * 400);
+    }
+
+    // ========================================
+    // RENDER RESULTS
+    // ========================================
+    function getBadgeClass(type) {
+      switch (type) {
+        case 'LLC': return 'badge-llc';
+        case 'Corp': return 'badge-corp';
+        case 'DBA': return 'badge-dba';
+        default: return 'badge-llc';
+      }
+    }
+
+    function renderResults(data, stateCode) {
+      // Update header
+      document.getElementById('state-name').textContent = data.name;
+      document.getElementById('result-count').textContent = data.filings.length;
+      document.getElementById('total-filings').textContent = data.total.toLocaleString();
+
+      // Desktop table
+      const tbody = document.getElementById('results-body');
+      tbody.innerHTML = data.filings.map(f => `
+        <tr class="filing-row border-b border-white/[0.04]">
+          <td class="px-5 py-3.5">
+            <span class="text-surface-100/80 font-medium">${f.name}</span>
+          </td>
+          <td class="px-5 py-3.5">
+            <span class="${getBadgeClass(f.type)} text-[11px] font-semibold px-2.5 py-0.5 rounded-full">${f.type}</span>
+          </td>
+          <td class="px-5 py-3.5 text-surface-100/40 whitespace-nowrap">${f.date}</td>
+          <td class="px-5 py-3.5 text-surface-100/40">${f.city}</td>
+          <td class="px-5 py-3.5 text-surface-100/40">${f.industry}</td>
+        </tr>
+      `).join('');
+
+      // Mobile cards
+      const cardsContainer = document.getElementById('results-cards');
+      cardsContainer.innerHTML = data.filings.map(f => `
+        <div class="filing-card bg-surface-900/40 border border-white/[0.06] rounded-xl p-4">
+          <div class="flex items-start justify-between gap-3 mb-2.5">
+            <h3 class="text-sm font-semibold text-surface-100/80 leading-snug">${f.name}</h3>
+            <span class="${getBadgeClass(f.type)} text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0">${f.type}</span>
+          </div>
+          <div class="flex items-center gap-4 text-xs text-surface-100/40">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              ${f.date}
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              ${f.city}
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              ${f.industry}
+            </span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ========================================
+    // EMAIL FORM SUBMISSION
+    // ========================================
+    async function handleSubmit(e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById('email-input');
+      const submitBtn = document.getElementById('submit-btn');
+      const btnText = document.getElementById('btn-text');
+      const btnLoader = document.getElementById('btn-loader');
+      const errorState = document.getElementById('error-state');
+      const successState = document.getElementById('success-state');
+      const emailForm = document.getElementById('email-form');
+
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      // Loading state
+      btnText.textContent = 'Sending...';
+      btnLoader.classList.remove('hidden');
+      submitBtn.disabled = true;
+      errorState.classList.add('hidden');
+
+      try {
+        const res = await fetch('/api/sample', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: email,
+            name: '',
+            industry: 'Filing Checker'
+          })
+        });
+
+        if (res.ok) {
+          // Success
+          emailForm.classList.add('hidden');
+          successState.classList.remove('hidden');
+
+          // Track conversion
+          if (window.plausible) {
+            window.plausible('Filing Checker Signup', { props: { state: currentState || 'none' } });
+          }
+        } else {
+          throw new Error('Request failed');
+        }
+      } catch (err) {
+        // Error
+        btnText.textContent = 'Get 25 Free Leads';
+        btnLoader.classList.add('hidden');
+        submitBtn.disabled = false;
+        errorState.classList.remove('hidden');
+      }
+    }
+
+    // ========================================
+    // AUTO-SELECT FROM URL HASH
+    // ========================================
+    document.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '').toUpperCase();
+      if (filingData[hash]) {
+        selectState(hash);
+      }
+
+      // Update time display
+      const now = new Date();
+      const hours = now.getHours();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      const displayHour = hours % 12 || 12;
+      document.getElementById('update-time').textContent = `today at 7:00 AM ET`;
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrations — Connect EntityPing to Your Sales Stack</title>
+  <meta name="description" content="Import EntityPing leads directly into HubSpot, Salesforce, Pipedrive, Google Sheets, and 6,000+ apps via Zapier. No manual uploads, no friction.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://entityping.com/integrations">
+  <meta property="og:title" content="Integrations — Connect EntityPing to Your Sales Stack">
+  <meta property="og:description" content="Import fresh leads directly into the tools your team already uses. HubSpot, Salesforce, Pipedrive, Google Sheets, Zapier, and more.">
+  <meta property="og:image" content="https://entityping.com/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Integrations — Connect EntityPing to Your Sales Stack">
+  <meta name="twitter:description" content="Import fresh leads directly into the tools your team already uses. HubSpot, Salesforce, Pipedrive, Google Sheets, Zapier, and more.">
+  <meta name="twitter:image" content="https://entityping.com/og-image.png">
+
+  <!-- Analytics -->
+  <script defer data-domain="entityping.com" src="https://plausible.io/js/script.js"></script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='14' cy='12' r='11' stroke='%231486f5' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='14' cy='12' r='7.5' stroke='%231486f5' stroke-width='1.5' opacity='0.3'/%3E%3Cpath d='M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z' fill='%231486f5'/%3E%3Ccircle cx='14' cy='11' r='3' fill='white'/%3E%3Ccircle cx='14' cy='11' r='1.5' fill='%231486f5'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef9ff',
+              100: '#d8f1ff',
+              200: '#bae7ff',
+              300: '#8adaff',
+              400: '#52c3ff',
+              500: '#2aa4ff',
+              600: '#1486f5',
+              700: '#0d6ee1',
+              800: '#1158b6',
+              900: '#144b8f',
+              950: '#112f57',
+            },
+            surface: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              800: '#1e293b',
+              850: '#172033',
+              900: '#0f172a',
+              950: '#080e1d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #2aa4ff 0%, #8adaff 50%, #52c3ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow-border {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.1), 0 4px 30px -8px rgba(42, 164, 255, 0.08);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .glow-border:hover {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.2), 0 8px 40px -8px rgba(42, 164, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .hero-glow {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(42, 164, 255, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 70% 10%, rgba(82, 195, 255, 0.06) 0%, transparent 50%);
+    }
+
+    /* Fade-in on scroll */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Connection lines animation */
+    .connection-line {
+      stroke-dasharray: 6 4;
+      animation: dash-flow 1.5s linear infinite;
+    }
+    @keyframes dash-flow {
+      to { stroke-dashoffset: -20; }
+    }
+
+    /* Orbit animation for the hub visual */
+    .orbit-item {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .orbit-item:hover {
+      transform: scale(1.12);
+      box-shadow: 0 0 24px rgba(42, 164, 255, 0.2);
+    }
+
+    /* Pulse for center logo */
+    .center-pulse {
+      animation: center-glow 3s ease-in-out infinite;
+    }
+    @keyframes center-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(42, 164, 255, 0.3), 0 0 20px rgba(42, 164, 255, 0.1); }
+      50% { box-shadow: 0 0 0 12px rgba(42, 164, 255, 0), 0 0 30px rgba(42, 164, 255, 0.2); }
+    }
+
+    /* Step connector line */
+    .step-line {
+      background: linear-gradient(90deg, rgba(42,164,255,0.3), rgba(42,164,255,0.05));
+    }
+
+    /* Card hover effects */
+    .integration-card {
+      transition: all 0.3s ease;
+    }
+    .integration-card:hover {
+      border-color: rgba(255,255,255,0.1);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    /* Ping animations (from main site) */
+    .ping-dot {
+      animation: ping-pulse 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes ping-pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="bg-surface-950 text-surface-100 antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 border-b border-white/[0.04] bg-surface-950/80 backdrop-blur-2xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="relative w-8 h-8 flex items-center justify-center">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="absolute" aria-hidden="true">
+            <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+            <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+            <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp)"/>
+            <defs><linearGradient id="lp" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+            <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+            <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+          </svg>
+        </div>
+        <span class="text-lg font-bold tracking-tight">Entity<span class="text-brand-400">Ping</span></span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm text-surface-100/50 font-medium">
+        <a href="/#pricing" class="hover:text-surface-100 transition-colors">Pricing</a>
+        <a href="/features" class="hover:text-surface-100 transition-colors">Features</a>
+        <a href="/integrations" class="text-surface-100 transition-colors">Integrations</a>
+        <a href="/blog" class="hover:text-surface-100 transition-colors">Blog</a>
+      </div>
+
+      <a href="/checkout?plan=growth&billing=monthly" class="bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-brand-600/20">
+        Get Started
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-20 md:pt-44 md:pb-28 hero-glow overflow-hidden">
+    <!-- Decorative grid -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M60 0H0v60&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;0.5&quot;/%3E%3C/svg%3E');"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 bg-brand-500/8 border border-brand-500/15 rounded-full px-4 py-1.5 mb-8">
+          <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          <span class="text-sm font-medium text-brand-300">Integrations</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
+          Connect EntityPing to Your <span class="gradient-text">Entire Sales Stack</span>
+        </h1>
+        <p class="text-lg md:text-xl text-surface-100/50 leading-relaxed max-w-2xl mx-auto">
+          Import fresh leads directly into the tools your team already uses. No manual uploads, no copy-paste, no friction.
+        </p>
+      </div>
+
+      <!-- Hub Visual: EntityPing in center, CRMs orbiting -->
+      <div class="relative w-full max-w-lg mx-auto h-80 md:h-96">
+        <!-- Connection lines (SVG) -->
+        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Lines from center (250,200) to each orbit position -->
+          <line x1="250" y1="200" x2="250" y2="40" class="connection-line" stroke="rgba(42,164,255,0.2)" stroke-width="1"/>
+          <line x1="250" y1="200" x2="430" y2="90" class="connection-line" stroke="rgba(42,164,255,0.2)" stroke-width="1" style="animation-delay:0.2s"/>
+          <line x1="250" y1="200" x2="460" y2="240" class="connection-line" stroke="rgba(42,164,255,0.2)" stroke-width="1" style="animation-delay:0.4s"/>
+          <line x1="250" y1="200" x2="380" y2="370" class="connection-line" stroke="rgba(42,164,255,0.2)" stroke-width="1" style="animation-delay:0.6s"/>
+          <line x1="250" y1="200" x2="120" y2="370" class="connection-line" stroke="rgba(42,164,255,0.2)" stroke-width="1" style="animation-delay:0.8s"/>
+          <line x1="250" y1="200" x2="40" y2="240" class="connection-line" stroke="rgba(42,164,255,0.2)" stroke-width="1" style="animation-delay:1.0s"/>
+          <line x1="250" y1="200" x2="70" y2="90" class="connection-line" stroke="rgba(42,164,255,0.2)" stroke-width="1" style="animation-delay:1.2s"/>
+        </svg>
+
+        <!-- Center: EntityPing Logo -->
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+          <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-surface-900 border border-brand-400/30 flex items-center justify-center center-pulse">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+              <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+              <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#hub-gradient)"/>
+              <defs>
+                <linearGradient id="hub-gradient" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#52c3ff"/>
+                  <stop offset="1" stop-color="#1486f5"/>
+                </linearGradient>
+              </defs>
+              <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+              <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Orbit Items -->
+        <!-- Top Center: CSV -->
+        <div class="absolute left-1/2 top-0 -translate-x-1/2 orbit-item">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-900/80 border border-white/[0.08] flex items-center justify-center" title="CSV / Excel">
+            <span class="text-xs md:text-sm font-bold text-emerald-400">CSV</span>
+          </div>
+        </div>
+
+        <!-- Top Right: HubSpot -->
+        <div class="absolute right-[4%] md:right-[3%] top-[12%] md:top-[10%] orbit-item">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-900/80 border border-white/[0.08] flex items-center justify-center" title="HubSpot">
+            <div class="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center" style="background: rgba(255,122,89,0.15);">
+              <span class="text-sm md:text-base font-bold" style="color: #FF7A59;">H</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Salesforce -->
+        <div class="absolute right-0 md:-right-[2%] top-[50%] -translate-y-1/2 orbit-item">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-900/80 border border-white/[0.08] flex items-center justify-center" title="Salesforce">
+            <div class="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center" style="background: rgba(0,161,224,0.15);">
+              <span class="text-sm md:text-base font-bold" style="color: #00A1E0;">SF</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Right: Zapier -->
+        <div class="absolute right-[14%] md:right-[12%] bottom-[2%] md:bottom-0 orbit-item">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-900/80 border border-white/[0.08] flex items-center justify-center" title="Zapier">
+            <div class="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center" style="background: rgba(255,74,0,0.15);">
+              <span class="text-sm md:text-base font-bold" style="color: #FF4A00;">Z</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Left: Make -->
+        <div class="absolute left-[14%] md:left-[12%] bottom-[2%] md:bottom-0 orbit-item">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-900/80 border border-white/[0.08] flex items-center justify-center" title="Make">
+            <div class="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center" style="background: rgba(109,0,204,0.15);">
+              <span class="text-sm md:text-base font-bold" style="color: #6D00CC;">M</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left: Google Sheets -->
+        <div class="absolute left-0 md:-left-[2%] top-[50%] -translate-y-1/2 orbit-item">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-900/80 border border-white/[0.08] flex items-center justify-center" title="Google Sheets">
+            <div class="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center" style="background: rgba(15,157,88,0.15);">
+              <span class="text-sm md:text-base font-bold" style="color: #0F9D58;">GS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Left: Pipedrive -->
+        <div class="absolute left-[4%] md:left-[3%] top-[12%] md:top-[10%] orbit-item">
+          <div class="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-surface-900/80 border border-white/[0.08] flex items-center justify-center" title="Pipedrive">
+            <div class="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center" style="background: rgba(1,119,55,0.15);">
+              <span class="text-sm md:text-base font-bold" style="color: #017737;">PD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Native Integrations -->
+  <section class="py-20 md:py-28 relative">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14 fade-up">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Native Integrations</h2>
+        <p class="text-surface-100/45 text-lg max-w-2xl mx-auto">First-class support for the platforms your team uses every day.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 fade-up">
+        <!-- CSV / Excel -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-2xl p-8 glow-border">
+          <div class="flex items-start gap-5 mb-5">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.04)); border: 1px solid rgba(16,185,129,0.15);">
+              <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-1">CSV / Excel</h3>
+              <span class="inline-block text-xs font-semibold text-emerald-400 bg-emerald-400/10 border border-emerald-400/15 rounded-full px-2.5 py-0.5">Universal</span>
+            </div>
+          </div>
+          <p class="text-surface-100/50 leading-relaxed">
+            Direct import into any spreadsheet or CRM that supports CSV. Open in Excel, Google Sheets, or import directly into your workflow. Every EntityPing delivery is a clean, structured CSV ready to use.
+          </p>
+        </div>
+
+        <!-- HubSpot CRM -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-2xl p-8 glow-border">
+          <div class="flex items-start gap-5 mb-5">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(255,122,89,0.1); border: 1px solid rgba(255,122,89,0.15);">
+              <span class="text-2xl font-bold" style="color: #FF7A59;">H</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-1">HubSpot CRM</h3>
+              <span class="inline-block text-xs font-semibold text-brand-400 bg-brand-400/10 border border-brand-400/15 rounded-full px-2.5 py-0.5">Popular</span>
+            </div>
+          </div>
+          <p class="text-surface-100/50 leading-relaxed">
+            Import leads directly into HubSpot contacts. Map fields automatically &mdash; name, company, phone, email, address. Use HubSpot's native CSV import or connect via Zapier for hands-free delivery.
+          </p>
+        </div>
+
+        <!-- Salesforce -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-2xl p-8 glow-border">
+          <div class="flex items-start gap-5 mb-5">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(0,161,224,0.1); border: 1px solid rgba(0,161,224,0.15);">
+              <span class="text-2xl font-bold" style="color: #00A1E0;">SF</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-1">Salesforce</h3>
+              <span class="inline-block text-xs font-semibold text-brand-400 bg-brand-400/10 border border-brand-400/15 rounded-full px-2.5 py-0.5">Enterprise</span>
+            </div>
+          </div>
+          <p class="text-surface-100/50 leading-relaxed">
+            Bulk import via Data Loader or direct CSV import. Custom field mapping supported. Works seamlessly with Salesforce Leads, Contacts, and Accounts objects.
+          </p>
+        </div>
+
+        <!-- Google Sheets -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-2xl p-8 glow-border">
+          <div class="flex items-start gap-5 mb-5">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(15,157,88,0.1); border: 1px solid rgba(15,157,88,0.15);">
+              <span class="text-2xl font-bold" style="color: #0F9D58;">GS</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-1">Google Sheets</h3>
+              <span class="inline-block text-xs font-semibold text-emerald-400 bg-emerald-400/10 border border-emerald-400/15 rounded-full px-2.5 py-0.5">Free</span>
+            </div>
+          </div>
+          <p class="text-surface-100/50 leading-relaxed">
+            Automatic sync via Zapier or direct CSV upload. Build custom dashboards with your leads data. Filter, sort, and share with your team in real time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automation Integrations -->
+  <section class="py-20 md:py-28 relative border-t border-white/[0.04]">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14 fade-up">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Automation Platforms</h2>
+        <p class="text-surface-100/45 text-lg max-w-2xl mx-auto">Build powerful workflows that route leads exactly where they need to go &mdash; automatically.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 fade-up">
+        <!-- Zapier -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-2xl p-7 glow-border">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(255,74,0,0.1); border: 1px solid rgba(255,74,0,0.15);">
+              <span class="text-xl font-bold" style="color: #FF4A00;">Z</span>
+            </div>
+            <h3 class="text-lg font-bold">Zapier</h3>
+          </div>
+          <p class="text-surface-100/50 text-sm leading-relaxed mb-4">
+            Connect EntityPing to 6,000+ apps. Trigger workflows when new leads arrive. Auto-add contacts, send notifications, update spreadsheets &mdash; all without code.
+          </p>
+          <div class="flex items-center gap-2 text-xs text-surface-100/30">
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+            <span>6,000+ connected apps</span>
+          </div>
+        </div>
+
+        <!-- Make (Integromat) -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-2xl p-7 glow-border">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(109,0,204,0.1); border: 1px solid rgba(109,0,204,0.15);">
+              <span class="text-xl font-bold" style="color: #6D00CC;">M</span>
+            </div>
+            <h3 class="text-lg font-bold">Make (Integromat)</h3>
+          </div>
+          <p class="text-surface-100/50 text-sm leading-relaxed mb-4">
+            Build complex automations with visual workflows. Route leads by industry, location, or grade. Set conditions, filters, and multi-step sequences with drag-and-drop.
+          </p>
+          <div class="flex items-center gap-2 text-xs text-surface-100/30">
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+            <span>Visual workflow builder</span>
+          </div>
+        </div>
+
+        <!-- n8n -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-2xl p-7 glow-border">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(42,164,255,0.1); border: 1px solid rgba(42,164,255,0.15);">
+              <span class="text-xl font-bold text-brand-400">n8n</span>
+            </div>
+            <h3 class="text-lg font-bold">n8n</h3>
+          </div>
+          <p class="text-surface-100/50 text-sm leading-relaxed mb-4">
+            Self-hosted automation. Full control over your lead processing pipeline. Parse CSV attachments from email, transform data, and push to any destination.
+          </p>
+          <div class="flex items-center gap-2 text-xs text-surface-100/30">
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+            <span>Self-hosted &amp; open source</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRM Compatibility Grid -->
+  <section class="py-20 md:py-28 relative border-t border-white/[0.04]">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14 fade-up">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Works With Every CRM</h2>
+        <p class="text-surface-100/45 text-lg max-w-2xl mx-auto">Any CRM that accepts CSV imports works with EntityPing out of the box.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 fade-up">
+        <!-- Pipedrive -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-xl p-5 text-center glow-border">
+          <div class="w-12 h-12 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background: rgba(1,119,55,0.12); border: 1px solid rgba(1,119,55,0.15);">
+            <span class="text-base font-bold" style="color: #017737;">PD</span>
+          </div>
+          <h4 class="text-sm font-semibold mb-1">Pipedrive</h4>
+          <p class="text-xs text-surface-100/35">CSV import supported</p>
+        </div>
+
+        <!-- Zoho CRM -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-xl p-5 text-center glow-border">
+          <div class="w-12 h-12 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background: rgba(220,38,38,0.1); border: 1px solid rgba(220,38,38,0.15);">
+            <span class="text-base font-bold" style="color: #DC2626;">Z</span>
+          </div>
+          <h4 class="text-sm font-semibold mb-1">Zoho CRM</h4>
+          <p class="text-xs text-surface-100/35">CSV import supported</p>
+        </div>
+
+        <!-- Monday.com -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-xl p-5 text-center glow-border">
+          <div class="w-12 h-12 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background: rgba(255,61,87,0.1); border: 1px solid rgba(255,61,87,0.15);">
+            <span class="text-base font-bold" style="color: #FF3D57;">M</span>
+          </div>
+          <h4 class="text-sm font-semibold mb-1">Monday.com</h4>
+          <p class="text-xs text-surface-100/35">CSV import supported</p>
+        </div>
+
+        <!-- Freshsales -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-xl p-5 text-center glow-border">
+          <div class="w-12 h-12 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background: rgba(42,164,255,0.1); border: 1px solid rgba(42,164,255,0.15);">
+            <span class="text-base font-bold text-brand-400">FS</span>
+          </div>
+          <h4 class="text-sm font-semibold mb-1">Freshsales</h4>
+          <p class="text-xs text-surface-100/35">CSV import supported</p>
+        </div>
+
+        <!-- Close.com -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-xl p-5 text-center glow-border">
+          <div class="w-12 h-12 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background: rgba(42,164,255,0.1); border: 1px solid rgba(42,164,255,0.15);">
+            <span class="text-base font-bold text-brand-400">CL</span>
+          </div>
+          <h4 class="text-sm font-semibold mb-1">Close</h4>
+          <p class="text-xs text-surface-100/35">CSV import supported</p>
+        </div>
+
+        <!-- Copper -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-xl p-5 text-center glow-border">
+          <div class="w-12 h-12 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background: rgba(232,121,47,0.1); border: 1px solid rgba(232,121,47,0.15);">
+            <span class="text-base font-bold" style="color: #E8792F;">Cu</span>
+          </div>
+          <h4 class="text-sm font-semibold mb-1">Copper</h4>
+          <p class="text-xs text-surface-100/35">CSV import supported</p>
+        </div>
+
+        <!-- Insightly -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-xl p-5 text-center glow-border">
+          <div class="w-12 h-12 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background: rgba(100,100,255,0.1); border: 1px solid rgba(100,100,255,0.15);">
+            <span class="text-base font-bold" style="color: #6464FF;">IN</span>
+          </div>
+          <h4 class="text-sm font-semibold mb-1">Insightly</h4>
+          <p class="text-xs text-surface-100/35">CSV import supported</p>
+        </div>
+
+        <!-- Streak -->
+        <div class="integration-card bg-surface-900/50 border border-white/[0.06] rounded-xl p-5 text-center glow-border">
+          <div class="w-12 h-12 rounded-lg mx-auto mb-3 flex items-center justify-center" style="background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.15);">
+            <span class="text-base font-bold" style="color: #F5A623;">ST</span>
+          </div>
+          <h4 class="text-sm font-semibold mb-1">Streak</h4>
+          <p class="text-xs text-surface-100/35">CSV import supported</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20 md:py-28 relative border-t border-white/[0.04]">
+    <!-- Subtle background glow -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(42, 164, 255, 0.03) 0%, transparent 70%);"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative">
+      <div class="text-center mb-16 fade-up">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">How It Works</h2>
+        <p class="text-surface-100/45 text-lg max-w-2xl mx-auto">Three steps to a pipeline full of qualified leads.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 relative fade-up">
+        <!-- Connector lines (desktop only) -->
+        <div class="hidden md:block absolute top-12 left-[calc(33.33%+0.5rem)] right-[calc(33.33%+0.5rem)] h-px step-line"></div>
+
+        <!-- Step 1 -->
+        <div class="relative text-center">
+          <div class="w-24 h-24 rounded-2xl bg-surface-900/80 border border-white/[0.08] mx-auto mb-6 flex items-center justify-center glow-border">
+            <svg class="w-10 h-10 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+            </svg>
+          </div>
+          <div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-600/20 border border-brand-500/20 text-brand-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-lg font-bold mb-2">Receive Your Daily CSV</h3>
+          <p class="text-surface-100/45 text-sm leading-relaxed">EntityPing delivers fresh, qualified leads to your inbox every morning. Clean data, ready to use.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative text-center">
+          <div class="w-24 h-24 rounded-2xl bg-surface-900/80 border border-white/[0.08] mx-auto mb-6 flex items-center justify-center glow-border">
+            <svg class="w-10 h-10 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+            </svg>
+          </div>
+          <div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-600/20 border border-brand-500/20 text-brand-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-lg font-bold mb-2">Import or Automate</h3>
+          <p class="text-surface-100/45 text-sm leading-relaxed">Upload manually into your CRM, or set up a Zapier / Make workflow for hands-free lead delivery.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative text-center">
+          <div class="w-24 h-24 rounded-2xl bg-surface-900/80 border border-white/[0.08] mx-auto mb-6 flex items-center justify-center glow-border">
+            <svg class="w-10 h-10 text-brand-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/>
+            </svg>
+          </div>
+          <div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-600/20 border border-brand-500/20 text-brand-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-lg font-bold mb-2">Close Deals</h3>
+          <p class="text-surface-100/45 text-sm leading-relaxed">Your CRM is populated with fresh, qualified leads. Focus on selling, not sourcing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 md:py-28 relative border-t border-white/[0.04]">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(42, 164, 255, 0.06) 0%, transparent 70%);"></div>
+
+    <div class="max-w-3xl mx-auto px-6 text-center relative fade-up">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-5">
+        Ready to Connect Your <span class="gradient-text">Sales Stack</span>?
+      </h2>
+      <p class="text-lg text-surface-100/45 mb-10 max-w-xl mx-auto">
+        Start receiving fresh business leads tomorrow morning. Import into your CRM in minutes.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/checkout?plan=growth&billing=monthly" class="bg-brand-600 hover:bg-brand-500 text-white font-semibold px-8 py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-600/25 text-base">
+          Get Started &mdash; Growth Plan
+        </a>
+        <a href="/#pricing" class="text-surface-100/50 hover:text-surface-100 font-medium px-6 py-3.5 rounded-xl border border-white/[0.06] hover:border-white/[0.12] transition-all text-base">
+          View All Plans
+        </a>
+      </div>
+      <p class="mt-6 text-sm text-surface-100/25">No contracts. Cancel anytime. Leads delivered within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/[0.04] py-12">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="/" class="flex items-center gap-2.5">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp-footer)"/>
+          <defs><linearGradient id="lp-footer" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+          <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+          <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+        </svg>
+        <span class="text-sm font-bold">Entity<span class="text-brand-400">Ping</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-5 text-xs text-surface-100/40">
+        <a href="/#pricing" class="hover:text-surface-100 transition-colors">Pricing</a>
+        <a href="/features" class="hover:text-surface-100 transition-colors">Features</a>
+        <a href="/integrations" class="hover:text-surface-100 transition-colors">Integrations</a>
+        <a href="/blog" class="hover:text-surface-100 transition-colors">Blog</a>
+        <a href="/leads/insurance" class="hover:text-surface-100 transition-colors">Insurance Leads</a>
+        <a href="/leads/construction" class="hover:text-surface-100 transition-colors">Construction Leads</a>
+        <a href="/dashboard" class="hover:text-surface-100 transition-colors">Dashboard</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-xs text-surface-100/25">&copy; 2026 EntityPing</span>
+        <a href="mailto:hello@entityping.com" class="text-sm text-surface-100/40 hover:text-surface-100 transition-colors">
+          hello@entityping.com
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll-triggered fade-in animations -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeEls = document.querySelectorAll('.fade-up');
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      fadeEls.forEach(function(el) { observer.observe(el); });
+    });
+  </script>
+</body>
+</html>

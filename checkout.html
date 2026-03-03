@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — EntityPing</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Analytics -->
+  <script defer data-domain="entityping.com" src="https://plausible.io/js/script.js"></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              400: '#60a5fa',
+              500: '#1486f5',
+              600: '#1272d4',
+              700: '#0d5bb3',
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='14' cy='12' r='11' stroke='%231486f5' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='14' cy='12' r='7.5' stroke='%231486f5' stroke-width='1.5' opacity='0.3'/%3E%3Cpath d='M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z' fill='%231486f5'/%3E%3Ccircle cx='14' cy='11' r='3' fill='white'/%3E%3Ccircle cx='14' cy='11' r='1.5' fill='%231486f5'/%3E%3C/svg%3E">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .fade-in { animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#1486f5" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#1486f5" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="#1486f5"/>
+          <circle cx="14" cy="11" r="3" fill="white"/>
+          <circle cx="14" cy="11" r="1.5" fill="#1486f5"/>
+        </svg>
+        <span class="text-lg font-bold tracking-tight">Entity<span class="text-brand-500">Ping</span></span>
+      </a>
+      <div class="flex items-center gap-2 text-sm text-gray-400">
+        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+        <span class="font-medium">Secure Checkout</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex items-start justify-center px-4 py-10 md:py-16">
+    <div class="w-full max-w-lg fade-in">
+
+      <!-- Back link -->
+      <a href="/#pricing" class="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-600 transition-colors mb-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+        Back to plans
+      </a>
+
+      <!-- Checkout Card -->
+      <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+
+        <!-- Plan Header -->
+        <div class="px-6 pt-6 pb-5 border-b border-gray-100">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <span id="plan-badge" class="bg-brand-50 text-brand-500 border border-brand-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Growth</span>
+              <span class="text-sm text-gray-400">Plan</span>
+            </div>
+            <a href="/#pricing" class="text-xs text-brand-500 hover:text-brand-600 transition-colors font-medium">Change plan</a>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span id="plan-price" class="text-4xl font-extrabold text-gray-900">$99</span>
+            <span id="plan-period" class="text-gray-400 font-medium">/mo</span>
+          </div>
+          <p id="plan-billing-note" class="text-xs text-gray-400 mt-1"></p>
+        </div>
+
+        <!-- Features -->
+        <div class="px-6 py-5 border-b border-gray-100">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">What's included</p>
+          <ul id="plan-features" class="space-y-2.5">
+            <!-- Populated by JS -->
+          </ul>
+        </div>
+
+        <!-- Price Breakdown -->
+        <div class="px-6 py-5 border-b border-gray-100">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-500" id="line-item-label">Growth plan</span>
+            <span class="text-sm text-gray-700 font-medium" id="line-item-price">$99.00</span>
+          </div>
+          <div id="savings-row" class="flex items-center justify-between mb-2 hidden">
+            <span class="text-sm text-emerald-600">Annual savings (17%)</span>
+            <span class="text-sm text-emerald-600 font-medium" id="savings-amount">-$0</span>
+          </div>
+          <div class="border-t border-gray-100 pt-3 mt-3 flex items-center justify-between">
+            <span class="text-sm font-semibold text-gray-700">Total due today</span>
+            <span class="text-lg font-bold text-gray-900" id="total-price">$99.00</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="px-6 py-6">
+          <a id="pay-btn" href="#" class="block w-full text-center bg-brand-500 hover:bg-brand-600 text-white font-semibold py-4 rounded-xl text-base transition-colors shadow-sm">
+            Complete Purchase
+            <svg class="inline w-4 h-4 ml-1.5 -mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+          <p class="text-center text-xs text-gray-400 mt-3">You'll be redirected to our secure payment processor</p>
+        </div>
+      </div>
+
+      <!-- Trust Signals -->
+      <div class="mt-6 space-y-4">
+
+        <!-- Security Badges -->
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <div class="flex items-center gap-1.5 bg-emerald-50 border border-emerald-100 rounded-full px-3 py-1.5">
+            <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+            <span class="text-xs text-emerald-600 font-medium">7-day money-back</span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-emerald-50 border border-emerald-100 rounded-full px-3 py-1.5">
+            <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+            <span class="text-xs text-emerald-600 font-medium">256-bit SSL</span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-emerald-50 border border-emerald-100 rounded-full px-3 py-1.5">
+            <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg>
+            <span class="text-xs text-emerald-600 font-medium">Powered by Stripe</span>
+          </div>
+          <div class="flex items-center gap-1.5 bg-emerald-50 border border-emerald-100 rounded-full px-3 py-1.5">
+            <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span class="text-xs text-emerald-600 font-medium">Cancel anytime</span>
+          </div>
+        </div>
+
+        <!-- Testimonial -->
+        <div class="bg-white border border-gray-200 rounded-xl px-5 py-4">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-full bg-brand-50 border border-brand-100 flex items-center justify-center shrink-0 mt-0.5">
+              <span class="text-brand-500 text-xs font-bold">MR</span>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500 italic leading-relaxed">"Paid for itself in the first week. Two leads turned into clients within 10 days of signing up."</p>
+              <p class="text-xs text-gray-400 mt-1.5 font-medium">Mike R. — Insurance Agent, Florida</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Help -->
+        <p class="text-center text-xs text-gray-400">
+          Questions? <a href="mailto:hello@entityping.com" class="text-brand-500 hover:text-brand-600 transition-colors font-medium">hello@entityping.com</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // === Plan Data ===
+    const plans = {
+      starter: {
+        name: 'Starter',
+        badgeColor: 'bg-gray-50 text-gray-600 border-gray-200',
+        features: [
+          'Up to <strong class="text-gray-800">200 leads/month</strong>',
+          'Choose <strong class="text-gray-800">3 industries</strong>',
+          'Daily CSV delivery',
+          'Grade-A leads only',
+        ],
+        prices: { monthly: 39, annual: 32 },
+        cpl: { monthly: '$0.20', annual: '$0.16' },
+        links: {
+          monthly: 'https://buy.stripe.com/eVq8wP9Zh8CY4g98619fW06',
+          annual: 'https://buy.stripe.com/7sYbJ13AT7yU5kdfyt9fW0a',
+        }
+      },
+      growth: {
+        name: 'Growth',
+        badgeColor: 'bg-brand-50 text-brand-500 border-brand-200',
+        features: [
+          'Up to <strong class="text-gray-800">600 leads/month</strong>',
+          'Choose <strong class="text-gray-800">8 industries</strong>',
+          'Daily CSV delivery',
+          'All quality grades (A, B, C)',
+          '<strong class="text-gray-800">Priority delivery</strong> — by 7 AM',
+        ],
+        prices: { monthly: 99, annual: 82 },
+        cpl: { monthly: '$0.17', annual: '$0.14' },
+        links: {
+          monthly: 'https://buy.stripe.com/00w9AT5J19H26oh1HD9fW09',
+          annual: 'https://buy.stripe.com/5kQcN53AT9H23c52LH9fW0b',
+        }
+      },
+      pro: {
+        name: 'Pro',
+        badgeColor: 'bg-violet-50 text-violet-600 border-violet-200',
+        features: [
+          '<strong class="text-gray-800">Unlimited leads</strong>',
+          '<strong class="text-gray-800">All 16 industries</strong>',
+          'Daily CSV delivery',
+          '<strong class="text-gray-800">Priority delivery</strong> — by 7 AM',
+          '<strong class="text-gray-800">Dedicated support</strong>',
+          'CRM-ready CSV import',
+        ],
+        prices: { monthly: 249, annual: 207 },
+        cpl: { monthly: 'Unlimited', annual: 'Unlimited' },
+        links: {
+          monthly: 'https://buy.stripe.com/fZu7sL5J17yU2813PL9fW08',
+          annual: 'https://buy.stripe.com/5kQ6oH2wP3iE9At4TP9fW0c',
+        }
+      }
+    };
+
+    // === Parse URL params ===
+    const params = new URLSearchParams(window.location.search);
+    const planKey = params.get('plan') || 'growth';
+    const billing = params.get('billing') || 'monthly';
+    const plan = plans[planKey] || plans.growth;
+    const isAnnual = billing === 'annual';
+
+    // === Populate page ===
+    function render() {
+      // Badge
+      const badge = document.getElementById('plan-badge');
+      badge.textContent = plan.name;
+      badge.className = plan.badgeColor + ' text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide border';
+
+      // Price
+      const monthlyPrice = plan.prices[billing];
+      document.getElementById('plan-price').textContent = '$' + monthlyPrice;
+      document.getElementById('plan-period').textContent = isAnnual ? '/mo' : '/mo';
+
+      // Billing note
+      const noteEl = document.getElementById('plan-billing-note');
+      if (isAnnual) {
+        const annualTotal = monthlyPrice * 12;
+        noteEl.textContent = '$' + annualTotal.toLocaleString() + '/year — billed annually (save 17%)';
+      } else {
+        noteEl.textContent = 'Billed monthly — cancel anytime';
+      }
+
+      // Features
+      const featuresEl = document.getElementById('plan-features');
+      featuresEl.innerHTML = plan.features.map(f => `
+        <li class="flex items-start gap-2.5 text-sm">
+          <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          <span class="text-gray-500">${f}</span>
+        </li>
+      `).join('');
+
+      // Line items
+      document.getElementById('line-item-label').textContent = plan.name + ' plan — ' + (isAnnual ? 'annual' : 'monthly');
+
+      if (isAnnual) {
+        const fullMonthly = plans[planKey].prices.monthly;
+        const fullAnnual = fullMonthly * 12;
+        const discountedAnnual = monthlyPrice * 12;
+        const savings = fullAnnual - discountedAnnual;
+
+        document.getElementById('line-item-price').textContent = '$' + fullAnnual.toFixed(2);
+        document.getElementById('savings-row').classList.remove('hidden');
+        document.getElementById('savings-amount').textContent = '-$' + savings.toFixed(2);
+        document.getElementById('total-price').textContent = '$' + discountedAnnual.toFixed(2);
+      } else {
+        document.getElementById('line-item-price').textContent = '$' + monthlyPrice.toFixed(2);
+        document.getElementById('total-price').textContent = '$' + monthlyPrice.toFixed(2);
+      }
+
+      // Payment link
+      document.getElementById('pay-btn').href = plan.links[billing];
+
+      // Page title
+      document.title = plan.name + ' Plan — EntityPing Checkout';
+    }
+
+    render();
+
+    // === Plausible event ===
+    if (window.plausible) {
+      window.plausible('Checkout View', { props: { plan: planKey, billing: billing } });
+    }
+
+    // Track CTA click
+    document.getElementById('pay-btn').addEventListener('click', function() {
+      if (window.plausible) {
+        window.plausible('Checkout Click', { props: { plan: planKey, billing: billing } });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — EntityPing</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='14' cy='12' r='11' stroke='%231486f5' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='14' cy='12' r='7.5' stroke='%231486f5' stroke-width='1.5' opacity='0.3'/%3E%3Cpath d='M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z' fill='%231486f5'/%3E%3Ccircle cx='14' cy='11' r='3' fill='white'/%3E%3Ccircle cx='14' cy='11' r='1.5' fill='%231486f5'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef9ff', 100: '#d8f1ff', 200: '#bae7ff', 300: '#8adaff',
+              400: '#52c3ff', 500: '#2aa4ff', 600: '#1486f5', 700: '#0d6ee1',
+              800: '#1158b6', 900: '#144b8f', 950: '#112f57',
+            },
+            surface: {
+              50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+              800: '#1e293b', 850: '#172033', 900: '#0f172a', 950: '#080e1d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .spinner { animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .fade-in { animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="bg-surface-950 text-white font-sans min-h-screen">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="border-b border-white/10 bg-surface-900/80 backdrop-blur-sm sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-white">Entity<span class="text-brand-500">Ping</span></a>
+      <div id="headerUser" class="hidden items-center gap-4">
+        <span id="headerEmail" class="text-sm text-slate-400 hidden sm:inline"></span>
+        <button onclick="logout()" class="text-sm text-slate-400 hover:text-white transition">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ LOGIN SCREEN ═══ -->
+  <div id="loginScreen" class="max-w-md mx-auto px-4 pt-24 pb-16">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold mb-2">Subscriber Dashboard</h1>
+      <p class="text-slate-400">Enter your email to receive a login link</p>
+    </div>
+
+    <!-- Error states -->
+    <div id="loginError" class="hidden mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm text-center"></div>
+
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <input type="email" id="loginEmail" required placeholder="you@company.com"
+          class="w-full px-4 py-3 rounded-lg bg-surface-800 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-base">
+      </div>
+      <button type="submit" id="loginBtn"
+        class="w-full py-3 px-4 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-semibold text-base transition disabled:opacity-50 disabled:cursor-not-allowed">
+        Send Login Link
+      </button>
+    </form>
+
+    <!-- Success state -->
+    <div id="loginSuccess" class="hidden text-center mt-6 p-6 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+      <svg class="w-12 h-12 mx-auto mb-3 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+      <p class="text-emerald-300 font-semibold text-lg mb-1">Check your inbox</p>
+      <p class="text-slate-400 text-sm">We sent a login link to <strong id="sentEmail" class="text-white"></strong></p>
+      <p class="text-slate-500 text-xs mt-2">The link expires in 10 minutes</p>
+    </div>
+
+    <p class="text-center text-slate-500 text-sm mt-6">
+      Don't have an account? <a href="/#pricing" class="text-brand-400 hover:underline">Get started</a>
+    </p>
+  </div>
+
+  <!-- ═══ DASHBOARD ═══ -->
+  <div id="dashboard" class="hidden max-w-5xl mx-auto px-4 sm:px-6 py-8">
+
+    <!-- Plan banner -->
+    <div id="planBanner" class="fade-in mb-8 rounded-xl bg-gradient-to-r from-brand-600/20 to-brand-500/5 border border-brand-500/20 p-6">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span id="planBadge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-500/20 text-brand-300">FREE</span>
+            <h2 class="text-xl font-bold" id="planName">Free Sample</h2>
+          </div>
+          <p class="text-slate-400 text-sm" id="planDesc">You've received your free sample. Upgrade for daily leads.</p>
+        </div>
+        <a href="/#pricing" id="upgradeBtn" class="inline-flex items-center px-5 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition whitespace-nowrap">
+          Upgrade Plan
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+      <div class="fade-in bg-surface-800/50 rounded-xl border border-white/5 p-5">
+        <p class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-1">Plan</p>
+        <p class="text-2xl font-bold" id="statPlan">Free</p>
+      </div>
+      <div class="fade-in bg-surface-800/50 rounded-xl border border-white/5 p-5">
+        <p class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-1">Leads Delivered</p>
+        <p class="text-2xl font-bold" id="statLeads">0</p>
+      </div>
+      <div class="fade-in bg-surface-800/50 rounded-xl border border-white/5 p-5">
+        <p class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-1">Industries</p>
+        <p class="text-2xl font-bold" id="statIndustries">0</p>
+      </div>
+      <div class="fade-in bg-surface-800/50 rounded-xl border border-white/5 p-5">
+        <p class="text-slate-400 text-xs font-medium uppercase tracking-wider mb-1">Member Since</p>
+        <p class="text-2xl font-bold" id="statSince">—</p>
+      </div>
+    </div>
+
+    <!-- Two-column layout -->
+    <div class="grid lg:grid-cols-3 gap-8">
+
+      <!-- Main content: Delivery history -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="bg-surface-800/50 rounded-xl border border-white/5">
+          <div class="px-6 py-4 border-b border-white/5 flex items-center justify-between">
+            <h3 class="font-semibold text-lg">Delivery History</h3>
+            <span class="text-xs text-slate-500" id="deliveryCount">0 deliveries</span>
+          </div>
+          <div id="deliveryList" class="divide-y divide-white/5">
+            <div class="px-6 py-12 text-center text-slate-500">
+              <svg class="w-10 h-10 mx-auto mb-3 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-2.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+              </svg>
+              <p>No deliveries yet</p>
+              <p class="text-xs mt-1">Lead deliveries will appear here once your plan is active</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar: Preferences -->
+      <div class="space-y-6">
+        <!-- Industry preferences -->
+        <div class="bg-surface-800/50 rounded-xl border border-white/5 p-6">
+          <h3 class="font-semibold mb-4">Industry Preferences</h3>
+          <div id="industryChecks" class="space-y-2 max-h-64 overflow-y-auto">
+          </div>
+          <button onclick="savePreferences()" id="savePrefsBtn"
+            class="mt-4 w-full py-2 px-4 rounded-lg bg-brand-600/20 hover:bg-brand-600/30 text-brand-300 text-sm font-medium transition border border-brand-500/20">
+            Save Preferences
+          </button>
+          <p id="prefsSaved" class="hidden text-center text-emerald-400 text-xs mt-2">Preferences saved</p>
+        </div>
+
+        <!-- Account info -->
+        <div class="bg-surface-800/50 rounded-xl border border-white/5 p-6">
+          <h3 class="font-semibold mb-3">Account</h3>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-slate-400">Email</span>
+              <span id="acctEmail" class="text-white truncate ml-2">—</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Status</span>
+              <span id="acctStatus" class="text-emerald-400">Active</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Plan price</span>
+              <span id="acctPrice" class="text-white">$0/mo</span>
+            </div>
+          </div>
+          <a href="mailto:hello@entityping.com" class="mt-4 block text-center text-sm text-slate-400 hover:text-white transition">
+            Contact support
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ LOADING OVERLAY ═══ -->
+  <div id="loadingOverlay" class="hidden fixed inset-0 bg-surface-950/80 flex items-center justify-center z-50">
+    <div class="text-center">
+      <svg class="w-8 h-8 mx-auto spinner text-brand-500" fill="none" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" class="opacity-25"></circle>
+        <path d="M4 12a8 8 0 018-8" stroke="currentColor" stroke-width="3" stroke-linecap="round" class="opacity-75"></path>
+      </svg>
+      <p class="text-slate-400 mt-3 text-sm">Loading...</p>
+    </div>
+  </div>
+
+<script>
+// ─── Industries ───
+const INDUSTRIES = [
+  "Construction", "Real Estate", "Professional Services", "Technology",
+  "Healthcare", "Food Service", "Retail", "Automotive",
+  "Beauty & Wellness", "Entertainment", "Cleaning", "Logistics",
+  "Manufacturing", "Education", "Finance", "Agriculture"
+];
+
+// ─── State ───
+let currentSubscriber = null;
+let currentPlan = null;
+let currentDeliveries = [];
+
+// ─── Init ───
+(async function init() {
+  // Check for error params
+  const params = new URLSearchParams(window.location.search);
+  const error = params.get("error");
+  if (error === "expired") {
+    showLoginError("Your login link has expired. Please request a new one.");
+    // Clean URL
+    history.replaceState(null, "", "/dashboard");
+    return;
+  }
+  if (error === "server") {
+    showLoginError("Something went wrong. Please try again.");
+    history.replaceState(null, "", "/dashboard");
+    return;
+  }
+
+  // Try to load dashboard data (check if we have a valid session)
+  try {
+    const res = await fetch("/api/subscriber", {
+      credentials: "same-origin",
+    });
+    if (res.ok) {
+      const data = await res.json();
+      renderDashboard(data);
+    }
+    // else: not authed, show login (already visible)
+  } catch (e) {
+    // Network error, show login
+  }
+})();
+
+// ─── Login form ───
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("loginEmail").value.trim();
+  const btn = document.getElementById("loginBtn");
+
+  btn.disabled = true;
+  btn.textContent = "Sending...";
+  hideLoginError();
+
+  try {
+    const res = await fetch("/api/subscriber", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "same-origin",
+      body: JSON.stringify({ action: "login", email }),
+    });
+
+    if (res.ok) {
+      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById("loginSuccess").classList.remove("hidden");
+      document.getElementById("sentEmail").textContent = email;
+    } else {
+      const data = await res.json();
+      showLoginError(data.error || "Failed to send login link. Please try again.");
+    }
+  } catch (err) {
+    showLoginError("Network error. Please check your connection.");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Send Login Link";
+  }
+});
+
+function showLoginError(msg) {
+  const el = document.getElementById("loginError");
+  el.textContent = msg;
+  el.classList.remove("hidden");
+}
+
+function hideLoginError() {
+  document.getElementById("loginError").classList.add("hidden");
+}
+
+// ─── Render Dashboard ───
+function renderDashboard(data) {
+  currentSubscriber = data.subscriber;
+  currentPlan = data.planDetails;
+  currentDeliveries = data.deliveries;
+
+  // Hide login, show dashboard
+  document.getElementById("loginScreen").classList.add("hidden");
+  document.getElementById("dashboard").classList.remove("hidden");
+  document.getElementById("headerUser").classList.remove("hidden");
+  document.getElementById("headerUser").classList.add("flex");
+  document.getElementById("headerEmail").textContent = currentSubscriber.email;
+
+  // Plan banner
+  const planNames = { free: "Free Sample", starter: "Starter", growth: "Growth", pro: "Pro" };
+  const planBadgeColors = {
+    free: "bg-slate-500/20 text-slate-300",
+    starter: "bg-brand-500/20 text-brand-300",
+    growth: "bg-emerald-500/20 text-emerald-300",
+    pro: "bg-amber-500/20 text-amber-300",
+  };
+  const plan = currentSubscriber.plan;
+  document.getElementById("planBadge").textContent = plan.toUpperCase();
+  document.getElementById("planBadge").className = `px-2.5 py-0.5 rounded-full text-xs font-semibold ${planBadgeColors[plan] || planBadgeColors.free}`;
+  document.getElementById("planName").textContent = currentPlan.name;
+
+  if (plan === "pro") {
+    document.getElementById("planDesc").textContent = "Unlimited leads across all 16 industries with priority delivery.";
+    document.getElementById("upgradeBtn").classList.add("hidden");
+  } else if (plan === "free") {
+    document.getElementById("planDesc").textContent = "You've received your free sample. Upgrade for daily leads.";
+  } else {
+    document.getElementById("planDesc").textContent = `${currentPlan.leads} leads/month across ${currentPlan.industries} industries.`;
+  }
+
+  // Stats
+  document.getElementById("statPlan").textContent = currentPlan.name;
+  document.getElementById("statLeads").textContent = currentSubscriber.leadsDelivered.toLocaleString();
+  document.getElementById("statIndustries").textContent = currentSubscriber.industries.length || "0";
+
+  const created = new Date(currentSubscriber.createdAt);
+  document.getElementById("statSince").textContent = created.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+
+  // Account info
+  document.getElementById("acctEmail").textContent = currentSubscriber.email;
+  document.getElementById("acctStatus").textContent = currentSubscriber.status === "active" ? "Active" : "Inactive";
+  document.getElementById("acctPrice").textContent = currentPlan.price === 0 ? "Free" : `$${currentPlan.price}/mo`;
+
+  // Industry checkboxes
+  renderIndustryChecks();
+
+  // Delivery history
+  renderDeliveries();
+}
+
+function renderIndustryChecks() {
+  const container = document.getElementById("industryChecks");
+  const selected = currentSubscriber.industries || [];
+
+  container.innerHTML = INDUSTRIES.map(ind => `
+    <label class="flex items-center gap-2 cursor-pointer group">
+      <input type="checkbox" value="${ind}" ${selected.includes(ind) ? "checked" : ""}
+        class="w-4 h-4 rounded bg-surface-800 border-white/20 text-brand-500 focus:ring-brand-500 focus:ring-offset-0">
+      <span class="text-sm text-slate-300 group-hover:text-white transition">${ind}</span>
+    </label>
+  `).join("");
+}
+
+function renderDeliveries() {
+  const container = document.getElementById("deliveryList");
+  const countEl = document.getElementById("deliveryCount");
+
+  if (!currentDeliveries || currentDeliveries.length === 0) {
+    countEl.textContent = "0 deliveries";
+    return;
+  }
+
+  countEl.textContent = `${currentDeliveries.length} deliveries`;
+  container.innerHTML = currentDeliveries.map(d => `
+    <div class="px-6 py-4 flex items-center justify-between hover:bg-white/[0.02] transition">
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-medium text-white truncate">${d.subject || "Lead delivery"}</p>
+        <p class="text-xs text-slate-500 mt-0.5">${formatDate(d.timestamp)} &middot; ${d.leadCount || 0} leads &middot; ${d.industry || "Mixed"}</p>
+      </div>
+      ${d.csvUrl ? `<a href="${d.csvUrl}" class="ml-3 flex-shrink-0 text-xs text-brand-400 hover:text-brand-300 font-medium">Download CSV</a>` : ""}
+    </div>
+  `).join("");
+}
+
+// ─── Save preferences ───
+async function savePreferences() {
+  const checks = document.querySelectorAll("#industryChecks input:checked");
+  const industries = Array.from(checks).map(c => c.value);
+  const btn = document.getElementById("savePrefsBtn");
+  const msg = document.getElementById("prefsSaved");
+
+  btn.disabled = true;
+  btn.textContent = "Saving...";
+
+  try {
+    const res = await fetch("/api/subscriber", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      credentials: "same-origin",
+      body: JSON.stringify({ industries }),
+    });
+
+    if (res.ok) {
+      currentSubscriber.industries = industries;
+      msg.classList.remove("hidden");
+      setTimeout(() => msg.classList.add("hidden"), 3000);
+    }
+  } catch (err) {
+    console.error("Save error:", err);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Save Preferences";
+  }
+}
+
+// ─── Logout ───
+function logout() {
+  // Clear session cookie
+  document.cookie = "ep_sub=; Path=/; Max-Age=0; Secure; SameSite=Strict";
+  window.location.reload();
+}
+
+// ─── Helpers ───
+function formatDate(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
+</script>
+
+</body>
+</html>

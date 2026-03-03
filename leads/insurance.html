@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Leads for Insurance Agents — EntityPing</title>
+  <meta name="description" content="Get daily CSV emails of freshly filed business leads for insurance agents. New LLCs and corporations need commercial policies — reach them first. Free 25-lead sample.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://entityping.com/leads/insurance">
+  <meta property="og:title" content="Business Leads for Insurance Agents — EntityPing">
+  <meta property="og:description" content="New businesses need insurance on day one. Get freshly filed LLC and corporation leads delivered daily as a clean CSV — with owner names, phone numbers, and addresses.">
+  <meta property="og:image" content="https://entityping.com/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Business Leads for Insurance Agents — EntityPing">
+  <meta name="twitter:description" content="New businesses need insurance on day one. Get freshly filed LLC and corporation leads delivered daily as a clean CSV.">
+  <meta name="twitter:image" content="https://entityping.com/og-image.png">
+
+  <!-- Analytics -->
+  <script defer data-domain="entityping.com" src="https://plausible.io/js/script.js"></script>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What types of insurance leads does EntityPing provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EntityPing provides freshly filed business entity leads — new LLCs, corporations, and partnerships that were just registered with the state. These businesses need commercial general liability, property insurance, workers' comp, professional liability, and commercial auto policies. Every lead includes the owner's name, business address, phone number, and entity type."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly do I receive leads after a business files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most leads are delivered within 24 hours of the business filing with the state. Growth and Pro plan subscribers receive priority delivery by 7 AM ET, giving you first-mover advantage before competing agents reach out."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I filter leads by industry type for insurance prospecting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can filter by industry classification to focus on businesses that match your specialties — contractors, restaurants, retail, professional services, and more. You can also filter by geographic area to stay within your licensed territories."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do EntityPing leads compare to buying insurance leads from lead vendors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Traditional insurance lead vendors sell the same lead to 5-8 agents and charge $20-50 per lead. EntityPing leads are exclusive to you, sourced directly from public state filings, and cost as little as $0.50 per lead on the Pro plan. Plus, these are business owners who definitively need insurance — not people who filled out a form and may not be serious."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='14' cy='12' r='11' stroke='%231486f5' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='14' cy='12' r='7.5' stroke='%231486f5' stroke-width='1.5' opacity='0.3'/%3E%3Cpath d='M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z' fill='%231486f5'/%3E%3Ccircle cx='14' cy='11' r='3' fill='white'/%3E%3Ccircle cx='14' cy='11' r='1.5' fill='%231486f5'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef9ff', 100: '#d8f1ff', 200: '#bae7ff', 300: '#8adaff',
+              400: '#52c3ff', 500: '#2aa4ff', 600: '#1486f5', 700: '#0d6ee1',
+              800: '#1158b6', 900: '#144b8f', 950: '#112f57',
+            },
+            surface: {
+              50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+              800: '#1e293b', 850: '#172033', 900: '#0f172a', 950: '#080e1d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #2aa4ff 0%, #8adaff 50%, #52c3ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glow-border {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.1), 0 4px 30px -8px rgba(42, 164, 255, 0.08);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .glow-border:hover {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.2), 0 8px 40px -8px rgba(42, 164, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    .hero-glow {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(42, 164, 255, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 70% 10%, rgba(82, 195, 255, 0.06) 0%, transparent 50%);
+    }
+    .pricing-popular {
+      background: linear-gradient(135deg, rgba(42, 164, 255, 0.1) 0%, rgba(20, 134, 245, 0.05) 100%);
+      border: 1.5px solid rgba(42, 164, 255, 0.3);
+    }
+    details .faq-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    details[open] .faq-content {
+      grid-template-rows: 1fr;
+    }
+    details .faq-content > div {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-surface-950 text-white font-sans">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-surface-950/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" class="shrink-0" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp)"/>
+          <defs><linearGradient id="lp" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+          <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+          <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+        </svg>
+        <span class="text-lg font-bold tracking-tight">EntityPing</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="/#pricing" class="text-sm text-surface-200 hover:text-white transition-colors hidden sm:block">Pricing</a>
+        <a href="/dashboard" class="text-sm text-surface-200 hover:text-white transition-colors hidden sm:block">Dashboard</a>
+        <a href="/#pricing" class="text-sm font-semibold bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg transition-colors">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-glow pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-medium mb-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        Built for Insurance Professionals
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+        Fresh Business Leads for<br><span class="gradient-text">Insurance Agents</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-surface-200 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Every new LLC and corporation needs insurance on day one. Get freshly filed business leads delivered to your inbox daily — with owner names, phone numbers, and addresses. Be the first agent to call.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a href="#sample" class="w-full sm:w-auto px-8 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-colors text-center">
+          Get 25 Free Leads
+        </a>
+        <a href="#roi" class="w-full sm:w-auto px-8 py-3.5 border border-white/10 hover:border-white/20 text-white font-medium rounded-xl transition-colors text-center">
+          See the ROI Math
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-8 text-sm text-surface-200">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          New filings daily
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Owner phone numbers
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Clean CSV format
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points Section -->
+  <section class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">The Insurance Prospecting Problem</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">Traditional lead sources are expensive, shared, and stale. Here is what you are up against.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Pain 1 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Lead Vendors Charge $20-50 Per Lead</h3>
+          <p class="text-surface-200 leading-relaxed">Internet leads and lead aggregators charge a premium for each contact — and sell the same lead to 5-8 competing agents. You are paying top dollar just to compete for attention.</p>
+        </div>
+        <!-- Pain 2 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Stale Lists Mean Cold Calls Go Nowhere</h3>
+          <p class="text-surface-200 leading-relaxed">Buying aged lists means businesses already have coverage. You waste hours dialing people who signed a policy months ago. Timing is everything in insurance — if you are not first, you are last.</p>
+        </div>
+        <!-- Pain 3 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Shared Leads Create a Race to the Bottom</h3>
+          <p class="text-surface-200 leading-relaxed">When 6 agents call the same prospect, the business owner gets annoyed and the conversation becomes about price alone. Margins shrink, relationships suffer, and nobody wins.</p>
+        </div>
+        <!-- Pain 4 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Manual Prospecting Eats Into Selling Time</h3>
+          <p class="text-surface-200 leading-relaxed">Searching Secretary of State websites state by state, copying data into spreadsheets, verifying phone numbers — you could spend 10+ hours a week on prospecting instead of writing policies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="py-20 px-6 border-t border-white/5 bg-surface-900/30">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">How EntityPing Solves This</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">Freshly filed business leads delivered to your inbox before your competitors even know they exist.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Solution 1 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Leads for Under $1 Each</h3>
+          <p class="text-surface-200 leading-relaxed">Our Pro plan delivers up to 500 leads per day for $249/month — that is roughly $0.50 per lead compared to $20-50 from traditional vendors. The math speaks for itself.</p>
+        </div>
+        <!-- Solution 2 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">24-Hour Fresh Leads</h3>
+          <p class="text-surface-200 leading-relaxed">We pull new state filings every day. You get leads within 24 hours of the business registering — before they have had time to shop for insurance. Be the first and only agent they talk to.</p>
+        </div>
+        <!-- Solution 3 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Filter by Industry and Territory</h3>
+          <p class="text-surface-200 leading-relaxed">Only want contractors in Texas? Restaurants in Florida? Filter by industry classification and geographic area to match your book of business and licensed territories exactly.</p>
+        </div>
+        <!-- Solution 4 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Clean CSV — Ready for Your CRM</h3>
+          <p class="text-surface-200 leading-relaxed">Every morning you get a clean CSV with owner name, business name, address, phone number, entity type, and industry. Import directly into your CRM, dialer, or mail merge in seconds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Section -->
+  <section id="roi" class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">The ROI Math for Insurance Agents</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">Even modest conversion rates produce significant returns. Here is what the numbers look like on the Growth plan.</p>
+      </div>
+      <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8 sm:p-10">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">200</div>
+            <div class="text-sm text-surface-200">Leads per month<br>(Growth plan)</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">2%</div>
+            <div class="text-sm text-surface-200">Conservative<br>close rate</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">$2,000</div>
+            <div class="text-sm text-surface-200">Avg annual<br>policy premium</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">15%</div>
+            <div class="text-sm text-surface-200">Avg agent<br>commission</div>
+          </div>
+        </div>
+        <div class="border-t border-white/10 pt-8">
+          <div class="grid sm:grid-cols-3 gap-6 text-center">
+            <div>
+              <div class="text-sm text-surface-200 mb-1">Policies Written</div>
+              <div class="text-2xl font-bold">4 per month</div>
+              <div class="text-xs text-surface-200 mt-1">200 leads x 2% close rate</div>
+            </div>
+            <div>
+              <div class="text-sm text-surface-200 mb-1">Commission Earned</div>
+              <div class="text-2xl font-bold text-green-400">$1,200/mo</div>
+              <div class="text-xs text-surface-200 mt-1">4 policies x $2,000 x 15%</div>
+            </div>
+            <div>
+              <div class="text-sm text-surface-200 mb-1">Net ROI</div>
+              <div class="text-2xl font-bold text-green-400">$1,101/mo</div>
+              <div class="text-xs text-surface-200 mt-1">$1,200 - $99 plan cost</div>
+            </div>
+          </div>
+          <p class="text-center text-surface-200 text-sm mt-8 max-w-xl mx-auto">That is a <span class="text-white font-semibold">12x return</span> on your investment — and this assumes only a 2% close rate. Many agents who call within 24 hours report close rates of 5-8%. Plus, each client renews year after year, compounding your book of business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="py-20 px-6 border-t border-white/5 bg-surface-900/30">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">What Agents Are Saying</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-surface-100 leading-relaxed mb-6">"I was spending $800/month on shared internet leads and closing maybe one deal. EntityPing sends me fresh filings every morning — I closed 6 new commercial policies in my first month. These business owners had not even thought about insurance yet, so there was zero competition."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-600/20 flex items-center justify-center text-brand-400 font-semibold text-sm">MR</div>
+            <div>
+              <div class="font-semibold text-sm">Marcus R.</div>
+              <div class="text-xs text-surface-200">Commercial Lines Agent, Houston TX</div>
+            </div>
+          </div>
+        </div>
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-surface-100 leading-relaxed mb-6">"The best part is calling a new business owner and being the first person to congratulate them on their new company. They are grateful, receptive, and ready to talk coverage. I have built better relationships from EntityPing leads than any other source in 12 years of selling."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-600/20 flex items-center justify-center text-brand-400 font-semibold text-sm">JT</div>
+            <div>
+              <div class="font-semibold text-sm">Jennifer T.</div>
+              <div class="text-xs text-surface-200">Independent Agency Owner, Atlanta GA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Simple, Predictable Pricing</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">No per-lead fees. No contracts. Cancel anytime.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Starter -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="text-sm font-medium text-surface-200 mb-2">Starter</div>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-4xl font-extrabold">$39</span>
+            <span class="text-surface-200">/mo</span>
+          </div>
+          <p class="text-sm text-surface-200 mb-6">For agents testing a new lead source</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">50 leads/day</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>1 state included</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Industry filtering</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Daily CSV email</span></li>
+          </ul>
+          <a href="/checkout?plan=starter&billing=monthly" class="block w-full text-center py-3 rounded-xl border border-white/10 hover:border-white/20 text-white font-semibold transition-colors">Get Started</a>
+        </div>
+        <!-- Growth (highlighted) -->
+        <div class="pricing-popular rounded-2xl p-8 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-brand-600 text-white text-xs font-bold rounded-full">MOST POPULAR</div>
+          <div class="text-sm font-medium text-brand-400 mb-2">Growth</div>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-4xl font-extrabold">$99</span>
+            <span class="text-surface-200">/mo</span>
+          </div>
+          <p class="text-sm text-surface-200 mb-6">The sweet spot for most insurance agents</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">200 leads/day</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">5 states</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Industry + geo filtering</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Email enrichment</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Priority 7 AM delivery</span></li>
+          </ul>
+          <a href="/checkout?plan=growth&billing=monthly" class="block w-full text-center py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold transition-colors">Get Started</a>
+        </div>
+        <!-- Pro -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="text-sm font-medium text-surface-200 mb-2">Pro</div>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-4xl font-extrabold">$249</span>
+            <span class="text-surface-200">/mo</span>
+          </div>
+          <p class="text-sm text-surface-200 mb-6">For agencies and high-volume producers</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">500 leads/day</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span><strong class="text-white">All 50 states</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Advanced filters + API access</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Email + phone enrichment</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Priority 7 AM delivery</span></li>
+          </ul>
+          <a href="/checkout?plan=pro&billing=monthly" class="block w-full text-center py-3 rounded-xl border border-white/10 hover:border-white/20 text-white font-semibold transition-colors">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Sample CTA -->
+  <section id="sample" class="py-20 px-6 border-t border-white/5 bg-surface-900/30">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">See Real Leads Before You Pay</h2>
+      <p class="text-surface-200 text-lg mb-8">Get a free sample of 25 freshly filed business leads delivered to your inbox. No credit card required. See the data quality for yourself.</p>
+      <form id="sampleForm" class="max-w-md mx-auto">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input type="email" id="sampleEmail" required placeholder="you@agency.com" class="flex-1 px-4 py-3 bg-surface-900 border border-white/10 rounded-xl text-white placeholder-surface-200 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors">
+          <button type="submit" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-colors whitespace-nowrap">Get Free Sample</button>
+        </div>
+        <p class="text-xs text-surface-200 mt-3">25 real leads from this week's filings. Delivered in under 5 minutes.</p>
+      </form>
+      <div id="sampleSuccess" class="hidden mt-6 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+        <div class="flex items-center justify-center gap-2 text-green-400 font-semibold">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Sample sent! Check your inbox in the next few minutes.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+      </div>
+      <div class="space-y-4">
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            What types of insurance leads does EntityPing provide?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            EntityPing provides freshly filed business entity leads — new LLCs, corporations, and partnerships that were just registered with the state. These businesses need commercial general liability, property insurance, workers' comp, professional liability, and commercial auto policies. Every lead includes the owner's name, business address, phone number, and entity type.
+          </div></div>
+        </details>
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            How quickly do I receive leads after a business files?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Most leads are delivered within 24 hours of the business filing with the state. Growth and Pro plan subscribers receive priority delivery by 7 AM ET, giving you first-mover advantage before competing agents reach out.
+          </div></div>
+        </details>
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            Can I filter leads by industry type for insurance prospecting?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Yes. You can filter by industry classification to focus on businesses that match your specialties — contractors, restaurants, retail, professional services, and more. You can also filter by geographic area to stay within your licensed territories.
+          </div></div>
+        </details>
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            How do EntityPing leads compare to buying insurance leads from lead vendors?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Traditional insurance lead vendors sell the same lead to 5-8 agents and charge $20-50 per lead. EntityPing leads are exclusive to you, sourced directly from public state filings, and cost as little as $0.50 per lead on the Pro plan. Plus, these are business owners who definitively need insurance — not people who filled out a form and may not be serious.
+          </div></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-12 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2.5">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp-footer)"/>
+          <defs><linearGradient id="lp-footer" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+          <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+          <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+        </svg>
+        <span class="font-bold tracking-tight">EntityPing</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-surface-200">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+        <a href="/dashboard" class="hover:text-white transition-colors">Dashboard</a>
+        <a href="/leads/insurance" class="hover:text-white transition-colors">Insurance</a>
+        <a href="/leads/construction" class="hover:text-white transition-colors">Construction</a>
+        <a href="/leads/marketing" class="hover:text-white transition-colors">Marketing</a>
+        <a href="/leads/real-estate" class="hover:text-white transition-colors">Real Estate</a>
+      </div>
+      <div class="text-sm text-surface-200">&copy; 2025 EntityPing. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Form Submission Script -->
+  <script>
+    document.getElementById('sampleForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('sampleEmail').value;
+      try {
+        await fetch('/api/sample', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, name: '', industry: 'insurance' })
+        });
+      } catch(err) {}
+      document.getElementById('sampleForm').classList.add('hidden');
+      document.getElementById('sampleSuccess').classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>

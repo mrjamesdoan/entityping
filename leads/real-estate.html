@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Leads for Real Estate Professionals — EntityPing</title>
+  <meta name="description" content="Get daily CSV emails of freshly filed business leads for real estate agents and brokers. New LLCs need commercial space, offices, and retail locations. Free 25-lead sample.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://entityping.com/leads/real-estate">
+  <meta property="og:title" content="Business Leads for Real Estate Professionals — EntityPing">
+  <meta property="og:description" content="New businesses need office space, retail locations, and warehouses. Get freshly filed LLC and corporation leads delivered daily — with owner names, phone numbers, and addresses.">
+  <meta property="og:image" content="https://entityping.com/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Business Leads for Real Estate Professionals — EntityPing">
+  <meta name="twitter:description" content="New businesses need space. Get freshly filed business leads delivered daily as a clean CSV — reach tenants before they start looking.">
+  <meta name="twitter:image" content="https://entityping.com/og-image.png">
+
+  <!-- Analytics -->
+  <script defer data-domain="entityping.com" src="https://plausible.io/js/script.js"></script>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How can real estate agents use new business filing leads?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every newly registered business is a potential tenant or buyer. Restaurants need retail space with kitchen infrastructure. Professional services firms need offices. E-commerce companies need warehouses. By contacting business owners within days of filing, you reach them before they start searching on LoopNet or calling other brokers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I filter leads by industry to find businesses that need commercial space?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. EntityPing lets you filter by industry classification. Focus on business types that need physical locations — restaurants, retail stores, medical practices, fitness studios, salons, and professional services. Skip home-based businesses and online-only companies that do not need space."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What data is included with each real estate lead?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every lead includes the business owner's full name, business name, registered agent address, phone number, entity type (LLC, Corp, etc.), filing date, and industry classification. Growth and Pro plans also include email enrichment. The registered address often reveals whether they are still operating from home — a strong signal they need commercial space."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do EntityPing leads compare to traditional commercial real estate prospecting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Traditional CRE prospecting relies on driving for dollars, cold calling existing businesses, or waiting for inbound inquiries. EntityPing gives you a daily list of brand-new businesses that have not leased space yet. You are reaching them at the earliest possible moment — before they have a broker, before they are on LoopNet, before they have signed a lease. The timing advantage is enormous."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='14' cy='12' r='11' stroke='%231486f5' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='14' cy='12' r='7.5' stroke='%231486f5' stroke-width='1.5' opacity='0.3'/%3E%3Cpath d='M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z' fill='%231486f5'/%3E%3Ccircle cx='14' cy='11' r='3' fill='white'/%3E%3Ccircle cx='14' cy='11' r='1.5' fill='%231486f5'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef9ff', 100: '#d8f1ff', 200: '#bae7ff', 300: '#8adaff',
+              400: '#52c3ff', 500: '#2aa4ff', 600: '#1486f5', 700: '#0d6ee1',
+              800: '#1158b6', 900: '#144b8f', 950: '#112f57',
+            },
+            surface: {
+              50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+              800: '#1e293b', 850: '#172033', 900: '#0f172a', 950: '#080e1d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #2aa4ff 0%, #8adaff 50%, #52c3ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glow-border {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.1), 0 4px 30px -8px rgba(42, 164, 255, 0.08);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .glow-border:hover {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.2), 0 8px 40px -8px rgba(42, 164, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    .hero-glow {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(42, 164, 255, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 70% 10%, rgba(82, 195, 255, 0.06) 0%, transparent 50%);
+    }
+    .pricing-popular {
+      background: linear-gradient(135deg, rgba(42, 164, 255, 0.1) 0%, rgba(20, 134, 245, 0.05) 100%);
+      border: 1.5px solid rgba(42, 164, 255, 0.3);
+    }
+    details .faq-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    details[open] .faq-content {
+      grid-template-rows: 1fr;
+    }
+    details .faq-content > div {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-surface-950 text-white font-sans">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-surface-950/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" class="shrink-0" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp)"/>
+          <defs><linearGradient id="lp" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+          <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+          <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+        </svg>
+        <span class="text-lg font-bold tracking-tight">EntityPing</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="/#pricing" class="text-sm text-surface-200 hover:text-white transition-colors hidden sm:block">Pricing</a>
+        <a href="/dashboard" class="text-sm text-surface-200 hover:text-white transition-colors hidden sm:block">Dashboard</a>
+        <a href="/#pricing" class="text-sm font-semibold bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg transition-colors">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-glow pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-medium mb-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Built for Real Estate Professionals
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+        Fresh Business Leads for<br><span class="gradient-text">Real Estate Professionals</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-surface-200 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Every new business needs a place to operate. Get freshly filed LLC and corporation leads delivered daily — reach business owners before they start searching for commercial space, offices, or retail locations.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a href="#sample" class="w-full sm:w-auto px-8 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-colors text-center">
+          Get 25 Free Leads
+        </a>
+        <a href="#roi" class="w-full sm:w-auto px-8 py-3.5 border border-white/10 hover:border-white/20 text-white font-medium rounded-xl transition-colors text-center">
+          See the ROI Math
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-8 text-sm text-surface-200 flex-wrap">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          New filings daily
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Owner phone numbers
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Registered addresses
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points Section -->
+  <section class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">The Commercial Real Estate Prospecting Problem</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">Finding tenants and buyers before they find LoopNet is the competitive advantage that separates top producers.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Pain 1 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Tenants Come to You After They Have Already Shopped</h3>
+          <p class="text-surface-200 leading-relaxed">By the time a business owner calls you, they have already toured five spaces, seen pricing from three brokers, and formed opinions about what they want. You are negotiating against their expectations instead of guiding the process from the start.</p>
+        </div>
+        <!-- Pain 2 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Vacancy Sits While You Wait for Inbound</h3>
+          <p class="text-surface-200 leading-relaxed">Listings on LoopNet and CoStar generate tire kickers and unqualified inquiries. Meanwhile, your vacancy costs the landlord thousands per month and your reputation suffers. You need a proactive pipeline of real prospects with real needs.</p>
+        </div>
+        <!-- Pain 3 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Cold Calling Existing Businesses Is a Dead End</h3>
+          <p class="text-surface-200 leading-relaxed">Calling businesses that already have a lease is frustrating. They are locked in for 3-5 years and have no reason to move. You need people who are actively looking for space right now — not in two years when their lease expires.</p>
+        </div>
+        <!-- Pain 4 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Networking Events Yield Low-Quality Contacts</h3>
+          <p class="text-surface-200 leading-relaxed">Chamber of commerce events and BNI groups produce connections, but rarely produce someone actively looking for space right now. You need prospects with an immediate, concrete need — not someone who might need something in 18 months.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="py-20 px-6 border-t border-white/5 bg-surface-900/30">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">How EntityPing Fills Your Leasing Pipeline</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">Connect with business owners the week they register their company — before they have even started searching for space.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Solution 1 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">First-Mover Advantage on Every Deal</h3>
+          <p class="text-surface-200 leading-relaxed">A business that filed its LLC yesterday needs space but has not started looking. When you call and offer to show them three options that match their industry, you become their trusted advisor — not just another broker competing on a listing.</p>
+        </div>
+        <!-- Solution 2 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Filter by Tenant Types You Want</h3>
+          <p class="text-surface-200 leading-relaxed">Focus on the industries that match your available inventory. Have restaurant pads? Filter for food service filings. Have Class A office space? Filter for professional services, law firms, and financial companies. Match demand to supply automatically.</p>
+        </div>
+        <!-- Solution 3 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Registered Address Reveals Intent</h3>
+          <p class="text-surface-200 leading-relaxed">When a new LLC lists a home address or registered agent as their address, they almost certainly need commercial space. This is a built-in intent signal that tells you exactly who to prioritize in your outreach.</p>
+        </div>
+        <!-- Solution 4 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Scale Your Outreach Without More Staff</h3>
+          <p class="text-surface-200 leading-relaxed">Every morning, a clean CSV lands in your inbox. Import it into your CRM, add prospects to your drip campaign, or hand it to your assistant to make calls. Systematic prospecting without the manual research.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Section -->
+  <section id="roi" class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">The ROI Math for Real Estate Professionals</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">One commercial lease pays for EntityPing for years. Here is what the numbers look like on the Growth plan.</p>
+      </div>
+      <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8 sm:p-10">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">200</div>
+            <div class="text-sm text-surface-200">Leads per month<br>(Growth plan)</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">1.5%</div>
+            <div class="text-sm text-surface-200">Conservative<br>close rate</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">$24/sf</div>
+            <div class="text-sm text-surface-200">Avg lease rate<br>(1,500 sf space)</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">4%</div>
+            <div class="text-sm text-surface-200">Broker commission<br>on 3-yr lease</div>
+          </div>
+        </div>
+        <div class="border-t border-white/10 pt-8">
+          <div class="grid sm:grid-cols-3 gap-6 text-center">
+            <div>
+              <div class="text-sm text-surface-200 mb-1">Leases Signed</div>
+              <div class="text-2xl font-bold">3 per month</div>
+              <div class="text-xs text-surface-200 mt-1">200 leads x 1.5% close rate</div>
+            </div>
+            <div>
+              <div class="text-sm text-surface-200 mb-1">Commission Earned</div>
+              <div class="text-2xl font-bold text-green-400">$12,960/mo</div>
+              <div class="text-xs text-surface-200 mt-1">3 x $36K/yr rent x 3 yrs x 4%</div>
+            </div>
+            <div>
+              <div class="text-sm text-surface-200 mb-1">Net ROI</div>
+              <div class="text-2xl font-bold text-green-400">$12,861/mo</div>
+              <div class="text-xs text-surface-200 mt-1">$12,960 - $99 plan cost</div>
+            </div>
+          </div>
+          <p class="text-center text-surface-200 text-sm mt-8 max-w-xl mx-auto">That is a <span class="text-white font-semibold">130x return</span> on your EntityPing investment. Even closing just one small retail lease per month produces a commission that covers years of service. And every tenant relationship leads to renewals, expansions, and referrals that compound over time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="py-20 px-6 border-t border-white/5 bg-surface-900/30">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">What Real Estate Pros Are Saying</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-surface-100 leading-relaxed mb-6">"I manage leasing for a strip center with 4 vacant units. I set up EntityPing to send me new restaurant, retail, and salon filings in my county. Within the first month, I called a woman who had just registered a nail salon LLC. She did not even know where she wanted to lease yet. I showed her our end cap unit and she signed a 5-year lease two weeks later. That one deal paid for 10 years of EntityPing."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-600/20 flex items-center justify-center text-brand-400 font-semibold text-sm">KL</div>
+            <div>
+              <div class="font-semibold text-sm">Kevin L.</div>
+              <div class="text-xs text-surface-200">Commercial Leasing Agent, Charlotte NC</div>
+            </div>
+          </div>
+        </div>
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-surface-100 leading-relaxed mb-6">"I am a tenant rep broker and EntityPing changed how I prospect entirely. Instead of waiting for referrals or cold-calling existing businesses who are mid-lease, I reach out to new filings the day after they register. I call, introduce myself as someone who helps new businesses find the right space, and offer a free consultation. I have added 8 new tenant clients in four months — all from EntityPing."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-600/20 flex items-center justify-center text-brand-400 font-semibold text-sm">NV</div>
+            <div>
+              <div class="font-semibold text-sm">Nicole V.</div>
+              <div class="text-xs text-surface-200">Tenant Rep Broker, Chicago IL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Simple, Predictable Pricing</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">Less than a single lease document filing fee. No contracts. Cancel anytime.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Starter -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="text-sm font-medium text-surface-200 mb-2">Starter</div>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-4xl font-extrabold">$39</span>
+            <span class="text-surface-200">/mo</span>
+          </div>
+          <p class="text-sm text-surface-200 mb-6">For agents testing a new lead source</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">50 leads/day</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>1 state included</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Industry filtering</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Daily CSV email</span></li>
+          </ul>
+          <a href="/checkout?plan=starter&billing=monthly" class="block w-full text-center py-3 rounded-xl border border-white/10 hover:border-white/20 text-white font-semibold transition-colors">Get Started</a>
+        </div>
+        <!-- Growth (highlighted) -->
+        <div class="pricing-popular rounded-2xl p-8 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-brand-600 text-white text-xs font-bold rounded-full">BEST FOR BROKERS</div>
+          <div class="text-sm font-medium text-brand-400 mb-2">Growth</div>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-4xl font-extrabold">$99</span>
+            <span class="text-surface-200">/mo</span>
+          </div>
+          <p class="text-sm text-surface-200 mb-6">Ideal for active commercial agents</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">200 leads/day</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">5 states</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Industry + geo filtering</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Email enrichment</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Priority 7 AM delivery</span></li>
+          </ul>
+          <a href="/checkout?plan=growth&billing=monthly" class="block w-full text-center py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold transition-colors">Get Started</a>
+        </div>
+        <!-- Pro -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="text-sm font-medium text-surface-200 mb-2">Pro</div>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-4xl font-extrabold">$249</span>
+            <span class="text-surface-200">/mo</span>
+          </div>
+          <p class="text-sm text-surface-200 mb-6">For brokerages and property managers</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">500 leads/day</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span><strong class="text-white">All 50 states</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Advanced filters + API access</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Email + phone enrichment</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Priority 7 AM delivery</span></li>
+          </ul>
+          <a href="/checkout?plan=pro&billing=monthly" class="block w-full text-center py-3 rounded-xl border border-white/10 hover:border-white/20 text-white font-semibold transition-colors">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Sample CTA -->
+  <section id="sample" class="py-20 px-6 border-t border-white/5 bg-surface-900/30">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">See Real Leads Before You Pay</h2>
+      <p class="text-surface-200 text-lg mb-8">Get a free sample of 25 freshly filed business leads delivered to your inbox. No credit card required. See who is opening businesses in your market this week.</p>
+      <form id="sampleForm" class="max-w-md mx-auto">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input type="email" id="sampleEmail" required placeholder="you@brokerage.com" class="flex-1 px-4 py-3 bg-surface-900 border border-white/10 rounded-xl text-white placeholder-surface-200 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors">
+          <button type="submit" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-colors whitespace-nowrap">Get Free Sample</button>
+        </div>
+        <p class="text-xs text-surface-200 mt-3">25 real leads from this week's filings. Delivered in under 5 minutes.</p>
+      </form>
+      <div id="sampleSuccess" class="hidden mt-6 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+        <div class="flex items-center justify-center gap-2 text-green-400 font-semibold">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Sample sent! Check your inbox in the next few minutes.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+      </div>
+      <div class="space-y-4">
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            How can real estate agents use new business filing leads?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Every newly registered business is a potential tenant or buyer. Restaurants need retail space with kitchen infrastructure. Professional services firms need offices. E-commerce companies need warehouses. By contacting business owners within days of filing, you reach them before they start searching on LoopNet or calling other brokers.
+          </div></div>
+        </details>
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            Can I filter leads by industry to find businesses that need space?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Yes. EntityPing lets you filter by industry classification. Focus on business types that need physical locations — restaurants, retail stores, medical practices, fitness studios, salons, and professional services. Skip home-based businesses and online-only companies that do not need space.
+          </div></div>
+        </details>
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            What data is included with each lead?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Every lead includes the business owner's full name, business name, registered agent address, phone number, entity type (LLC, Corp, etc.), filing date, and industry classification. Growth and Pro plans also include email enrichment. The registered address often reveals whether they are still operating from home — a strong signal they need commercial space.
+          </div></div>
+        </details>
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            How do these leads compare to traditional CRE prospecting?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Traditional CRE prospecting relies on driving for dollars, cold calling existing businesses, or waiting for inbound inquiries. EntityPing gives you a daily list of brand-new businesses that have not leased space yet. You are reaching them at the earliest possible moment — before they have a broker, before they are on LoopNet, before they have signed a lease. The timing advantage is enormous.
+          </div></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-12 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2.5">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp-footer)"/>
+          <defs><linearGradient id="lp-footer" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+          <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+          <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+        </svg>
+        <span class="font-bold tracking-tight">EntityPing</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-surface-200">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+        <a href="/dashboard" class="hover:text-white transition-colors">Dashboard</a>
+        <a href="/leads/insurance" class="hover:text-white transition-colors">Insurance</a>
+        <a href="/leads/construction" class="hover:text-white transition-colors">Construction</a>
+        <a href="/leads/marketing" class="hover:text-white transition-colors">Marketing</a>
+        <a href="/leads/real-estate" class="hover:text-white transition-colors">Real Estate</a>
+      </div>
+      <div class="text-sm text-surface-200">&copy; 2025 EntityPing. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Form Submission Script -->
+  <script>
+    document.getElementById('sampleForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('sampleEmail').value;
+      try {
+        await fetch('/api/sample', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, name: '', industry: 'real-estate' })
+        });
+      } catch(err) {}
+      document.getElementById('sampleForm').classList.add('hidden');
+      document.getElementById('sampleSuccess').classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>

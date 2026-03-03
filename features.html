@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features — EntityPing | Multi-Source Business Leads Platform</title>
+  <meta name="description" content="7 data sources, intelligent lead scoring, industry filtering, and daily CSV delivery. See how EntityPing puts qualified business leads in your inbox every morning.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://entityping.com/features">
+  <meta property="og:title" content="Features — EntityPing | Multi-Source Business Leads Platform">
+  <meta property="og:description" content="7 data sources, intelligent lead scoring, industry filtering, and daily CSV delivery. See how EntityPing puts qualified business leads in your inbox every morning.">
+  <meta property="og:image" content="https://entityping.com/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Features — EntityPing | Multi-Source Business Leads Platform">
+  <meta name="twitter:description" content="7 data sources, intelligent lead scoring, industry filtering, and daily CSV delivery.">
+  <meta name="twitter:image" content="https://entityping.com/og-image.png">
+
+  <!-- Analytics -->
+  <script defer data-domain="entityping.com" src="https://plausible.io/js/script.js"></script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='14' cy='12' r='11' stroke='%231486f5' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='14' cy='12' r='7.5' stroke='%231486f5' stroke-width='1.5' opacity='0.3'/%3E%3Cpath d='M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z' fill='%231486f5'/%3E%3Ccircle cx='14' cy='11' r='3' fill='white'/%3E%3Ccircle cx='14' cy='11' r='1.5' fill='%231486f5'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef9ff',
+              100: '#d8f1ff',
+              200: '#bae7ff',
+              300: '#8adaff',
+              400: '#52c3ff',
+              500: '#2aa4ff',
+              600: '#1486f5',
+              700: '#0d6ee1',
+              800: '#1158b6',
+              900: '#144b8f',
+              950: '#112f57',
+            },
+            surface: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              800: '#1e293b',
+              850: '#172033',
+              900: '#0f172a',
+              950: '#080e1d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #2aa4ff 0%, #8adaff 50%, #52c3ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow-border {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.1), 0 4px 30px -8px rgba(42, 164, 255, 0.08);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .glow-border:hover {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.2), 0 8px 40px -8px rgba(42, 164, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .hero-glow {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(42, 164, 255, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 70% 10%, rgba(82, 195, 255, 0.06) 0%, transparent 50%);
+    }
+
+    .ping-dot {
+      animation: ping-pulse 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes ping-pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+
+    /* Feature section glow effects */
+    .feature-glow-left {
+      background: radial-gradient(ellipse 60% 50% at 0% 50%, rgba(42, 164, 255, 0.04) 0%, transparent 70%);
+    }
+    .feature-glow-right {
+      background: radial-gradient(ellipse 60% 50% at 100% 50%, rgba(42, 164, 255, 0.04) 0%, transparent 70%);
+    }
+
+    /* Scroll reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Data flow animation */
+    .flow-line {
+      stroke-dasharray: 6 4;
+      animation: flow-dash 1.5s linear infinite;
+    }
+    @keyframes flow-dash {
+      to { stroke-dashoffset: -20; }
+    }
+
+    /* Pulse dot for data sources */
+    .source-pulse {
+      animation: source-glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes source-glow {
+      from { box-shadow: 0 0 4px rgba(42, 164, 255, 0.3); }
+      to { box-shadow: 0 0 12px rgba(42, 164, 255, 0.6); }
+    }
+
+    /* Grade badge shimmer */
+    .grade-a { background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(16, 185, 129, 0.25); }
+    .grade-b { background: linear-gradient(135deg, rgba(42, 164, 255, 0.15), rgba(42, 164, 255, 0.05)); border: 1px solid rgba(42, 164, 255, 0.25); }
+    .grade-c { background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(251, 191, 36, 0.05)); border: 1px solid rgba(251, 191, 36, 0.25); }
+
+    /* Mockup typing cursor */
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 1s step-end infinite;
+      color: rgba(42, 164, 255, 0.6);
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* Comparison table */
+    .compare-cell { padding: 0.875rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .compare-highlight { background: rgba(42, 164, 255, 0.04); }
+
+    /* Stats counter animation */
+    .stat-value {
+      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Checkbox mockup */
+    .mock-checkbox {
+      width: 1rem; height: 1rem; border-radius: 0.25rem;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .mock-checkbox.checked {
+      background: linear-gradient(135deg, #1486f5, #0d6ee1);
+      border-color: #1486f5;
+    }
+
+    /* Email mockup envelope shine */
+    .email-shine {
+      background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 100%);
+    }
+
+    /* Dashboard stat card shimmer */
+    .dash-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      transition: border-color 0.3s ease;
+    }
+    .dash-card:hover {
+      border-color: rgba(42, 164, 255, 0.15);
+    }
+
+    /* Mobile responsive table */
+    @media (max-width: 768px) {
+      .comparison-table { font-size: 0.8rem; }
+      .compare-cell { padding: 0.625rem 0.5rem; }
+    }
+  </style>
+</head>
+<body class="bg-surface-950 text-surface-100 antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 border-b border-white/[0.04] bg-surface-950/80 backdrop-blur-2xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="relative w-8 h-8 flex items-center justify-center">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="absolute" aria-hidden="true">
+            <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+            <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+            <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp)"/>
+            <defs><linearGradient id="lp" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+            <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+            <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+          </svg>
+        </div>
+        <span class="text-lg font-bold tracking-tight">Entity<span class="text-brand-400">Ping</span></span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm text-surface-100/50 font-medium">
+        <a href="/#how-it-works" class="hover:text-surface-100 transition-colors">How It Works</a>
+        <a href="/features" class="text-surface-100 transition-colors">Features</a>
+        <a href="/#coverage" class="hover:text-surface-100 transition-colors">Coverage</a>
+        <a href="/#pricing" class="hover:text-surface-100 transition-colors">Pricing</a>
+        <a href="/dashboard" class="hover:text-surface-100 transition-colors">Dashboard</a>
+      </div>
+
+      <a href="/checkout?plan=growth&billing=monthly" class="bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-brand-600/20">
+        Get Started
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ============================================ -->
+  <!-- HERO -->
+  <!-- ============================================ -->
+  <section class="relative pt-32 pb-20 md:pt-44 md:pb-28 hero-glow overflow-hidden">
+    <!-- Decorative grid -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M60 0H0v60&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;0.5&quot;/%3E%3C/svg%3E');"></div>
+
+    <div class="max-w-4xl mx-auto px-6 text-center relative">
+      <div class="inline-flex items-center gap-2.5 bg-brand-500/8 border border-brand-500/15 rounded-full px-4 py-1.5 mb-8">
+        <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+        <span class="text-xs font-medium text-surface-100/60">Platform Overview</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
+        Everything you need to find <span class="gradient-text">your next client</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-surface-100/50 max-w-2xl mx-auto leading-relaxed mb-10">
+        EntityPing combines 7 data sources, intelligent filtering, and daily delivery to put qualified leads in your inbox before the competition even knows they exist.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/checkout?plan=growth&billing=monthly" class="bg-brand-600 hover:bg-brand-500 text-white font-semibold px-8 py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-600/25 text-sm">
+          Start Getting Leads Today
+        </a>
+        <a href="#features" class="text-surface-100/50 hover:text-surface-100 font-medium px-6 py-3.5 rounded-xl border border-white/[0.08] hover:border-white/[0.15] transition-all text-sm">
+          Explore Features
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- CORE PLATFORM FEATURES -->
+  <!-- ============================================ -->
+  <div id="features">
+
+  <!-- Feature 1: Multi-Source Data Aggregation -->
+  <section class="relative py-24 md:py-32 feature-glow-right overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 md:gap-20 items-center reveal">
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 bg-brand-500/8 border border-brand-500/15 rounded-full px-3.5 py-1 mb-6">
+            <svg class="w-3.5 h-3.5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+            <span class="text-xs font-medium text-surface-100/60">Data Aggregation</span>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-5 leading-tight">
+            Multi-Source Data<br><span class="gradient-text">Aggregation</span>
+          </h2>
+          <p class="text-surface-100/50 text-lg leading-relaxed mb-8">
+            We don't rely on a single database. EntityPing pulls from 7 verified sources to build the most comprehensive lead feed in the market.
+          </p>
+
+          <div class="grid grid-cols-1 gap-3 mb-8">
+            <div class="flex items-center gap-3 text-sm text-surface-100/60">
+              <div class="w-1.5 h-1.5 bg-brand-400 rounded-full flex-shrink-0"></div>
+              State Secretary of State filings
+            </div>
+            <div class="flex items-center gap-3 text-sm text-surface-100/60">
+              <div class="w-1.5 h-1.5 bg-brand-400 rounded-full flex-shrink-0"></div>
+              County business registrations
+            </div>
+            <div class="flex items-center gap-3 text-sm text-surface-100/60">
+              <div class="w-1.5 h-1.5 bg-brand-400 rounded-full flex-shrink-0"></div>
+              Industry directories
+            </div>
+            <div class="flex items-center gap-3 text-sm text-surface-100/60">
+              <div class="w-1.5 h-1.5 bg-brand-400 rounded-full flex-shrink-0"></div>
+              Permit &amp; license databases
+            </div>
+            <div class="flex items-center gap-3 text-sm text-surface-100/60">
+              <div class="w-1.5 h-1.5 bg-brand-400 rounded-full flex-shrink-0"></div>
+              Professional registrations
+            </div>
+            <div class="flex items-center gap-3 text-sm text-surface-100/60">
+              <div class="w-1.5 h-1.5 bg-brand-400 rounded-full flex-shrink-0"></div>
+              Commercial registrations
+            </div>
+            <div class="flex items-center gap-3 text-sm text-surface-100/60">
+              <div class="w-1.5 h-1.5 bg-brand-400 rounded-full flex-shrink-0"></div>
+              Public records aggregators
+            </div>
+          </div>
+
+          <div class="inline-flex items-center gap-2.5 bg-emerald-500/8 border border-emerald-500/15 rounded-lg px-4 py-2.5">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span class="text-sm font-medium text-emerald-400/80">New filings indexed within 24 hours</span>
+          </div>
+        </div>
+
+        <!-- Right: Data Flow Diagram Mockup -->
+        <div class="relative">
+          <div class="bg-surface-900/50 border border-white/[0.06] rounded-2xl p-6 md:p-8">
+            <!-- Center hub -->
+            <div class="flex flex-col items-center mb-8">
+              <div class="text-[10px] font-semibold text-surface-100/30 uppercase tracking-widest mb-4">Data Sources</div>
+            </div>
+
+            <!-- Source cards flowing into center -->
+            <div class="space-y-2.5 mb-8">
+              <div class="flex items-center gap-3 bg-surface-950/60 rounded-xl px-4 py-3 border border-white/[0.04] source-pulse" style="animation-delay: 0s;">
+                <div class="w-8 h-8 rounded-lg bg-brand-500/10 border border-brand-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-xs font-semibold text-surface-100/70">Secretary of State</div>
+                  <div class="text-[10px] text-surface-100/30">LLC, Corp, LP filings</div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="w-1 h-1 bg-emerald-400 rounded-full"></div>
+                  <span class="text-[10px] text-emerald-400/60">Live</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 bg-surface-950/60 rounded-xl px-4 py-3 border border-white/[0.04] source-pulse" style="animation-delay: 0.3s;">
+                <div class="w-8 h-8 rounded-lg bg-brand-500/10 border border-brand-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-xs font-semibold text-surface-100/70">County Registrations</div>
+                  <div class="text-[10px] text-surface-100/30">DBA, fictitious names</div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="w-1 h-1 bg-emerald-400 rounded-full"></div>
+                  <span class="text-[10px] text-emerald-400/60">Live</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 bg-surface-950/60 rounded-xl px-4 py-3 border border-white/[0.04] source-pulse" style="animation-delay: 0.6s;">
+                <div class="w-8 h-8 rounded-lg bg-brand-500/10 border border-brand-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-xs font-semibold text-surface-100/70">Permit &amp; License DBs</div>
+                  <div class="text-[10px] text-surface-100/30">Professional, trade licenses</div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="w-1 h-1 bg-emerald-400 rounded-full"></div>
+                  <span class="text-[10px] text-emerald-400/60">Live</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 bg-surface-950/60 rounded-xl px-4 py-3 border border-white/[0.04] source-pulse" style="animation-delay: 0.9s;">
+                <div class="w-8 h-8 rounded-lg bg-brand-500/10 border border-brand-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-xs font-semibold text-surface-100/70">Industry Directories</div>
+                  <div class="text-[10px] text-surface-100/30">Verified business listings</div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="w-1 h-1 bg-emerald-400 rounded-full"></div>
+                  <span class="text-[10px] text-emerald-400/60">Live</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 bg-surface-950/60 rounded-xl px-4 py-3 border border-white/[0.04] source-pulse" style="animation-delay: 1.2s;">
+                <div class="w-8 h-8 rounded-lg bg-brand-500/10 border border-brand-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-xs font-semibold text-surface-100/70">3 More Sources</div>
+                  <div class="text-[10px] text-surface-100/30">Professional, commercial, public records</div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="w-1 h-1 bg-emerald-400 rounded-full"></div>
+                  <span class="text-[10px] text-emerald-400/60">Live</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Arrow down -->
+            <div class="flex justify-center mb-6">
+              <div class="flex flex-col items-center gap-1">
+                <div class="w-px h-6 bg-gradient-to-b from-brand-400/40 to-brand-400/10"></div>
+                <svg class="w-5 h-5 text-brand-400/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              </div>
+            </div>
+
+            <!-- EntityPing processor -->
+            <div class="bg-gradient-to-r from-brand-600/10 via-brand-500/5 to-brand-600/10 border border-brand-500/20 rounded-xl px-5 py-4 flex items-center justify-center gap-3">
+              <div class="relative w-6 h-6 flex items-center justify-center">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                  <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+                  <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+                  <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp2)"/>
+                  <defs><linearGradient id="lp2" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+                  <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+                  <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+                </svg>
+              </div>
+              <span class="text-sm font-bold text-brand-400">EntityPing Engine</span>
+              <span class="text-[10px] text-surface-100/30 ml-1">Aggregate &bull; Classify &bull; Score</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Feature 2: Intelligent Lead Scoring -->
+  <section class="relative py-24 md:py-32 feature-glow-left overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-surface-950 via-surface-900/30 to-surface-950"></div>
+    <div class="max-w-6xl mx-auto px-6 relative">
+      <div class="grid md:grid-cols-2 gap-16 md:gap-20 items-center reveal">
+        <!-- Left: Lead Card Mockup -->
+        <div class="order-2 md:order-1">
+          <div class="bg-surface-900/50 border border-white/[0.06] rounded-2xl p-6 md:p-8">
+            <div class="text-[10px] font-semibold text-surface-100/30 uppercase tracking-widest mb-5">Lead Scoring Preview</div>
+
+            <!-- Grade A lead card -->
+            <div class="bg-surface-950/60 rounded-xl border border-white/[0.06] p-5 mb-4 glow-border">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <div class="text-sm font-bold text-surface-100/90 mb-1">Summit Peak Roofing LLC</div>
+                  <div class="text-xs text-surface-100/40">Filed Mar 1, 2026 &bull; Construction</div>
+                </div>
+                <div class="grade-a rounded-lg px-3 py-1.5 flex items-center gap-1.5">
+                  <span class="text-xs font-extrabold text-emerald-400">A</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div>
+                  <div class="text-surface-100/30 mb-0.5">Owner</div>
+                  <div class="text-surface-100/70 font-medium">Marcus Rivera</div>
+                </div>
+                <div>
+                  <div class="text-surface-100/30 mb-0.5">Phone</div>
+                  <div class="text-surface-100/70 font-medium">(786) 555-0142</div>
+                </div>
+                <div>
+                  <div class="text-surface-100/30 mb-0.5">Address</div>
+                  <div class="text-surface-100/70 font-medium">4521 Coral Way</div>
+                </div>
+                <div>
+                  <div class="text-surface-100/30 mb-0.5">City, State</div>
+                  <div class="text-surface-100/70 font-medium">Miami, FL 33145</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 mt-4 pt-3 border-t border-white/[0.04]">
+                <div class="flex items-center gap-1.5">
+                  <svg class="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  <span class="text-[10px] text-emerald-400/70">Phone verified</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <svg class="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  <span class="text-[10px] text-emerald-400/70">Address verified</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <svg class="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  <span class="text-[10px] text-emerald-400/70">Recent filing</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grade B lead card -->
+            <div class="bg-surface-950/60 rounded-xl border border-white/[0.04] p-5 mb-4">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <div class="text-sm font-bold text-surface-100/70 mb-1">Brightwell Financial Group</div>
+                  <div class="text-xs text-surface-100/30">Filed Feb 28, 2026 &bull; Financial Services</div>
+                </div>
+                <div class="grade-b rounded-lg px-3 py-1.5">
+                  <span class="text-xs font-extrabold text-brand-400">B</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div>
+                  <div class="text-surface-100/25 mb-0.5">Owner</div>
+                  <div class="text-surface-100/50 font-medium">Angela Chen</div>
+                </div>
+                <div>
+                  <div class="text-surface-100/25 mb-0.5">Address</div>
+                  <div class="text-surface-100/50 font-medium">1200 Brickell Ave</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grade C lead card -->
+            <div class="bg-surface-950/60 rounded-xl border border-white/[0.04] p-5">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <div class="text-sm font-bold text-surface-100/50 mb-1">Coastal Transport Inc</div>
+                  <div class="text-xs text-surface-100/25">Filed Feb 27, 2026 &bull; Transportation</div>
+                </div>
+                <div class="grade-c rounded-lg px-3 py-1.5">
+                  <span class="text-xs font-extrabold text-amber-400">C</span>
+                </div>
+              </div>
+              <div class="text-xs text-surface-100/30">Filing data only &mdash; entity type, registration date, state</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Copy -->
+        <div class="order-1 md:order-2">
+          <div class="inline-flex items-center gap-2 bg-emerald-500/8 border border-emerald-500/15 rounded-full px-3.5 py-1 mb-6">
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            <span class="text-xs font-medium text-surface-100/60">Lead Scoring</span>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-5 leading-tight">
+            Intelligent Lead Scoring<br><span class="gradient-text">A / B / C Grades</span>
+          </h2>
+          <p class="text-surface-100/50 text-lg leading-relaxed mb-8">
+            Every lead is automatically scored so you know exactly what you're working with. Prioritize Grade A leads for the highest conversion rates.
+          </p>
+
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="grade-a rounded-lg px-3 py-1.5 mt-0.5 flex-shrink-0">
+                <span class="text-sm font-extrabold text-emerald-400">A</span>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-surface-100/80 mb-1">Highest Quality</div>
+                <div class="text-sm text-surface-100/40">Phone + address + recent filing. Ready to contact with complete information.</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="grade-b rounded-lg px-3 py-1.5 mt-0.5 flex-shrink-0">
+                <span class="text-sm font-extrabold text-brand-400">B</span>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-surface-100/80 mb-1">Verified Owner</div>
+                <div class="text-sm text-surface-100/40">Address + verified owner name. Good for direct mail and in-person visits.</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="grade-c rounded-lg px-3 py-1.5 mt-0.5 flex-shrink-0">
+                <span class="text-sm font-extrabold text-amber-400">C</span>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-surface-100/80 mb-1">Filing Data</div>
+                <div class="text-sm text-surface-100/40">Filing data only. Great for bulk outreach and further enrichment.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Feature 3: Industry & Geography Filtering -->
+  <section class="relative py-24 md:py-32 feature-glow-right overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 md:gap-20 items-center reveal">
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 bg-brand-500/8 border border-brand-500/15 rounded-full px-3.5 py-1 mb-6">
+            <svg class="w-3.5 h-3.5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+            <span class="text-xs font-medium text-surface-100/60">Smart Filtering</span>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-5 leading-tight">
+            Industry &amp; Geography<br><span class="gradient-text">Filtering</span>
+          </h2>
+          <p class="text-surface-100/50 text-lg leading-relaxed mb-8">
+            Choose your industries, pick your states &mdash; get only the leads that matter. No noise, no irrelevant data, just your ideal prospects.
+          </p>
+
+          <div class="grid grid-cols-2 gap-x-4 gap-y-2 mb-8">
+            <div class="text-xs text-surface-100/40 col-span-2 font-semibold uppercase tracking-widest mb-1">16 Industries Available</div>
+            <div class="text-sm text-surface-100/50">Insurance</div>
+            <div class="text-sm text-surface-100/50">Construction</div>
+            <div class="text-sm text-surface-100/50">Real Estate</div>
+            <div class="text-sm text-surface-100/50">Marketing</div>
+            <div class="text-sm text-surface-100/50">Healthcare</div>
+            <div class="text-sm text-surface-100/50">Legal</div>
+            <div class="text-sm text-surface-100/50">Financial Services</div>
+            <div class="text-sm text-surface-100/50">Technology</div>
+            <div class="text-sm text-surface-100/50">Manufacturing</div>
+            <div class="text-sm text-surface-100/50">Retail</div>
+            <div class="text-sm text-surface-100/50">Food &amp; Beverage</div>
+            <div class="text-sm text-surface-100/50">Transportation</div>
+            <div class="text-sm text-surface-100/50">Education</div>
+            <div class="text-sm text-surface-100/50">Consulting</div>
+            <div class="text-sm text-surface-100/50">Home Services</div>
+            <div class="text-sm text-surface-100/50">Professional Services</div>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs font-medium text-brand-400/80 bg-brand-500/8 border border-brand-500/15 rounded-full px-3 py-1">Florida</span>
+            <span class="text-xs font-medium text-brand-400/80 bg-brand-500/8 border border-brand-500/15 rounded-full px-3 py-1">Texas</span>
+            <span class="text-xs font-medium text-brand-400/80 bg-brand-500/8 border border-brand-500/15 rounded-full px-3 py-1">Georgia</span>
+            <span class="text-xs font-medium text-brand-400/80 bg-brand-500/8 border border-brand-500/15 rounded-full px-3 py-1">Colorado</span>
+            <span class="text-xs font-medium text-brand-400/80 bg-brand-500/8 border border-brand-500/15 rounded-full px-3 py-1">New York</span>
+            <span class="text-xs font-medium text-brand-400/80 bg-brand-500/8 border border-brand-500/15 rounded-full px-3 py-1">California</span>
+            <span class="text-xs font-medium text-surface-100/30 bg-white/[0.03] border border-white/[0.06] rounded-full px-3 py-1">More coming soon</span>
+          </div>
+        </div>
+
+        <!-- Right: Filter UI Mockup -->
+        <div>
+          <div class="bg-surface-900/50 border border-white/[0.06] rounded-2xl p-6 md:p-8">
+            <div class="flex items-center justify-between mb-6">
+              <div class="text-[10px] font-semibold text-surface-100/30 uppercase tracking-widest">Filter Preferences</div>
+              <div class="text-[10px] text-brand-400/60 font-medium">5 selected</div>
+            </div>
+
+            <!-- Industry filter section -->
+            <div class="mb-6">
+              <div class="text-xs font-semibold text-surface-100/50 mb-3">Industries</div>
+              <div class="space-y-2.5">
+                <div class="flex items-center gap-3 bg-surface-950/40 rounded-lg px-3.5 py-2.5 border border-brand-500/15">
+                  <div class="mock-checkbox checked">
+                    <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                  <span class="text-xs font-medium text-surface-100/80">Insurance</span>
+                </div>
+                <div class="flex items-center gap-3 bg-surface-950/40 rounded-lg px-3.5 py-2.5 border border-brand-500/15">
+                  <div class="mock-checkbox checked">
+                    <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                  <span class="text-xs font-medium text-surface-100/80">Construction</span>
+                </div>
+                <div class="flex items-center gap-3 bg-surface-950/40 rounded-lg px-3.5 py-2.5 border border-brand-500/15">
+                  <div class="mock-checkbox checked">
+                    <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                  <span class="text-xs font-medium text-surface-100/80">Real Estate</span>
+                </div>
+                <div class="flex items-center gap-3 bg-surface-950/40 rounded-lg px-3.5 py-2.5 border border-white/[0.04]">
+                  <div class="mock-checkbox"></div>
+                  <span class="text-xs font-medium text-surface-100/40">Healthcare</span>
+                </div>
+                <div class="flex items-center gap-3 bg-surface-950/40 rounded-lg px-3.5 py-2.5 border border-white/[0.04]">
+                  <div class="mock-checkbox"></div>
+                  <span class="text-xs font-medium text-surface-100/40">Technology</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Geography filter section -->
+            <div class="mb-6">
+              <div class="text-xs font-semibold text-surface-100/50 mb-3">States</div>
+              <div class="grid grid-cols-2 gap-2">
+                <div class="flex items-center gap-2.5 bg-surface-950/40 rounded-lg px-3 py-2 border border-brand-500/15">
+                  <div class="mock-checkbox checked">
+                    <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                  <span class="text-xs font-medium text-surface-100/80">Florida</span>
+                </div>
+                <div class="flex items-center gap-2.5 bg-surface-950/40 rounded-lg px-3 py-2 border border-brand-500/15">
+                  <div class="mock-checkbox checked">
+                    <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                  <span class="text-xs font-medium text-surface-100/80">Texas</span>
+                </div>
+                <div class="flex items-center gap-2.5 bg-surface-950/40 rounded-lg px-3 py-2 border border-white/[0.04]">
+                  <div class="mock-checkbox"></div>
+                  <span class="text-xs font-medium text-surface-100/40">Georgia</span>
+                </div>
+                <div class="flex items-center gap-2.5 bg-surface-950/40 rounded-lg px-3 py-2 border border-white/[0.04]">
+                  <div class="mock-checkbox"></div>
+                  <span class="text-xs font-medium text-surface-100/40">California</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Save button -->
+            <button class="w-full bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold py-3 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-600/20">
+              Save Preferences
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Feature 4: Daily CSV Delivery -->
+  <section class="relative py-24 md:py-32 feature-glow-left overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-surface-950 via-surface-900/30 to-surface-950"></div>
+    <div class="max-w-6xl mx-auto px-6 relative">
+      <div class="grid md:grid-cols-2 gap-16 md:gap-20 items-center reveal">
+        <!-- Left: Email Mockup -->
+        <div class="order-2 md:order-1">
+          <div class="bg-surface-900/50 border border-white/[0.06] rounded-2xl p-6 md:p-8">
+            <!-- Email header -->
+            <div class="border-b border-white/[0.06] pb-5 mb-5">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-9 h-9 rounded-full bg-brand-500/15 border border-brand-500/20 flex items-center justify-center">
+                  <svg width="16" height="16" viewBox="0 0 32 32" fill="none"><path d="M14 5C10.686 5 8 7.686 8 11c0 4 6 10 6 10s6-6 6-10c0-3.314-2.686-6-6-6z" fill="#1486f5"/><circle cx="14" cy="11" r="2" fill="white"/></svg>
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-surface-100/80">EntityPing Leads</div>
+                  <div class="text-[10px] text-surface-100/30">leads@entityping.com</div>
+                </div>
+                <div class="ml-auto text-[10px] text-surface-100/25">7:00 AM ET</div>
+              </div>
+              <div class="text-sm font-semibold text-surface-100/70 mb-1.5">Your daily leads are ready &mdash; 28 new businesses</div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] text-surface-100/30">To:</span>
+                <span class="text-[10px] text-surface-100/40">you@company.com</span>
+              </div>
+            </div>
+
+            <!-- Email body preview -->
+            <div class="mb-5">
+              <p class="text-xs text-surface-100/45 leading-relaxed mb-4">Good morning! Here are your 28 freshly filed business leads for today. Your filters: Insurance, Construction, Real Estate in Florida and Texas.</p>
+
+              <!-- CSV attachment -->
+              <div class="bg-surface-950/60 border border-white/[0.06] rounded-xl p-4 email-shine">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  </div>
+                  <div>
+                    <div class="text-xs font-semibold text-surface-100/70">leads-2026-03-03.csv</div>
+                    <div class="text-[10px] text-surface-100/30">28 leads &bull; 14.2 KB</div>
+                  </div>
+                </div>
+
+                <!-- CSV preview rows -->
+                <div class="bg-surface-950/80 rounded-lg border border-white/[0.04] overflow-hidden">
+                  <!-- Header row -->
+                  <div class="grid grid-cols-4 gap-0 text-[9px] font-semibold text-surface-100/40 bg-white/[0.02]">
+                    <div class="px-2.5 py-2 border-r border-white/[0.04]">Business Name</div>
+                    <div class="px-2.5 py-2 border-r border-white/[0.04]">Owner</div>
+                    <div class="px-2.5 py-2 border-r border-white/[0.04]">Industry</div>
+                    <div class="px-2.5 py-2">Grade</div>
+                  </div>
+                  <!-- Data rows -->
+                  <div class="grid grid-cols-4 gap-0 text-[9px] text-surface-100/50 border-t border-white/[0.04]">
+                    <div class="px-2.5 py-1.5 border-r border-white/[0.04] truncate">Summit Peak Roofing</div>
+                    <div class="px-2.5 py-1.5 border-r border-white/[0.04] truncate">M. Rivera</div>
+                    <div class="px-2.5 py-1.5 border-r border-white/[0.04]">Construction</div>
+                    <div class="px-2.5 py-1.5"><span class="text-emerald-400 font-bold">A</span></div>
+                  </div>
+                  <div class="grid grid-cols-4 gap-0 text-[9px] text-surface-100/50 border-t border-white/[0.03]">
+                    <div class="px-2.5 py-1.5 border-r border-white/[0.04] truncate">Brightwell Financial</div>
+                    <div class="px-2.5 py-1.5 border-r border-white/[0.04] truncate">A. Chen</div>
+                    <div class="px-2.5 py-1.5 border-r border-white/[0.04]">Financial</div>
+                    <div class="px-2.5 py-1.5"><span class="text-brand-400 font-bold">B</span></div>
+                  </div>
+                  <div class="grid grid-cols-4 gap-0 text-[9px] text-surface-100/50 border-t border-white/[0.03]">
+                    <div class="px-2.5 py-1.5 border-r border-white/[0.04] truncate">Palmetto Insurance</div>
+                    <div class="px-2.5 py-1.5 border-r border-white/[0.04] truncate">J. Williams</div>
+                    <div class="px-2.5 py-1.5 border-r border-white/[0.04]">Insurance</div>
+                    <div class="px-2.5 py-1.5"><span class="text-emerald-400 font-bold">A</span></div>
+                  </div>
+                  <div class="grid grid-cols-4 gap-0 text-[9px] text-surface-100/30 border-t border-white/[0.03]">
+                    <div class="px-2.5 py-1.5 text-center col-span-4">+ 25 more rows</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CSV field list -->
+            <div class="text-[10px] text-surface-100/30">
+              <span class="text-surface-100/40 font-semibold">Fields included:</span> Business Name, Owner Name, Entity Type, Address, City, State, ZIP, Phone, Email, Industry, Filing Date, Grade
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Copy -->
+        <div class="order-1 md:order-2">
+          <div class="inline-flex items-center gap-2 bg-brand-500/8 border border-brand-500/15 rounded-full px-3.5 py-1 mb-6">
+            <svg class="w-3.5 h-3.5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span class="text-xs font-medium text-surface-100/60">Daily Delivery</span>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-5 leading-tight">
+            Daily CSV<br><span class="gradient-text">Delivery</span>
+          </h2>
+          <p class="text-surface-100/50 text-lg leading-relaxed mb-8">
+            Fresh leads in your inbox every morning. Open in Excel, import to your CRM, or automate with Zapier.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                <svg class="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-surface-100/80">Clean CSV format</div>
+                <div class="text-sm text-surface-100/40">Opens directly in Excel, Google Sheets, or any CRM</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                <svg class="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-surface-100/80">Priority delivery by 7 AM ET</div>
+                <div class="text-sm text-surface-100/40">Growth and Pro plans get leads before the competition wakes up</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                <svg class="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-surface-100/80">12 data fields per lead</div>
+                <div class="text-sm text-surface-100/40">Everything you need to make first contact</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Feature 5: Subscriber Dashboard -->
+  <section class="relative py-24 md:py-32 feature-glow-right overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 md:gap-20 items-center reveal">
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 bg-brand-500/8 border border-brand-500/15 rounded-full px-3.5 py-1 mb-6">
+            <svg class="w-3.5 h-3.5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm0 8a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zm12 0a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+            <span class="text-xs font-medium text-surface-100/60">Dashboard</span>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-5 leading-tight">
+            Subscriber<br><span class="gradient-text">Dashboard</span>
+          </h2>
+          <p class="text-surface-100/50 text-lg leading-relaxed mb-8">
+            Track your deliveries, update preferences, and manage your account from a single control center.
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-brand-500/10 border border-brand-500/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                <svg class="w-3 h-3 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-surface-100/80">Delivery History</div>
+                <div class="text-sm text-surface-100/40">View past deliveries and re-download any CSV file</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-brand-500/10 border border-brand-500/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                <svg class="w-3 h-3 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-surface-100/80">Industry Preferences</div>
+                <div class="text-sm text-surface-100/40">Update your industry and geography filters anytime</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-brand-500/10 border border-brand-500/20 flex items-center justify-center mt-0.5 flex-shrink-0">
+                <svg class="w-3 h-3 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-surface-100/80">Account Management</div>
+                <div class="text-sm text-surface-100/40">Upgrade, downgrade, or manage billing with one click</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Dashboard Mockup -->
+        <div>
+          <div class="bg-surface-900/50 border border-white/[0.06] rounded-2xl p-6 md:p-8">
+            <!-- Dashboard header -->
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <div class="text-xs font-semibold text-surface-100/70">Welcome back, Sarah</div>
+                <div class="text-[10px] text-surface-100/30">Growth Plan &bull; Active</div>
+              </div>
+              <div class="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">
+                <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+                <span class="text-[10px] font-medium text-emerald-400/80">Active</span>
+              </div>
+            </div>
+
+            <!-- Stats cards -->
+            <div class="grid grid-cols-3 gap-3 mb-6">
+              <div class="dash-card">
+                <div class="text-[10px] text-surface-100/30 mb-1">This Month</div>
+                <div class="text-lg font-extrabold text-surface-100/90">487</div>
+                <div class="text-[10px] text-emerald-400/60">leads delivered</div>
+              </div>
+              <div class="dash-card">
+                <div class="text-[10px] text-surface-100/30 mb-1">Grade A</div>
+                <div class="text-lg font-extrabold text-emerald-400">72%</div>
+                <div class="text-[10px] text-surface-100/30">of total leads</div>
+              </div>
+              <div class="dash-card">
+                <div class="text-[10px] text-surface-100/30 mb-1">Streak</div>
+                <div class="text-lg font-extrabold text-brand-400">31</div>
+                <div class="text-[10px] text-surface-100/30">days delivered</div>
+              </div>
+            </div>
+
+            <!-- Recent deliveries list -->
+            <div class="text-xs font-semibold text-surface-100/40 mb-3">Recent Deliveries</div>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between bg-surface-950/40 rounded-lg px-3.5 py-2.5 border border-white/[0.04]">
+                <div class="flex items-center gap-3">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  </div>
+                  <div>
+                    <div class="text-[11px] font-medium text-surface-100/70">leads-2026-03-03.csv</div>
+                    <div class="text-[10px] text-surface-100/25">28 leads &bull; Today, 7:00 AM</div>
+                  </div>
+                </div>
+                <div class="text-[10px] text-brand-400/60 font-medium cursor-pointer hover:text-brand-400 transition-colors">Download</div>
+              </div>
+
+              <div class="flex items-center justify-between bg-surface-950/40 rounded-lg px-3.5 py-2.5 border border-white/[0.04]">
+                <div class="flex items-center gap-3">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  </div>
+                  <div>
+                    <div class="text-[11px] font-medium text-surface-100/70">leads-2026-03-02.csv</div>
+                    <div class="text-[10px] text-surface-100/25">31 leads &bull; Yesterday, 7:00 AM</div>
+                  </div>
+                </div>
+                <div class="text-[10px] text-brand-400/60 font-medium cursor-pointer hover:text-brand-400 transition-colors">Download</div>
+              </div>
+
+              <div class="flex items-center justify-between bg-surface-950/40 rounded-lg px-3.5 py-2.5 border border-white/[0.04]">
+                <div class="flex items-center gap-3">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  </div>
+                  <div>
+                    <div class="text-[11px] font-medium text-surface-100/70">leads-2026-03-01.csv</div>
+                    <div class="text-[10px] text-surface-100/25">24 leads &bull; Mar 1, 7:00 AM</div>
+                  </div>
+                </div>
+                <div class="text-[10px] text-brand-400/60 font-medium cursor-pointer hover:text-brand-400 transition-colors">Download</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div><!-- end #features -->
+
+
+  <!-- ============================================ -->
+  <!-- FEATURE COMPARISON TABLE -->
+  <!-- ============================================ -->
+  <section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-surface-950 via-surface-900/20 to-surface-950"></div>
+    <div class="max-w-5xl mx-auto px-6 relative">
+      <div class="text-center mb-16 reveal">
+        <div class="inline-flex items-center gap-2.5 bg-brand-500/8 border border-brand-500/15 rounded-full px-4 py-1.5 mb-6">
+          <svg class="w-3.5 h-3.5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+          <span class="text-xs font-medium text-surface-100/60">Compare Plans</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">
+          Choose the plan that <span class="gradient-text">fits your pipeline</span>
+        </h2>
+        <p class="text-surface-100/40 text-lg max-w-xl mx-auto">Every plan includes daily CSV delivery, industry classification, and lead grading.</p>
+      </div>
+
+      <div class="bg-surface-900/50 border border-white/[0.06] rounded-2xl overflow-hidden reveal comparison-table">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/[0.06]">
+              <th class="compare-cell text-left text-surface-100/40 font-semibold text-xs uppercase tracking-wider w-[35%]">Feature</th>
+              <th class="compare-cell text-center text-surface-100/50 font-semibold text-xs">
+                <div class="text-surface-100/70 font-bold text-sm mb-0.5">Starter</div>
+                <div class="text-brand-400 font-extrabold">$39<span class="text-surface-100/30 text-xs font-medium">/mo</span></div>
+              </th>
+              <th class="compare-cell text-center compare-highlight font-semibold text-xs relative">
+                <div class="absolute -top-0 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-[9px] font-bold px-3 py-0.5 rounded-b-lg uppercase tracking-wider">Popular</div>
+                <div class="text-surface-100/90 font-bold text-sm mb-0.5 mt-3">Growth</div>
+                <div class="text-brand-400 font-extrabold">$99<span class="text-surface-100/30 text-xs font-medium">/mo</span></div>
+              </th>
+              <th class="compare-cell text-center text-surface-100/50 font-semibold text-xs">
+                <div class="text-surface-100/70 font-bold text-sm mb-0.5">Pro</div>
+                <div class="text-brand-400 font-extrabold">$249<span class="text-surface-100/30 text-xs font-medium">/mo</span></div>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="text-xs">
+            <!-- Leads per month -->
+            <tr>
+              <td class="compare-cell text-surface-100/50 font-medium">Leads per month</td>
+              <td class="compare-cell text-center text-surface-100/60">200</td>
+              <td class="compare-cell text-center text-surface-100/80 compare-highlight font-semibold">600</td>
+              <td class="compare-cell text-center text-surface-100/60">Unlimited</td>
+            </tr>
+            <!-- Industries -->
+            <tr>
+              <td class="compare-cell text-surface-100/50 font-medium">Industries</td>
+              <td class="compare-cell text-center text-surface-100/60">3</td>
+              <td class="compare-cell text-center text-surface-100/80 compare-highlight font-semibold">8</td>
+              <td class="compare-cell text-center text-surface-100/60">All 16</td>
+            </tr>
+            <!-- Lead grades -->
+            <tr>
+              <td class="compare-cell text-surface-100/50 font-medium">Lead grades included</td>
+              <td class="compare-cell text-center text-surface-100/60">A only</td>
+              <td class="compare-cell text-center text-surface-100/80 compare-highlight font-semibold">A, B, C</td>
+              <td class="compare-cell text-center text-surface-100/60">A, B, C</td>
+            </tr>
+            <!-- Delivery time -->
+            <tr>
+              <td class="compare-cell text-surface-100/50 font-medium">Delivery time</td>
+              <td class="compare-cell text-center text-surface-100/60">Standard</td>
+              <td class="compare-cell text-center text-surface-100/80 compare-highlight font-semibold">Priority 7 AM</td>
+              <td class="compare-cell text-center text-surface-100/60">Priority 7 AM</td>
+            </tr>
+            <!-- Email enrichment -->
+            <tr>
+              <td class="compare-cell text-surface-100/50 font-medium">Email enrichment</td>
+              <td class="compare-cell text-center">
+                <svg class="w-4 h-4 text-surface-100/15 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </td>
+              <td class="compare-cell text-center compare-highlight">
+                <svg class="w-4 h-4 text-emerald-400 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </td>
+              <td class="compare-cell text-center">
+                <svg class="w-4 h-4 text-emerald-400 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </td>
+            </tr>
+            <!-- Phone enrichment -->
+            <tr>
+              <td class="compare-cell text-surface-100/50 font-medium">Phone enrichment</td>
+              <td class="compare-cell text-center">
+                <svg class="w-4 h-4 text-surface-100/15 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </td>
+              <td class="compare-cell text-center compare-highlight">
+                <svg class="w-4 h-4 text-surface-100/15 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </td>
+              <td class="compare-cell text-center">
+                <svg class="w-4 h-4 text-emerald-400 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </td>
+            </tr>
+            <!-- CRM integration guides -->
+            <tr>
+              <td class="compare-cell text-surface-100/50 font-medium">CRM integration guides</td>
+              <td class="compare-cell text-center">
+                <svg class="w-4 h-4 text-surface-100/15 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </td>
+              <td class="compare-cell text-center compare-highlight">
+                <svg class="w-4 h-4 text-emerald-400 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </td>
+              <td class="compare-cell text-center">
+                <svg class="w-4 h-4 text-emerald-400 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </td>
+            </tr>
+            <!-- Dedicated support -->
+            <tr>
+              <td class="compare-cell text-surface-100/50 font-medium">Dedicated support</td>
+              <td class="compare-cell text-center">
+                <svg class="w-4 h-4 text-surface-100/15 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </td>
+              <td class="compare-cell text-center compare-highlight">
+                <svg class="w-4 h-4 text-surface-100/15 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </td>
+              <td class="compare-cell text-center">
+                <svg class="w-4 h-4 text-emerald-400 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </td>
+            </tr>
+            <!-- Custom filters -->
+            <tr>
+              <td class="compare-cell text-surface-100/50 font-medium border-b-0">Custom filters</td>
+              <td class="compare-cell text-center border-b-0">
+                <svg class="w-4 h-4 text-surface-100/15 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </td>
+              <td class="compare-cell text-center compare-highlight border-b-0">
+                <svg class="w-4 h-4 text-surface-100/15 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              </td>
+              <td class="compare-cell text-center border-b-0">
+                <svg class="w-4 h-4 text-emerald-400 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- CTA row -->
+        <div class="grid grid-cols-4 border-t border-white/[0.06]">
+          <div class="p-4"></div>
+          <div class="p-4 flex justify-center">
+            <a href="/checkout?plan=starter&billing=monthly" class="text-xs font-semibold text-brand-400 hover:text-brand-300 border border-brand-500/20 hover:border-brand-500/40 rounded-lg px-5 py-2.5 transition-all">
+              Get Starter
+            </a>
+          </div>
+          <div class="p-4 flex justify-center compare-highlight">
+            <a href="/checkout?plan=growth&billing=monthly" class="text-xs font-semibold text-white bg-brand-600 hover:bg-brand-500 rounded-lg px-5 py-2.5 transition-all hover:shadow-lg hover:shadow-brand-600/20">
+              Get Growth
+            </a>
+          </div>
+          <div class="p-4 flex justify-center">
+            <a href="/checkout?plan=pro&billing=monthly" class="text-xs font-semibold text-brand-400 hover:text-brand-300 border border-brand-500/20 hover:border-brand-500/40 rounded-lg px-5 py-2.5 transition-all">
+              Get Pro
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- DATA QUALITY SECTION -->
+  <!-- ============================================ -->
+  <section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">
+          Data you can <span class="gradient-text">trust</span>
+        </h2>
+        <p class="text-surface-100/40 text-lg max-w-xl mx-auto">Verified, scored, and delivered with obsessive attention to quality.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 reveal">
+        <!-- Stat 1: Leads delivered -->
+        <div class="bg-surface-900/50 border border-white/[0.06] rounded-2xl p-6 md:p-8 text-center glow-border">
+          <div class="text-3xl md:text-4xl font-extrabold stat-value mb-2" data-count="47503">47,503</div>
+          <div class="text-sm text-surface-100/40">leads verified &amp; delivered</div>
+        </div>
+
+        <!-- Stat 2: Accuracy rate -->
+        <div class="bg-surface-900/50 border border-white/[0.06] rounded-2xl p-6 md:p-8 text-center glow-border">
+          <div class="text-3xl md:text-4xl font-extrabold mb-2">
+            <span class="stat-value">98.2</span><span class="text-emerald-400 text-2xl">%</span>
+          </div>
+          <div class="text-sm text-surface-100/40">address accuracy rate</div>
+        </div>
+
+        <!-- Stat 3: Freshness -->
+        <div class="bg-surface-900/50 border border-white/[0.06] rounded-2xl p-6 md:p-8 text-center glow-border">
+          <div class="text-3xl md:text-4xl font-extrabold mb-2">
+            <span class="stat-value">24</span><span class="text-brand-400 text-2xl">hr</span>
+          </div>
+          <div class="text-sm text-surface-100/40">freshness guarantee</div>
+        </div>
+
+        <!-- Stat 4: Data sources -->
+        <div class="bg-surface-900/50 border border-white/[0.06] rounded-2xl p-6 md:p-8 text-center glow-border">
+          <div class="text-3xl md:text-4xl font-extrabold stat-value mb-2">7</div>
+          <div class="text-sm text-surface-100/40">independent data sources</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- CTA SECTION -->
+  <!-- ============================================ -->
+  <section class="relative py-24 md:py-32 overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(42, 164, 255, 0.06) 0%, transparent 70%);"></div>
+
+    <div class="max-w-3xl mx-auto px-6 text-center relative reveal">
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
+        Start getting leads <span class="gradient-text">today</span>
+      </h2>
+      <p class="text-lg text-surface-100/45 mb-10 max-w-xl mx-auto leading-relaxed">
+        Join hundreds of sales teams, agencies, and brokers who rely on EntityPing for their daily pipeline. No contracts, cancel anytime.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+        <a href="/checkout?plan=growth&billing=monthly" class="bg-brand-600 hover:bg-brand-500 text-white font-semibold px-10 py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-brand-600/25 text-sm inline-flex items-center gap-2">
+          Get Started with Growth
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </a>
+        <a href="/#pricing" class="text-surface-100/50 hover:text-surface-100 font-medium px-6 py-4 transition-colors text-sm">
+          View all plans
+        </a>
+      </div>
+
+      <div class="flex items-center justify-center gap-6 text-xs text-surface-100/30">
+        <div class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-emerald-400/50" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          No contracts
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-emerald-400/50" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Cancel anytime
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 text-emerald-400/50" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Leads start tomorrow
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================ -->
+  <footer class="border-t border-white/[0.04] py-12">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="/" class="flex items-center gap-2.5">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp-footer)"/>
+          <defs><linearGradient id="lp-footer" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+          <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+          <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+        </svg>
+        <span class="text-sm font-bold">Entity<span class="text-brand-400">Ping</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-5 text-xs text-surface-100/40">
+        <a href="/" class="hover:text-surface-100 transition-colors">Home</a>
+        <a href="/features" class="hover:text-surface-100 transition-colors">Features</a>
+        <a href="/blog" class="hover:text-surface-100 transition-colors">Blog</a>
+        <a href="/leads/insurance" class="hover:text-surface-100 transition-colors">Insurance Leads</a>
+        <a href="/leads/construction" class="hover:text-surface-100 transition-colors">Construction Leads</a>
+        <a href="/tools/filing-checker" class="hover:text-surface-100 transition-colors">Filing Checker</a>
+        <a href="/dashboard" class="hover:text-surface-100 transition-colors">Dashboard</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-xs text-surface-100/25">&copy; 2026 EntityPing</span>
+        <a href="mailto:hello@entityping.com" class="text-sm text-surface-100/40 hover:text-surface-100 transition-colors">
+          hello@entityping.com
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scroll Reveal Script -->
+  <script>
+    // Intersection Observer for scroll reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -60px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

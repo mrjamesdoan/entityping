@@ -3,7 +3,7 @@
 // Sends 3-email post-sample nurture sequence at Day 2, Day 4, and Day 7
 
 const crypto = require("crypto");
-const { redis, redisPipeline } = require("./lib/redis");
+const { redis, redisPipeline } = require("./_lib/redis");
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM_EMAIL = "EntityPing <hello@entityping.com>";

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Leads for Construction Companies — EntityPing</title>
+  <meta name="description" content="Get daily CSV emails of newly registered businesses for construction companies. New LLCs need contractors for buildouts, renovations, and tenant improvements. Free 25-lead sample.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://entityping.com/leads/construction">
+  <meta property="og:title" content="Business Leads for Construction Companies — EntityPing">
+  <meta property="og:description" content="New businesses need buildouts, renovations, and signage. Get freshly filed LLC and corporation leads delivered daily — with owner names, phone numbers, and business addresses.">
+  <meta property="og:image" content="https://entityping.com/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Business Leads for Construction Companies — EntityPing">
+  <meta name="twitter:description" content="New businesses need buildouts, renovations, and signage. Get freshly filed business leads delivered daily as a clean CSV.">
+  <meta name="twitter:image" content="https://entityping.com/og-image.png">
+
+  <!-- Analytics -->
+  <script defer data-domain="entityping.com" src="https://plausible.io/js/script.js"></script>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How can construction companies use new business filing leads?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every newly registered business is a potential construction client. Retail businesses need tenant improvements and buildouts. Restaurants need kitchen builds. Offices need renovations. By reaching out within days of filing, you catch them during the planning phase — before they have chosen a contractor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I filter leads to specific business types that need construction work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. EntityPing lets you filter by industry classification. Focus on restaurants, retail stores, medical offices, fitness studios, or any business type that typically requires commercial construction, tenant improvements, or specialized buildouts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What information is included with each construction lead?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every lead includes the business owner's full name, business name, registered address, phone number, entity type (LLC, Corp, etc.), filing date, and industry classification. Growth and Pro plans also include email enrichment so you can follow up via email campaigns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How fresh are the business leads for construction prospecting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Leads are delivered within 24 hours of the business filing with the state. This means you are reaching out during the earliest planning stages — when the business owner is actively looking for contractors, architects, and tradespeople to build their vision."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='14' cy='12' r='11' stroke='%231486f5' stroke-width='1.5' opacity='0.15'/%3E%3Ccircle cx='14' cy='12' r='7.5' stroke='%231486f5' stroke-width='1.5' opacity='0.3'/%3E%3Cpath d='M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z' fill='%231486f5'/%3E%3Ccircle cx='14' cy='11' r='3' fill='white'/%3E%3Ccircle cx='14' cy='11' r='1.5' fill='%231486f5'/%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef9ff', 100: '#d8f1ff', 200: '#bae7ff', 300: '#8adaff',
+              400: '#52c3ff', 500: '#2aa4ff', 600: '#1486f5', 700: '#0d6ee1',
+              800: '#1158b6', 900: '#144b8f', 950: '#112f57',
+            },
+            surface: {
+              50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+              800: '#1e293b', 850: '#172033', 900: '#0f172a', 950: '#080e1d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #2aa4ff 0%, #8adaff 50%, #52c3ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glow-border {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.1), 0 4px 30px -8px rgba(42, 164, 255, 0.08);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .glow-border:hover {
+      box-shadow: 0 0 0 1px rgba(42, 164, 255, 0.2), 0 8px 40px -8px rgba(42, 164, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    .hero-glow {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(42, 164, 255, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 70% 10%, rgba(82, 195, 255, 0.06) 0%, transparent 50%);
+    }
+    .pricing-popular {
+      background: linear-gradient(135deg, rgba(42, 164, 255, 0.1) 0%, rgba(20, 134, 245, 0.05) 100%);
+      border: 1.5px solid rgba(42, 164, 255, 0.3);
+    }
+    details .faq-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    details[open] .faq-content {
+      grid-template-rows: 1fr;
+    }
+    details .faq-content > div {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-surface-950 text-white font-sans">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-surface-950/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" class="shrink-0" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp)"/>
+          <defs><linearGradient id="lp" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+          <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+          <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+        </svg>
+        <span class="text-lg font-bold tracking-tight">EntityPing</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <a href="/#pricing" class="text-sm text-surface-200 hover:text-white transition-colors hidden sm:block">Pricing</a>
+        <a href="/dashboard" class="text-sm text-surface-200 hover:text-white transition-colors hidden sm:block">Dashboard</a>
+        <a href="/#pricing" class="text-sm font-semibold bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg transition-colors">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-glow pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-medium mb-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        Built for Construction Professionals
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+        Fresh Business Leads for<br><span class="gradient-text">Construction Companies</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-surface-200 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Every new business needs a space to operate. Get freshly filed LLC and corporation leads delivered daily — reach business owners while they are still planning their buildout, renovation, or tenant improvement.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a href="#sample" class="w-full sm:w-auto px-8 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-colors text-center">
+          Get 25 Free Leads
+        </a>
+        <a href="#roi" class="w-full sm:w-auto px-8 py-3.5 border border-white/10 hover:border-white/20 text-white font-medium rounded-xl transition-colors text-center">
+          See the ROI Math
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-8 text-sm text-surface-200 flex-wrap">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          New filings daily
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Owner phone numbers
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Industry filtering
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points Section -->
+  <section class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">The Construction Sales Pipeline Problem</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">Finding commercial clients before your competition does is the difference between a full schedule and an empty one.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Pain 1 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">You Hear About Projects After Bids Close</h3>
+          <p class="text-surface-200 leading-relaxed">By the time a new restaurant or retail store posts on a bid board, three GCs already have relationships with the owner. You are competing against incumbents instead of starting fresh.</p>
+        </div>
+        <!-- Pain 2 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Referral Networks Are Slow and Unpredictable</h3>
+          <p class="text-surface-200 leading-relaxed">Referrals are great when they come, but you cannot control the flow. Some months you get three referrals, other months none. You need a consistent pipeline to keep crews busy and revenue predictable.</p>
+        </div>
+        <!-- Pain 3 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Lead Services Charge Per Project Lead</h3>
+          <p class="text-surface-200 leading-relaxed">Construction lead services like iSqFt or ConstructConnect charge hundreds per month and mostly surface government/institutional bids. Private commercial work — the bread and butter for most GCs — slips through the cracks.</p>
+        </div>
+        <!-- Pain 4 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Door-to-Door and Cold Canvassing Wastes Time</h3>
+          <p class="text-surface-200 leading-relaxed">Driving around commercial districts looking for new tenants or permit signs is expensive and inefficient. You burn fuel, time, and morale on a strategy that yields one lead for every 50 doors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="py-20 px-6 border-t border-white/5 bg-surface-900/30">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">How EntityPing Fills Your Pipeline</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">Know about new businesses before they even lease a space. Reach out while they are still planning, not after construction starts.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Solution 1 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Catch Owners in the Planning Phase</h3>
+          <p class="text-surface-200 leading-relaxed">New business filings arrive within 24 hours. These owners are weeks away from signing a lease and need a contractor who can walk through a space and give them a buildout estimate. Be the first call they receive.</p>
+        </div>
+        <!-- Solution 2 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Filter by High-Value Industries</h3>
+          <p class="text-surface-200 leading-relaxed">Focus on the business types that generate your biggest projects — restaurants, medical offices, fitness studios, salons, and retail. Skip the consulting firms and home-based businesses that do not need buildouts.</p>
+        </div>
+        <!-- Solution 3 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Stay Local with Geo Filtering</h3>
+          <p class="text-surface-200 leading-relaxed">Only see businesses filing in your service area. Filter by city, county, or zip code to match your crew range. No more sorting through leads from three states away that you cannot service.</p>
+        </div>
+        <!-- Solution 4 -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Predictable Pipeline, Every Morning</h3>
+          <p class="text-surface-200 leading-relaxed">No more feast-or-famine referral cycles. Every weekday morning you get a fresh CSV of new businesses that filed yesterday. Hand it to your sales rep, import it into your CRM, or make the calls yourself over coffee.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Section -->
+  <section id="roi" class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">The ROI Math for Construction Companies</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">One commercial buildout can pay for years of EntityPing. Here is what the numbers look like on the Growth plan.</p>
+      </div>
+      <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8 sm:p-10">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">200</div>
+            <div class="text-sm text-surface-200">Leads per month<br>(Growth plan)</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">1%</div>
+            <div class="text-sm text-surface-200">Conservative<br>close rate</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">$45K</div>
+            <div class="text-sm text-surface-200">Avg commercial<br>buildout value</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-extrabold gradient-text mb-2">20%</div>
+            <div class="text-sm text-surface-200">Gross profit<br>margin</div>
+          </div>
+        </div>
+        <div class="border-t border-white/10 pt-8">
+          <div class="grid sm:grid-cols-3 gap-6 text-center">
+            <div>
+              <div class="text-sm text-surface-200 mb-1">Projects Won</div>
+              <div class="text-2xl font-bold">2 per month</div>
+              <div class="text-xs text-surface-200 mt-1">200 leads x 1% close rate</div>
+            </div>
+            <div>
+              <div class="text-sm text-surface-200 mb-1">Gross Profit</div>
+              <div class="text-2xl font-bold text-green-400">$18,000/mo</div>
+              <div class="text-xs text-surface-200 mt-1">2 projects x $45K x 20% margin</div>
+            </div>
+            <div>
+              <div class="text-sm text-surface-200 mb-1">Net ROI</div>
+              <div class="text-2xl font-bold text-green-400">$17,901/mo</div>
+              <div class="text-xs text-surface-200 mt-1">$18,000 - $99 plan cost</div>
+            </div>
+          </div>
+          <p class="text-center text-surface-200 text-sm mt-8 max-w-xl mx-auto">That is a <span class="text-white font-semibold">180x return</span> on your investment. Even at a conservative 1% close rate, just two small commercial projects per month more than justify the cost. And once you build a relationship, that client refers you to their network.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="py-20 px-6 border-t border-white/5 bg-surface-900/30">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">What Contractors Are Saying</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-surface-100 leading-relaxed mb-6">"We specialize in restaurant buildouts in the DFW area. EntityPing filters new food service businesses filing in Dallas and Tarrant counties and sends them to me every morning. I call them, introduce myself, and offer a free walk-through. We picked up three restaurant TI projects in the first two months — over $200K in contracts."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-600/20 flex items-center justify-center text-brand-400 font-semibold text-sm">DK</div>
+            <div>
+              <div class="font-semibold text-sm">Derek K.</div>
+              <div class="text-xs text-surface-200">General Contractor, Dallas TX</div>
+            </div>
+          </div>
+        </div>
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-surface-100 leading-relaxed mb-6">"I run a commercial electrical company. We used to rely 100% on referrals and it was feast or famine. Now I get a list of new businesses every morning and my estimator makes 20 calls before lunch. We have stayed fully booked for six months straight. Best $99 I spend each month."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-600/20 flex items-center justify-center text-brand-400 font-semibold text-sm">RM</div>
+            <div>
+              <div class="font-semibold text-sm">Rachel M.</div>
+              <div class="text-xs text-surface-200">Electrical Contractor, Orlando FL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Simple, Predictable Pricing</h2>
+        <p class="text-surface-200 text-lg max-w-2xl mx-auto">Less than a single estimating trip. No contracts. Cancel anytime.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Starter -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="text-sm font-medium text-surface-200 mb-2">Starter</div>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-4xl font-extrabold">$39</span>
+            <span class="text-surface-200">/mo</span>
+          </div>
+          <p class="text-sm text-surface-200 mb-6">For small crews testing new lead sources</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">50 leads/day</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>1 state included</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Industry filtering</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Daily CSV email</span></li>
+          </ul>
+          <a href="/checkout?plan=starter&billing=monthly" class="block w-full text-center py-3 rounded-xl border border-white/10 hover:border-white/20 text-white font-semibold transition-colors">Get Started</a>
+        </div>
+        <!-- Growth (highlighted) -->
+        <div class="pricing-popular rounded-2xl p-8 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-brand-600 text-white text-xs font-bold rounded-full">BEST VALUE</div>
+          <div class="text-sm font-medium text-brand-400 mb-2">Growth</div>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-4xl font-extrabold">$99</span>
+            <span class="text-surface-200">/mo</span>
+          </div>
+          <p class="text-sm text-surface-200 mb-6">Perfect for GCs and specialty contractors</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">200 leads/day</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">5 states</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Industry + geo filtering</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Email enrichment</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Priority 7 AM delivery</span></li>
+          </ul>
+          <a href="/checkout?plan=growth&billing=monthly" class="block w-full text-center py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold transition-colors">Get Started</a>
+        </div>
+        <!-- Pro -->
+        <div class="glow-border rounded-2xl bg-surface-900/50 border border-white/5 p-8">
+          <div class="text-sm font-medium text-surface-200 mb-2">Pro</div>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-4xl font-extrabold">$249</span>
+            <span class="text-surface-200">/mo</span>
+          </div>
+          <p class="text-sm text-surface-200 mb-6">For multi-state construction firms</p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Up to <strong class="text-white">500 leads/day</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span><strong class="text-white">All 50 states</strong></span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Advanced filters + API access</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Email + phone enrichment</span></li>
+            <li class="flex items-start gap-2 text-sm"><svg class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Priority 7 AM delivery</span></li>
+          </ul>
+          <a href="/checkout?plan=pro&billing=monthly" class="block w-full text-center py-3 rounded-xl border border-white/10 hover:border-white/20 text-white font-semibold transition-colors">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Sample CTA -->
+  <section id="sample" class="py-20 px-6 border-t border-white/5 bg-surface-900/30">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">See Real Leads Before You Pay</h2>
+      <p class="text-surface-200 text-lg mb-8">Get a free sample of 25 freshly filed business leads delivered to your inbox. No credit card required. See the kind of businesses filing in your area.</p>
+      <form id="sampleForm" class="max-w-md mx-auto">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input type="email" id="sampleEmail" required placeholder="you@construction.com" class="flex-1 px-4 py-3 bg-surface-900 border border-white/10 rounded-xl text-white placeholder-surface-200 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors">
+          <button type="submit" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-colors whitespace-nowrap">Get Free Sample</button>
+        </div>
+        <p class="text-xs text-surface-200 mt-3">25 real leads from this week's filings. Delivered in under 5 minutes.</p>
+      </form>
+      <div id="sampleSuccess" class="hidden mt-6 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+        <div class="flex items-center justify-center gap-2 text-green-400 font-semibold">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Sample sent! Check your inbox in the next few minutes.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6 border-t border-white/5">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+      </div>
+      <div class="space-y-4">
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            How can construction companies use new business filing leads?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Every newly registered business is a potential construction client. Retail businesses need tenant improvements and buildouts. Restaurants need kitchen builds. Offices need renovations. By reaching out within days of filing, you catch them during the planning phase — before they have chosen a contractor.
+          </div></div>
+        </details>
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            Can I filter leads to specific business types that need construction?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Yes. EntityPing lets you filter by industry classification. Focus on restaurants, retail stores, medical offices, fitness studios, or any business type that typically requires commercial construction, tenant improvements, or specialized buildouts.
+          </div></div>
+        </details>
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            What information is included with each lead?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Every lead includes the business owner's full name, business name, registered address, phone number, entity type (LLC, Corp, etc.), filing date, and industry classification. Growth and Pro plans also include email enrichment so you can follow up via email campaigns.
+          </div></div>
+        </details>
+        <details class="group glow-border rounded-2xl bg-surface-900/50 border border-white/5">
+          <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-semibold">
+            How fresh are the leads?
+            <svg class="w-5 h-5 text-surface-200 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="faq-content"><div class="px-6 pb-6 text-surface-200 leading-relaxed">
+            Leads are delivered within 24 hours of the business filing with the state. This means you are reaching out during the earliest planning stages — when the business owner is actively looking for contractors, architects, and tradespeople to build their vision.
+          </div></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-12 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2.5">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="14" cy="12" r="11" stroke="#2aa4ff" stroke-width="1.5" opacity="0.15"/>
+          <circle cx="14" cy="12" r="7.5" stroke="#2aa4ff" stroke-width="1.5" opacity="0.3"/>
+          <path d="M14 3C9.582 3 6 6.582 6 11c0 5.25 8 14 8 14s8-8.75 8-14c0-4.418-3.582-8-8-8z" fill="url(#lp-footer)"/>
+          <defs><linearGradient id="lp-footer" x1="8" y1="3" x2="20" y2="25" gradientUnits="userSpaceOnUse"><stop stop-color="#52c3ff"/><stop offset="1" stop-color="#1486f5"/></linearGradient></defs>
+          <circle cx="14" cy="11" r="3" fill="#080e1d"/>
+          <circle cx="14" cy="11" r="1.5" fill="#2aa4ff"/>
+        </svg>
+        <span class="font-bold tracking-tight">EntityPing</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-surface-200">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+        <a href="/dashboard" class="hover:text-white transition-colors">Dashboard</a>
+        <a href="/leads/insurance" class="hover:text-white transition-colors">Insurance</a>
+        <a href="/leads/construction" class="hover:text-white transition-colors">Construction</a>
+        <a href="/leads/marketing" class="hover:text-white transition-colors">Marketing</a>
+        <a href="/leads/real-estate" class="hover:text-white transition-colors">Real Estate</a>
+      </div>
+      <div class="text-sm text-surface-200">&copy; 2025 EntityPing. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Form Submission Script -->
+  <script>
+    document.getElementById('sampleForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('sampleEmail').value;
+      try {
+        await fetch('/api/sample', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, name: '', industry: 'construction' })
+        });
+      } catch(err) {}
+      document.getElementById('sampleForm').classList.add('hidden');
+      document.getElementById('sampleSuccess').classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>
