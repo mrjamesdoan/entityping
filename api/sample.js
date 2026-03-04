@@ -109,25 +109,28 @@ function sampleEmailHtml(firstName) {
     <div style="padding: 32px 0;">
       <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Hi ${firstName},</p>
 
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Here are your <strong>25 Grade-A business leads</strong> from this week's Florida filings. The CSV is attached.</p>
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Your <strong>25 Grade-A business leads</strong> are attached. These are real businesses that filed in Florida this week &mdash; every one is a potential customer who's actively setting up operations and looking for vendors.</p>
 
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Each lead includes:</p>
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px 20px; margin: 0 0 20px;">
+        <p style="font-size: 14px; font-weight: 600; color: #0f172a; margin: 0 0 8px;">Here's what to do right now:</p>
+        <ol style="font-size: 14px; line-height: 1.8; margin: 0; padding-left: 20px; color: #475569;">
+          <li>Open the attached CSV in Excel or Google Sheets</li>
+          <li>Filter by the industries you serve</li>
+          <li>Pick 5 leads and reach out today &mdash; a quick call or email while they're still in setup mode</li>
+        </ol>
+      </div>
 
-      <ul style="font-size: 15px; line-height: 1.8; margin: 0 0 16px; padding-left: 20px; color: #475569;">
-        <li>Business name and entity type (LLC, Corp, DBA)</li>
-        <li>Owner / principal name</li>
-        <li>Phone number</li>
-        <li>Full mailing address</li>
-        <li>Industry classification and quality grade</li>
-      </ul>
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">These 25 leads came from <strong>just one day</strong> of filings. Hundreds more register every single day &mdash; and the ones you don't reach first go to your competitors.</p>
 
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Open the CSV in Excel or Google Sheets and you'll see exactly the kind of data we deliver daily.</p>
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 8px;">When you're ready for a daily feed, our Growth plan delivers <strong>up to 600 leads per month</strong> filtered to your exact industries and locations.</p>
 
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Want a daily feed filtered to your industries and locations? Pick a plan below:</p>
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px 20px; margin: 16px 0 24px;">
+        <p style="font-size: 14px; line-height: 1.5; margin: 0; color: #166534;"><strong>First-month offer:</strong> Use code <strong style="font-family: monospace; background: white; padding: 2px 6px; border-radius: 4px; border: 1px solid #d1d5db;">FIRST50</strong> at checkout for <strong>50% off</strong> &mdash; that's the Growth plan for just $49.50.</p>
+      </div>
 
-      <a href="https://entityping.com/checkout?plan=growth&billing=monthly" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">View Plans &amp; Pricing</a>
+      <a href="https://entityping.com/checkout?plan=growth&billing=monthly" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 15px;">Start Getting Daily Leads &mdash; 50% Off</a>
 
-      <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">Or just reply to this email &mdash; I read every one.<br>&mdash; James, EntityPing</p>
+      <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">Questions? Just reply to this email &mdash; I read every one personally.<br>&mdash; James, EntityPing</p>
     </div>
 
     <div style="padding: 24px 0; border-top: 1px solid #e2e8f0;">
@@ -187,7 +190,7 @@ async function handleAutoSample(req, res) {
     const csvBase64 = Buffer.from(SAMPLE_CSV).toString("base64");
     await sendEmail(
       email,
-      "Your free EntityPing sample — 25 Grade-A leads",
+      `${firstName}, your 25 leads are here — open them now`,
       sampleEmailHtml(firstName),
       [{ filename: "entityping_sample_25_leads.csv", content: csvBase64 }]
     );
@@ -275,7 +278,7 @@ async function handleFormSample(req, res) {
 
     await sendEmail(
       email,
-      "Your free EntityPing sample — 25 Grade-A leads",
+      `${firstName}, your 25 leads are here — open them now`,
       sampleEmailHtml(firstName),
       [{ filename: "entityping_sample_25_leads.csv", content: csvBase64 }]
     );

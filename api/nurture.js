@@ -107,9 +107,11 @@ function day4Email(firstName) {
 
       <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Every day without EntityPing is a day of fresh leads going straight to your competition.</p>
 
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">The sooner you start, the sooner you close:</p>
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px 20px; margin: 0 0 24px;">
+        <p style="font-size: 15px; line-height: 1.5; margin: 0; color: #166534;"><strong>Exclusive offer:</strong> Use code <strong style="font-family: monospace; background: white; padding: 2px 6px; border-radius: 4px; border: 1px solid #d1d5db;">FIRST50</strong> at checkout for <strong>50% off your first month</strong>. That's the Growth plan for just $49.50.</p>
+      </div>
 
-      <a href="https://entityping.com/checkout?plan=growth&billing=monthly" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Start Getting Leads Today</a>
+      <a href="https://entityping.com/checkout?plan=growth&billing=monthly" style="display: inline-block; background: #1486f5; color: white; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 15px;">Start Getting Leads Today &mdash; 50% Off</a>
 
       <p style="font-size: 14px; line-height: 1.6; margin: 16px 0 0; color: #64748b;">&mdash; James, EntityPing</p>`;
 }

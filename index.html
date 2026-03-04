@@ -199,12 +199,16 @@
 
         <!-- Inline sample request -->
         <div id="hero-form-wrap" class="max-w-md mx-auto">
-          <form id="hero-form" class="flex gap-3">
-            <input type="email" id="hero-email" placeholder="Enter your work email" required
-              class="flex-1 bg-surface-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all">
+          <form id="hero-form" class="space-y-3">
+            <div class="flex gap-3">
+              <input type="text" id="hero-name" placeholder="First name" required
+                class="w-[7.5rem] bg-surface-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all">
+              <input type="email" id="hero-email" placeholder="Work email" required
+                class="flex-1 bg-surface-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all">
+            </div>
             <button type="submit" id="hero-btn"
-              class="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors whitespace-nowrap flex items-center gap-2 disabled:opacity-60">
-              <span id="hero-btn-text">Get free sample</span>
+              class="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-60">
+              <span id="hero-btn-text">Send me 25 free leads</span>
               <svg id="hero-spinner" class="w-4 h-4 animate-spin hidden" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
             </button>
           </form>
@@ -218,23 +222,22 @@
         </div>
 
         <!-- Trust bar -->
-        <div class="mt-14 flex flex-col items-center">
-          <div class="flex items-center gap-3 mb-5">
-            <div class="flex -space-x-2">
-              <div class="w-7 h-7 rounded-full bg-brand-500/20 border-2 border-surface-950 flex items-center justify-center"><span class="text-[10px] font-bold text-brand-400">MR</span></div>
-              <div class="w-7 h-7 rounded-full bg-emerald-500/20 border-2 border-surface-950 flex items-center justify-center"><span class="text-[10px] font-bold text-emerald-400">SK</span></div>
-              <div class="w-7 h-7 rounded-full bg-amber-500/20 border-2 border-surface-950 flex items-center justify-center"><span class="text-[10px] font-bold text-amber-400">DL</span></div>
-              <div class="w-7 h-7 rounded-full bg-purple-500/20 border-2 border-surface-950 flex items-center justify-center"><span class="text-[10px] font-bold text-purple-400">JT</span></div>
-              <div class="w-7 h-7 rounded-full bg-rose-500/20 border-2 border-surface-950 flex items-center justify-center"><span class="text-[10px] font-bold text-rose-400">AK</span></div>
-            </div>
-            <p class="text-sm text-slate-400"><span class="text-white font-semibold">200+</span> sales teams get leads daily</p>
+        <div class="mt-14 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <div class="flex items-center gap-2 text-slate-500">
+            <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+            <span class="text-xs font-medium">Public record data</span>
           </div>
-          <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-slate-600">
-            <span class="text-sm font-bold tracking-wide">Allstate</span>
-            <span class="text-sm font-bold tracking-wide">Keller Williams</span>
-            <span class="text-sm font-bold tracking-wide">State Farm</span>
-            <span class="text-sm font-bold tracking-wide">RE/MAX</span>
-            <span class="text-sm font-bold tracking-wide">Coldwell Banker</span>
+          <div class="flex items-center gap-2 text-slate-500">
+            <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-xs font-medium">Updated daily</span>
+          </div>
+          <div class="flex items-center gap-2 text-slate-500">
+            <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg>
+            <span class="text-xs font-medium">No credit card needed</span>
+          </div>
+          <div class="flex items-center gap-2 text-slate-500">
+            <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span class="text-xs font-medium">Cancel anytime</span>
           </div>
         </div>
       </div>
@@ -330,7 +333,7 @@
             </table>
           </div>
           <div class="bg-gray-50 border-t border-gray-100 px-5 py-2.5 flex items-center justify-between">
-            <span class="text-[11px] text-gray-400">Showing 6 of 2,392 leads</span>
+            <span class="text-[11px] text-gray-400">Showing 6 of 14,317 leads</span>
             <span class="text-[11px] text-gray-400">Updated today</span>
           </div>
         </div>
@@ -467,18 +470,18 @@
       <!-- Stats bar -->
       <div class="flex items-center justify-center gap-6 md:gap-10 mb-14 reveal">
         <div class="text-center">
-          <p class="text-2xl font-extrabold text-gray-900">4.9/5</p>
-          <p class="text-xs text-gray-400 mt-0.5">Average rating</p>
+          <p class="text-2xl font-extrabold text-gray-900">6</p>
+          <p class="text-xs text-gray-400 mt-0.5">States covered</p>
         </div>
         <div class="w-px h-8 bg-gray-200"></div>
         <div class="text-center">
-          <p class="text-2xl font-extrabold text-gray-900">200+</p>
-          <p class="text-xs text-gray-400 mt-0.5">Active subscribers</p>
+          <p class="text-2xl font-extrabold text-gray-900">14K+</p>
+          <p class="text-xs text-gray-400 mt-0.5">Leads indexed</p>
         </div>
         <div class="w-px h-8 bg-gray-200"></div>
         <div class="text-center">
-          <p class="text-2xl font-extrabold text-gray-900">50K+</p>
-          <p class="text-xs text-gray-400 mt-0.5">Leads delivered/mo</p>
+          <p class="text-2xl font-extrabold text-gray-900">&lt;24h</p>
+          <p class="text-xs text-gray-400 mt-0.5">Filing to delivery</p>
         </div>
       </div>
 
@@ -673,12 +676,16 @@
       </p>
 
       <div id="cta-form-wrap" class="max-w-md mx-auto">
-        <form id="cta-form" class="flex gap-3">
-          <input type="email" id="cta-email" placeholder="Enter your work email" required
-            class="flex-1 bg-surface-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all">
+        <form id="cta-form" class="space-y-3">
+          <div class="flex gap-3">
+            <input type="text" id="cta-name" placeholder="First name" required
+              class="w-[7.5rem] bg-surface-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all">
+            <input type="email" id="cta-email" placeholder="Work email" required
+              class="flex-1 bg-surface-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 transition-all">
+          </div>
           <button type="submit" id="cta-btn"
-            class="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors whitespace-nowrap disabled:opacity-60">
-            Get free sample
+            class="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors disabled:opacity-60">
+            Send me 25 free leads
           </button>
         </form>
         <p class="text-xs text-slate-500 mt-3">25 leads &middot; CSV format &middot; Instant delivery</p>
@@ -785,9 +792,9 @@
     }
 
     // Sample forms
-    async function submitSample(email, formWrap, successEl) {
+    async function submitSample(name, email, formWrap, successEl) {
       try {
-        const res = await fetch('/api/sample', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: '', email, industry: '' }) });
+        const res = await fetch('/api/sample', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, email, industry: '' }) });
         const data = await res.json();
         if (res.ok && data.success) { formWrap.classList.add('hidden'); successEl.classList.remove('hidden'); }
         else { alert('Something went wrong. Please try again.'); }
@@ -797,24 +804,26 @@
     document.getElementById('hero-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = document.getElementById('hero-btn');
+      const name = document.getElementById('hero-name').value.trim();
       const email = document.getElementById('hero-email').value.trim();
       if (!email) return;
       btn.disabled = true;
       document.getElementById('hero-btn-text').textContent = 'Sending...';
       document.getElementById('hero-spinner').classList.remove('hidden');
-      await submitSample(email, document.getElementById('hero-form-wrap'), document.getElementById('hero-success'));
+      await submitSample(name, email, document.getElementById('hero-form-wrap'), document.getElementById('hero-success'));
       btn.disabled = false;
-      document.getElementById('hero-btn-text').textContent = 'Get free sample';
+      document.getElementById('hero-btn-text').textContent = 'Send me 25 free leads';
       document.getElementById('hero-spinner').classList.add('hidden');
     });
 
     document.getElementById('cta-form').addEventListener('submit', async function(e) {
       e.preventDefault();
+      const name = document.getElementById('cta-name').value.trim();
       const email = document.getElementById('cta-email').value.trim();
       if (!email) return;
       document.getElementById('cta-btn').disabled = true;
       document.getElementById('cta-btn').textContent = 'Sending...';
-      await submitSample(email, document.getElementById('cta-form-wrap'), document.getElementById('cta-success'));
+      await submitSample(name, email, document.getElementById('cta-form-wrap'), document.getElementById('cta-success'));
     });
 
     // Chat widget

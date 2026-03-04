@@ -10,7 +10,7 @@ const { redis, redisPipeline, isAuthed, unauthorized } = require("./_lib/redis")
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM_EMAIL = "EntityPing <hello@entityping.com>";
 const BASE_URL = "https://entityping.com";
-const DAILY_CAP = 80; // Max emails per auto cron run
+const DAILY_CAP = 150; // Auto-scaled 2026-03-04 (pool: 907, incoming: 669)
 
 // Skip obviously bad emails
 const EMAIL_BLACKLIST = [
